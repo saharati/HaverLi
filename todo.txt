@@ -1,0 +1,19 @@
+Stuff to do when finished:
+* Delete v2.imutz.org from cloudflare and kloxo.
+* Remove "v2" from $page_url and $page_image in head.php.
+
+Fix:
+* When screen size too small, dogs and cats should go below logo, not above.
+* When screen size is even smaller, header-adoptcat and header-adoptdog should disappear completely.
+
+Menu:
+* Home - http://fontawesome.io/icon/home/
+* Adopt - http://fontawesome.io/icon/paw/
+* Adopted - http://fontawesome.io/icon/font-awesome/
+* Donate - http://fontawesome.io/icon/bullhorn/
+* Articles - http://fontawesome.io/icon/book/
+* Videos - http://fontawesome.io/icon/youtube-play/
+** About - http://fontawesome.io/icon/pencil-square-o/
+** Contact - http://fontawesome.io/icon/envelope/
+** Links - http://fontawesome.io/icon/external-link/
+** Login - http://fontawesome.io/icon/sign-in/
