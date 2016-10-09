@@ -57,7 +57,7 @@ if (isset($_POST['username'], $_POST['password']))
 		}
 		if (empty($validation))
 		{
-			$result = $mysqli->query('SELECT id, fullName, password FROM user WHERE username="' . $mysqli->real_escape_string($_POST['username']) . '"');
+			$result = $mysqli->query('SELECT id, password FROM user WHERE username="' . $mysqli->real_escape_string($_POST['username']) . '"');
 			$row = $result->fetch_assoc();
 			$result->free();
 			if ($row)
@@ -84,7 +84,6 @@ if (isset($_POST['username'], $_POST['password']))
 				$_SESSION['logged_in'] = true;
 				$_SESSION['LAST_ACTIVITY'] = time();
 				$_SESSION['userId'] = $row['id'];
-				$_SESSION['fullName'] = $row['fullName'];
 				header('Location: /private');
 				exit;
 			}

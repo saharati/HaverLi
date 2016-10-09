@@ -10,7 +10,6 @@ while ($row = $result->fetch_assoc())
 	$pets[$row['isDog'] + $row['isAdopted']] = $row['c'];
 }
 $result->free();
-$page = basename($_SERVER['PHP_SELF']);
 ?>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -55,42 +54,42 @@ $page = basename($_SERVER['PHP_SELF']);
 <nav>
 <ul id="site-navigation">
 <li>
-<a <?php if ($page == 'index.php') echo 'class="active"'; ?> href="/" title="דף הבית">
+<a <?php if ($_SERVER['PHP_SELF'] == '/index.php') echo 'class="active"'; ?> href="/" title="דף הבית">
 <i class="fa fa-home"></i>
 <strong>דף הבית</strong>
 <small>אירועים וימי אימוץ</small>
 </a>
 </li>
 <li>
-<a <?php if ($page == 'adopt.php') echo 'class="active"'; ?> href="/adopt" title="פינת אימוץ">
+<a <?php if ($_SERVER['PHP_SELF'] == '/adopt.php') echo 'class="active"'; ?> href="/adopt" title="פינת אימוץ">
 <i class="fa fa-paw"></i>
 <strong>פינת אימוץ</strong>
 <small>כלבים וחתולים לאימוץ</small>
 </a>
 </li>
 <li>
-<a <?php if ($page == 'adopted.php') echo 'class="active"'; ?> id="last-a" href="/adopted" title="מצאו בית">
+<a <?php if ($_SERVER['PHP_SELF'] == '/adopted.php') echo 'class="active"'; ?> id="last-a" href="/adopted" title="מצאו בית">
 <i class="fa fa-font-awesome"></i>
 <strong>מצאו בית</strong>
 <small>כלבים וחתולים שאומצו</small>
 </a>
 </li>
 <li class="donate-link">
-<a <?php if ($page == 'donate.php') echo 'class="active"'; ?> href="/donate" title="תרמו לנו">
+<a <?php if ($_SERVER['PHP_SELF'] == '/donate.php') echo 'class="active"'; ?> href="/donate" title="תרמו לנו">
 <i class="fa fa-bullhorn"></i>
 <strong>תרמו לנו</strong>
 <small>תרומה מצילה חיים</small>
 </a>
 </li>
 <li class="articles-link">
-<a <?php if ($page == 'articles.php') echo 'class="active"'; ?> href="/articles" title="מאמרים">
+<a <?php if ($_SERVER['PHP_SELF'] == '/articles.php') echo 'class="active"'; ?> href="/articles" title="מאמרים">
 <i class="fa fa-book"></i>
 <strong>מאמרים</strong>
 <small>מידע שימושי למאמצים</small>
 </a>
 </li>
 <li class="videos-link">
-<a <?php if ($page == 'videos.php') echo 'class="active"'; ?> href="/videos" title="סרטונים">
+<a <?php if ($_SERVER['PHP_SELF'] == '/videos.php') echo 'class="active"'; ?> href="/videos" title="סרטונים">
 <i class="fa fa-youtube-play"></i>
 <strong>סרטונים</strong>
 <small>למידת אילוף ופנאי</small>
@@ -101,13 +100,12 @@ $page = basename($_SERVER['PHP_SELF']);
 <li>
 <a href="javascript:void(0);" title="לחץ לקישורים נוספים" class="fa fa-navicon"></a>
 <ul>
-<li class="donate-link <?php if ($page == 'donate.php') echo 'active'; ?>"><a title="תרמו לנו" href="/donate"><i class="fa fa-bullhorn"></i>תרמו לנו</a></li>
-<li class="articles-link <?php if ($page == 'articles.php') echo 'active'; ?>"><a title="מאמרים" href="/articles"><i class="fa fa-book"></i>מאמרים</a></li>
-<li class="videos-link <?php if ($page == 'videos.php') echo 'active'; ?>"><a title="סרטונים" href="/videos"><i class="fa fa-youtube-play"></i>סרטונים</a></li>
-<li><a <?php if ($page == 'about.php') echo 'class="active"'; ?> title="אודותינו" href="/about"><i class="fa fa-edit"></i>אודותינו</a></li>
-<li><a <?php if ($page == 'contact.php') echo 'class="active"'; ?> title="צרו קשר" href="/contact"><i class="fa fa-envelope"></i>יצירת קשר</a></li>
-<li><a <?php if ($page == 'links.php') echo 'class="active"'; ?> title="קישורים מומלצים" href="/links"><i class="fa fa-external-link"></i>קישורים מומלצים</a></li>
-<li><a <?php if ($page == 'login.php') echo 'class="active"'; ?> title="כניסת משתמשים" href="/login"><i class="fa fa-sign-in"></i>כניסת משתמשים</a></li>
+<li class="donate-link <?php if ($_SERVER['PHP_SELF'] == '/donate.php') echo 'active'; ?>"><a title="תרמו לנו" href="/donate"><i class="fa fa-bullhorn"></i>תרמו לנו</a></li>
+<li class="articles-link <?php if ($_SERVER['PHP_SELF'] == '/articles.php') echo 'active'; ?>"><a title="מאמרים" href="/articles"><i class="fa fa-book"></i>מאמרים</a></li>
+<li class="videos-link <?php if ($_SERVER['PHP_SELF'] == '/videos.php') echo 'active'; ?>"><a title="סרטונים" href="/videos"><i class="fa fa-youtube-play"></i>סרטונים</a></li>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/about.php') echo 'class="active"'; ?> title="אודותינו" href="/about"><i class="fa fa-edit"></i>אודותינו</a></li>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/contact.php') echo 'class="active"'; ?> title="צרו קשר" href="/contact"><i class="fa fa-envelope"></i>יצירת קשר</a></li>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/login.php') echo 'class="active"'; ?> title="כניסת משתמשים" href="/login"><i class="fa fa-sign-in"></i>כניסת משתמשים</a></li>
 </ul>
 </li>
 <li><a class="active" title="עברית" href="/">עב</a></li>
