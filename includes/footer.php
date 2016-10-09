@@ -9,7 +9,7 @@ if (!isset($mysqli))
 <ul>
 <li>&copy; 2005 - <?php echo date('Y'); ?> כל הזכויות שמורות</li>
 <li><a title="עמותת חבר לי - לחברים עוזרים תמיד" href="/">עמותת חבר לי - לחברים עוזרים תמיד</a></li>
-<li>ע"ר ללא מטרות רווח מס' <a href="http://www.guidestar.org.il/organization/580451821" title="העמותה באתר גיידסטאר" target="_blank" rel="nofollow">580451821</a></li>
+<li>ע"ר ללא מטרות רווח מס' 580451821</li>
 <li>האתר נבנה ומתוחזק ע"י <a href="http://www.facebook.com/sahar.ati" title="סהר אטיאס" target="_blank" rel="nofollow">סהר אטיאס</a></li>
 </ul>
 </section>
@@ -34,11 +34,11 @@ $result->free();
 <h3><i class="fa fa-search-plus" aria-hidden="true"></i> חיפושים אחרונים</h3>
 <ul>
 <?php
-$result = $mysqli->query('SELECT url, description FROM searches ORDER BY searchDate DESC LIMIT 4');
+$result = $mysqli->query('SELECT url, hebrewDescription FROM searches ORDER BY searchDate DESC LIMIT 4');
 while ($row = $result->fetch_assoc())
 {
-	$row['shortDescr'] = mb_strlen($row['description']) > 30 ? mb_substr($row['description'], 0, 30) . '...' : $row['description'];
-	echo '<li><a href="/adopt?' . $row['url'] . '" title="' . $row['description'] . '">' . $row['shortDescr'] . '</a></li>';
+	$row['shortDescr'] = mb_strlen($row['hebrewDescription']) > 30 ? mb_substr($row['hebrewDescription'], 0, 30) . '...' : $row['hebrewDescription'];
+	echo '<li><a href="/adopt-' . $row['url'] . '" title="' . $row['hebrewDescription'] . '">' . $row['shortDescr'] . '</a></li>';
 }
 $result->free();
 ?>

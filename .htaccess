@@ -1,0 +1,12 @@
+Options +FollowSymLinks
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{HTTP_HOST} ^www\.imutz\.org [NC]
+RewriteRule ^(.*)$ http://imutz.org/$1 [L,R=301]
+
+RewriteRule ([a-zA-Z]+)\-([0-9]+)$ $1.php?page=$2 [L]
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ([a-zA-Z]+) $1.php [L]
+
+ErrorDocument 404 /notfound
