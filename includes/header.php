@@ -21,14 +21,14 @@ $result->free();
 }(document, 'script', 'facebook-jssdk'));</script>
 <header>
 <div class="center-block">
-<section id="header-title">
+<div id="header-title">
 <h1>
 <a href="/" title="עמותת חבר לי - לחברים עוזרים תמיד">
 <img src="/images/title.png" title="עמותת חבר לי - לחברים עוזרים תמיד" alt="עמותת חבר לי - לחברים עוזרים תמיד">
 </a>
 </h1>
-</section>
-<section id="header-adoptdog">
+</div>
+<div id="header-adoptdog">
 <div>
 <ul>
 <li class="adoptdog"><a title="כלבים לאימוץ" href="/adopt-dog">כלבים לאימוץ: <?php echo $pets[2]; ?></a></li>
@@ -38,8 +38,8 @@ $result->free();
 <a href="/adopt-dog" title="פינת אימוץ כלבים">
 <img src="/images/adoptdog.png" title="פינת אימוץ כלבים" alt="פינת אימוץ כלבים">
 </a>
-</section>
-<section id="header-adoptcat">
+</div>
+<div id="header-adoptcat">
 <div>
 <ul>
 <li class="adoptcat"><a title="חתולים לאימוץ" href="/adopt-cat">חתולים לאימוץ: <?php echo $pets[0]; ?></a></li>
@@ -49,7 +49,7 @@ $result->free();
 <a href="/adopt-cat" title="פינת אימוץ חתולים">
 <img src="/images/adoptcat.png" title="פינת אימוץ חתולים" alt="פינת אימוץ חתולים">
 </a>
-</section>
+</div>
 </div>
 <nav>
 <ul id="site-navigation">

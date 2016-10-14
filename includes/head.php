@@ -12,6 +12,7 @@ if (!isset($page_image))
 	$page_image_height = 911;
 }
 ?>
+<head>
 <meta charset="UTF-8">
 <title><?php echo $page_title; ?></title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,3 +32,6 @@ if (!isset($page_image))
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="/css/default.css">
+<script src="/js/sweetalert.min.js"></script>
+<script src="/js/sahar.js"></script>
+</head>

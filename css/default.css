@@ -1,6 +1,6 @@
 /* RESET */
 html, body, main, #wrapper {height:100%}
-body {background-color:#E4F8FF}
+body {background-color:#E4F8FF;font-family:Arial}
 #wrapper {display:table;width:100%;min-width:200px;direction:rtl}
 header, main, footer {display:table-row}
 header, footer {height:1px}
@@ -36,7 +36,7 @@ header .center-block img {vertical-align:bottom}
 	#header-adoptdog, #header-adoptcat {float:none}
 }
 /* NAVIGATION */
-nav {text-align:center;background-color:#FFF;border-top:1px solid #E7E7E7;font-family:Arial}
+nav {text-align:center;background-color:#FFF;border-top:1px solid #E7E7E7}
 nav ul {list-style:none;margin:0;padding:0;display:inline-block}
 #site-navigation {border:1px solid #E7E7E7;border-top:0}
 #site-navigation li {float:right}
@@ -137,11 +137,11 @@ nav ul {list-style:none;margin:0;padding:0;display:inline-block}
 	#sub-navigation ul::before {right:12px}
 }
 /* FOOTER */
-footer {font-family:Arial;background-color:#B6C9CD;font-size:0.75em;color:#657073}
+footer {background-color:#B6C9CD;font-size:14px;color:#657073}
 footer .center-block {max-width:750px}
-footer h3 {font-size:1.5em;margin:0 0 7px;color:#336c83}
+footer h3 {font-size:18px;margin:0 0 7px;color:#336c83}
 footer h3 i {margin-left:7px}
-footer h3 span {font-size:0.7em}
+footer h3 span {font-size:12px}
 footer a {text-decoration:none;color:#006783}
 footer a:hover {color:#2B5561}
 footer ul {list-style:none;margin:0;padding:0}
@@ -152,19 +152,45 @@ footer section:last-child {float:none;clear:both}
 /* MAIN */
 #content-wrap {display:table-cell;background-color:#FFF;word-wrap:break-word}
 #content-wrap .center-block {padding:7px}
-main h1 {display:inline-block;font-family:"Times New Roman";font-size:1.7em;margin:7px 0 10px;color:#f8b173;border-bottom:1px dashed #f8b173}
-main h1 i {color:#e67e22;margin:0 7px}
-main p {font:normal 0.95em/1.25em Arial;margin:0 0 8px;color:#777}
-main ul {list-style:inside disc;font-size:0.95em;line-height:1.25em;margin:0 0 7px 0}
+main h2 {display:inline-block;font-size:30px;font-weight:normal;margin:7px 0 10px;color:#f8b173;border-bottom:1px dashed #f8b173}
+main h2 i {color:#e67e22;margin:0 7px;font-size:25px !important}
+main h3 {display:inline-block;color:#f8b173;font-size:22px;font-weight:normal;margin:7px 0 10px;border-bottom:1px solid #0087b9}
+main h3 i {color:#e67e22;margin:0 7px;font-size:18px !important}
+main h3 span {display:block;font-size:16px;padding:5px 7px;color:#e67e22}
+main p {font-size:16px;margin:0 0 8px;color:#777}
+main ul {list-style:inside disc;font-size:16px;margin:0 0 7px}
 main a {text-decoration:none;color:#e67e22}
 main a:hover {color:#f8b173}
 main a i {margin-left:7px}
+main article {margin-bottom:10px}
+.hr {border-bottom:1px dotted #E7E7E7;padding-bottom:5px;margin-bottom:8px}
+.clearfix:after {content:".";display:block;height:0;clear:both;visibility:hidden}
 .floated {float:left;margin-right:5px}
-.shadowy {box-shadow:0 0 5px #777}
-.shadowy img {width:100%;height:auto}
-.shadowy p {text-align:center}
+.floated img {max-width:250px;width:100%;height:auto}
+.shadowy {box-shadow:0 0 3px #777;padding:7px 7px 0;margin-bottom:7px}
+.shadowy p {text-align:center;margin-bottom:4px}
+/* MODAL */
+.imageModal img {transition:0.3s}
+.imageModal:hover img {opacity:0.7}
+#imageModal {text-align:center;display:none;position:fixed;top:0;left:0;z-index:1;width:100%;height:100%;background-color:rgba(0, 0, 0, 0.3)}
+#imageModal img {cursor:pointer;animation-name:zoom;animation-duration:0.6s}
+#imageModal a {position:absolute;top:15px;right:15px;font-size:40px;font-weight:bold;color:#f1f1f1;transition:0.3s}
+#imageModal a:hover, #imageModal a:focus {color:#bbb}
+@keyframes zoom
+{
+	from {transform:scale(0)} 
+	to {transform:scale(1)}
+}
+@media all and (orientation:landscape)
+{
+	#imageModal img {width:auto;height:100%}
+}
+@media all and (orientation:portrait)
+{
+	#imageModal img {width:100%;height:auto;position:absolute;top:50%;left:0;transform:translateY(-50%)}
+}
 /* BUTTONS */
-.button {text-decoration:none;display:inline-block;max-width:200px;width:100%;padding:5px;margin:15px;font-weight:bold;background-color:#FFB94B;text-shadow:0 1px 0 rgba(255, 255, 255, 0.5);box-shadow:0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;border-width:1px;border-style:solid;border-color:#D69E31 #E3A037 #D5982D #E3A037;cursor:pointer;color:#FFF}
+.button {text-decoration:none;display:inline-block;max-width:160px;width:100%;padding:5px;margin:10px;font-weight:bold;background-color:#FFB94B;text-shadow:0 1px 0 rgba(255, 255, 255, 0.5);box-shadow:0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;border-width:1px;border-style:solid;border-color:#D69E31 #E3A037 #D5982D #E3A037;cursor:pointer;color:#FFF}
 .button:hover, .button:focus {color:#FFF;background-color:#f4cf5a}
 .button:active {outline:none;box-shadow:0 1px 4px rgba(0, 0, 0, 0.5) inset}
 a.button i {margin:0 7px}
@@ -172,14 +198,19 @@ a.button i {margin:0 7px}
 fieldset {display:inline-block;margin-bottom:10px}
 fieldset p {margin:0}
 fieldset div {max-width:250px}
-fieldset legend {font-family:"Times New Roman";font-size:1.7em;color:#f8b173;padding:0 10px}
-fieldset legend i {color:#e67e22;margin-left:7px}
-fieldset label {display:block;font:normal 0.95em/1.25em Arial;color:#777;margin-top:10px}
+fieldset legend {font-size:30px;color:#f8b173;padding:0 10px}
+fieldset legend i {color:#e67e22;margin-left:7px;font-size:25px !important}
+fieldset label {display:block;font:normal 16px/1 Arial;color:#777;margin-top:10px}
 fieldset input, fieldset select, fieldset textarea {font-family:Arial;box-sizing:border-box;width:100%;height:35px;border:1px solid #E7E7E7;background-color:#FFF;padding:5px;outline:none;color:#777}
 fieldset textarea {resize:vertical;overflow:auto;height:auto;min-height:115px}
 fieldset input:focus, fieldset select:focus {border:1px solid #e67e22}
 fieldset input[type="checkbox"], fieldset input[type="radio"] {width:auto;height:auto;padding:0}
 fieldset .button {margin:10px 0 0;float:left;outline:none}
+@media all and (min-width:900px)
+{
+	.customized-form > div {float:right;margin:0 15px;width:250px}
+	.customized-form textarea {resize:none}
+}
 /* SWEET ALERT */
 .sweet-overlay {background-color:rgba(0, 0, 0, 0.4);position:fixed;left:0;right:0;top:0;bottom:0;display:none;z-index:10000}
 .sweet-alert {background-color:white;font-family:'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;width:478px;padding:17px;border-radius:5px;text-align:center;position:fixed;left:50%;top:50%;margin-left:-256px;margin-top:-200px;overflow:hidden;display:none;z-index:99999}

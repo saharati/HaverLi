@@ -43,17 +43,14 @@ if (isset($_POST['email']))
 ?>
 <!DOCTYPE html>
 <html lang="he">
-<head>
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php'; ?>
-<script src="/js/sweetalert.min.js"></script>
-</head>
 <body>
 <div id="wrapper">
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php'; ?>
 <main>
 <div id="content-wrap">
 <div class="center-block">
-<form action="" method="post">
+<form action="/forgot" method="post">
 <fieldset>
 <legend><i class="fa fa-info-circle" aria-hidden="true"></i> שחזור סיסמה</legend>
 <p>
@@ -72,11 +69,10 @@ if (isset($_POST['email']))
 </main>
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php'; ?>
 </div>
-<script>
-swal.setDefaults({confirmButtonText:'אישור'});
 <?php
 if (isset($validation))
 {
+	echo '<script>';
 	if (empty($validation))
 		echo 'swal("שחזור סיסמה", "אנא בדקו את האימייל שלהם להוראות שחזור.", "success");';
 	else
@@ -86,8 +82,8 @@ if (isset($validation))
 			echo $p . '\n';
 		echo '", "error");';
 	}
+	echo '</script>';
 }
 ?>
-</script>
 </body>
 </html>

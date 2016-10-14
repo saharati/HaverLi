@@ -3,6 +3,7 @@ Stuff to do when finished:
 * Remove "v2" from $page_url and $page_image in head.php.
 * Remove "v2" from forgot.php.
 * Remove "v2" from login.php.
+* Validate the whole site.
 
 http://1stwebdesigner.com/css-image-effects/
 http://zurb.com/playground/css3-polaroids
@@ -15,3 +16,11 @@ my site
 * thank yous
 
 add forward to support@imutz.org to puah.
+
+https://www.google.co.il/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=form+submit+progress+bar+html5
+http://stackoverflow.com/questions/25668771/track-basic-html-form-post-progress
+https://www.developphp.com/video/JavaScript/File-Upload-Progress-Bar-Meter-Tutorial-Ajax-PHP
+https://robertnyman.com/html5/fileapi-upload/fileapi-upload.html
+
+http://www.w3schools.com/howto/howto_css_modal_images.asp
+http://www.w3schools.com/howto/howto_css_modals.asp

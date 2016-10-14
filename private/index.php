@@ -1,9 +1,7 @@
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/private/authenticate.php'; ?>
 <!DOCTYPE html>
 <html lang="he">
-<head>
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php'; ?>
-</head>
 <body>
 <div id="wrapper">
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php'; ?>
@@ -20,7 +18,9 @@
 <a class="button" title="עריכת מאמרים" href="/private/updateArticles.php"><i class="fa fa-file-text" aria-hidden="true"></i> עריכת מאמרים</a>
 <a class="button" title="הוספת סרטונים" href="/private/addVideos.php"><i class="fa fa-video-camera" aria-hidden="true"></i> הוספת סרטונים</a>
 <a class="button" title="עריכת סרטונים" href="/private/updateVideos.php"><i class="fa fa-file-video-o" aria-hidden="true"></i> עריכת סרטונים</a>
-<a class="button" title="חיפושים" href="/private/search.php"><i class="fa fa-search" aria-hidden="true"></i> צפייה בחיפושים</a>
+<a class="button" title="הוספת משתמשים" href="/private/addUsers.php"><i class="fa fa-user-plus" aria-hidden="true"></i> הוספת משתמשים</a>
+<a class="button" title="עריכת משתמשים" href="/private/updateUsers.php"><i class="fa fa-users" aria-hidden="true"></i> עריכת משתמשים</a>
+<a class="button" title="חיפושים" href="/private/search.php"><i class="fa fa-search" aria-hidden="true"></i> חיפושים</a>
 <a class="button" title="שינוי סיסמה" href="/private/change.php"><i class="fa fa-key" aria-hidden="true"></i> שינוי סיסמה</a>
 <a class="button" title="יציאה" href="/login?logout=<?php echo $_SESSION['signature']; ?>"><i class="fa fa-times-circle-o" aria-hidden="true"></i> יציאה</a>
 </div>

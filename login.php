@@ -93,17 +93,14 @@ if (isset($_POST['username'], $_POST['password']))
 ?>
 <!DOCTYPE html>
 <html lang="he">
-<head>
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php'; ?>
-<script src="/js/sweetalert.min.js"></script>
-</head>
 <body>
 <div id="wrapper">
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php'; ?>
 <main>
 <div id="content-wrap">
 <div class="center-block">
-<form action="" method="post">
+<form action="/login" method="post">
 <fieldset>
 <legend><i class="fa fa-sign-in" aria-hidden="true"></i> כניסת משתמשים</legend>
 <p>
@@ -124,19 +121,21 @@ if (isset($_POST['username'], $_POST['password']))
 </main>
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php'; ?>
 </div>
-<script>
-swal.setDefaults({confirmButtonText:'אישור'});
 <?php
-if (isset($sent))
-	echo 'swal("שחזור סיסמה", "סיסמה חדשה נשלחה אליכם באימייל.", "success");';
-elseif (isset($validation))
+if (isset($sent) || isset($validation))
 {
-	echo 'swal("החיבור נכשל", "';
-	foreach ($validation as $p)
-		echo $p . '\n';
-	echo '", "error");';
+	echo '<script>';
+	if (isset($sent))
+		echo 'swal("שחזור סיסמה", "סיסמה חדשה נשלחה אליכם באימייל.", "success");';
+	else
+	{
+		echo 'swal("החיבור נכשל", "';
+		foreach ($validation as $p)
+			echo $p . '\n';
+		echo '", "error");';
+	}
+	echo '</script>';
 }
 ?>
-</script>
 </body>
 </html>
