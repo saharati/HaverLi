@@ -1,15 +1,7 @@
+swal.setDefaults({confirmButtonText: 'אישור'});
+
 window.onload = function()
 {
-	saharSwal = document.getElementsByClassName('sweet-alert')[0];
-	if (saharSwal)
-	{
-		swal.setDefaults({confirmButtonText: 'אישור'});
-		window.onresize = function()
-		{
-			saharSwal.style.marginTop = -Math.round(saharSwal.clientHeight / 2) + 'px';
-		}
-	}
-	
 	modals = document.getElementsByClassName('imageModal');
 	if (modals.length > 0)
 	{
@@ -33,11 +25,33 @@ window.onload = function()
 		
 		for (i = 0;i < modals.length;i++)
 		{
-			modals[i].onclick = function()
+			modals[i].onclick = function(e)
 			{
-				image.src = this.firstChild.src;
+				e.preventDefault();
+				
+				image.src = this.href;
+				
+				if (this.getAttribute('data-height') < window.innerHeight)
+					image.style.top = ((window.innerHeight - this.getAttribute('data-height')) / 2) + 'px';
+				else
+					image.style.top = '0';
+				
 				imageModal.style.display = 'block';
 			}
+		}
+	}
+	
+	saharSwal = document.getElementsByClassName('sweet-alert')[0];
+	window.onresize = function()
+	{
+		if (saharSwal && saharSwal.style.display == 'inline-block')
+			saharSwal.style.marginTop = -Math.round(saharSwal.offsetHeight / 2) + 'px';
+		else if (modals.length > 0 && imageModal.style.display == 'block')
+		{
+			if (image.offsetHeight < window.innerHeight)
+				image.style.top = ((window.innerHeight - image.offsetHeight) / 2) + 'px';
+			else
+				image.style.top = '0';
 		}
 	}
 }

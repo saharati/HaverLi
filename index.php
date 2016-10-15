@@ -38,7 +38,10 @@ while ($row = $result->fetch_assoc())
 		echo '<span>מתקיים בתאריך ' . date('d/m', $row['eventDate']) . ' בין השעות ' . $row['startHour'] . ' - ' . $row['endHour'] . '</span>';
 	echo '</h3>';
 	if ($row['image'] != null)
-		echo '<a class="floated imageModal" href="javascript:void(0);" title="' . $row['hebrewTitle'] . '"><img src="/images/events/' . $row['image'] . '" title="' . $row['hebrewTitle'] . '" alt="' . $row['hebrewTitle'] . '"></a>';
+	{
+		list($width, $height) = getimagesize($_SERVER['DOCUMENT_ROOT'] . '/images/events/' . $row['image']);
+		echo '<a class="floated imageModal" href="/images/events/' . $row['image'] . '" title="' . $row['hebrewTitle'] . '" data-width="' . $width . '" data-height="' . $height . '"><img class="' . ($width > $height ? 'wide' : 'height') . '" src="/images/events/' . $row['image'] . '" title="' . $row['hebrewTitle'] . '" alt="' . $row['hebrewTitle'] . '"></a>';
+	}
 	echo '<p>' . $row['hebrewDescription'] . '</p></article>';
 }
 $result->free();

@@ -150,7 +150,7 @@ footer section:last-child {float:none;clear:both}
 .fb-like {direction:ltr}
 .fb-like, .fb-like span, .fb-like.fb_iframe_widget span iframe {width:100% !important}
 /* MAIN */
-#content-wrap {display:table-cell;background-color:#FFF;word-wrap:break-word}
+#content-wrap {display:table-cell;background-color:#FFF}
 #content-wrap .center-block {padding:7px}
 main h2 {display:inline-block;font-size:30px;font-weight:normal;margin:7px 0 10px;color:#f8b173;border-bottom:1px dashed #f8b173}
 main h2 i {color:#e67e22;margin:0 7px;font-size:25px !important}
@@ -166,28 +166,21 @@ main article {margin-bottom:10px}
 .hr {border-bottom:1px dotted #E7E7E7;padding-bottom:5px;margin-bottom:8px}
 .clearfix:after {content:".";display:block;height:0;clear:both;visibility:hidden}
 .floated {float:left;margin-right:5px}
-.floated img {max-width:250px;width:100%;height:auto}
+.floated .wide {max-width:250px;width:100%;height:auto}
+.floated .height {max-height:200px;width:auto;height:100%}
 .shadowy {box-shadow:0 0 3px #777;padding:7px 7px 0;margin-bottom:7px}
 .shadowy p {text-align:center;margin-bottom:4px}
 /* MODAL */
 .imageModal img {transition:0.3s}
 .imageModal:hover img {opacity:0.7}
-#imageModal {text-align:center;display:none;position:fixed;top:0;left:0;z-index:1;width:100%;height:100%;background-color:rgba(0, 0, 0, 0.3)}
-#imageModal img {cursor:pointer;animation-name:zoom;animation-duration:0.6s}
+#imageModal {text-align:center;display:none;position:fixed;top:0;left:0;z-index:3;width:100%;height:100%;background-color:rgba(0, 0, 0, 0.3)}
+#imageModal img {position:relative;width:auto;max-width:100%;max-height:100%;cursor:pointer;animation-name:zoom;animation-duration:0.6s}
 #imageModal a {position:absolute;top:15px;right:15px;font-size:40px;font-weight:bold;color:#f1f1f1;transition:0.3s}
 #imageModal a:hover, #imageModal a:focus {color:#bbb}
 @keyframes zoom
 {
 	from {transform:scale(0)} 
 	to {transform:scale(1)}
-}
-@media all and (orientation:landscape)
-{
-	#imageModal img {width:auto;height:100%}
-}
-@media all and (orientation:portrait)
-{
-	#imageModal img {width:100%;height:auto;position:absolute;top:50%;left:0;transform:translateY(-50%)}
 }
 /* BUTTONS */
 .button {text-decoration:none;display:inline-block;max-width:160px;width:100%;padding:5px;margin:10px;font-weight:bold;background-color:#FFB94B;text-shadow:0 1px 0 rgba(255, 255, 255, 0.5);box-shadow:0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;border-width:1px;border-style:solid;border-color:#D69E31 #E3A037 #D5982D #E3A037;cursor:pointer;color:#FFF}
@@ -210,6 +203,27 @@ fieldset .button {margin:10px 0 0;float:left;outline:none}
 {
 	.customized-form > div {float:right;margin:0 15px;width:250px}
 	.customized-form textarea {resize:none}
+}
+/* TABLES */
+.sortable {width:100%;border-collapse:collapse;margin-bottom:10px}
+.sortable tr:nth-child(even) {background-color:#EEE}
+.sortable th, .sortable td {position:relative;font:bold 0.9em/25px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;padding:5px 3px 5px 20px;border:1px solid #ccc}
+.sortable th {cursor:default;background-color:#dee6e8;color:#4F6B72;text-align:right}
+.sortable td {font-weight:normal;color:#777}
+.sortable th span {position:absolute;top:5px;left:3px}
+.sortable td i {margin-left:0}
+.sortable td .edit {display:none;position:absolute;top:5px;left:3px}
+.sortable td:hover .edit {display:inline}
+.sortable td input {width:55%;height:18px;color:#777;position:absolute;right:3px;top:5px}
+.sortable td input[type="checkbox"] {width:auto;height:auto;position:static}
+@media all and (max-width:760px)
+{
+	.sortable, .sortable thead, .sortable tbody, .sortable th, .sortable td, .sortable tr {display:block}
+	.sortable thead tr {position:absolute;top:-9999px;left:-9999px}
+	.sortable tr {border:1px solid #ccc}
+	.sortable td {border:none;border-bottom:1px solid #eee;padding-right:50%}
+	.sortable td:before {content:attr(data-label);position:absolute;top:5px;right:3px;width:45%;padding-left:10px;white-space:nowrap}
+	.sortable td input {position:static}
 }
 /* SWEET ALERT */
 .sweet-overlay {background-color:rgba(0, 0, 0, 0.4);position:fixed;left:0;right:0;top:0;bottom:0;display:none;z-index:10000}

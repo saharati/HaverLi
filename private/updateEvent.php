@@ -1,5 +1,13 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/private/authenticate.php';
+$result = $mysqli->query('SELECT hebrewTitle, englishTitle, russianTitle, hebrewDescription, englishDescription, russianDescription, image, eventDate, startHour, endHour FROM event WHERE id=' . $_GET['id']);
+$row2 = $result->fetch_assoc();
+$result->free();
+if (!$row2)
+{
+	header('Location: /private');
+	exit;
+}
 if (isset($_POST['hebrewTitle'], $_POST['englishTitle'], $_POST['russianTitle'], $_POST['hebrewDescription'], $_POST['englishDescription'], $_POST['russianDescription'], $_POST['eventDate'], $_POST['startHour'], $_POST['endHour'], $_FILES['image']))
 {
 	$validation = array();
@@ -79,9 +87,19 @@ if (isset($_POST['hebrewTitle'], $_POST['englishTitle'], $_POST['russianTitle'],
 			$_POST['russianDescription'] .= "\r\n\r\nпереведёт Бинг.";
 		}
 		if (empty($_FILES['image']['name']))
-			$image_name = null;
+		{
+			if (isset($_POST['delete']) && $row2['image'] != null)
+			{
+				unlink($_SERVER['DOCUMENT_ROOT'] . '/images/events/' . $row2['image']);
+				$image_name = null;
+			}
+			else
+				$image_name = $row2['image'];
+		}
 		else
 		{
+			if ($row2['image'] != null)
+				unlink($_SERVER['DOCUMENT_ROOT'] . '/images/events/' . $row2['image']);
 			$image_name = mt_rand(1, time()) . time() . '.' . $file_type;
 			$new_name = $_SERVER['DOCUMENT_ROOT'] . '/images/events/' . $image_name;
 			if ($file_type == 'jpg' || $file_type == 'jpeg')
@@ -104,12 +122,18 @@ if (isset($_POST['hebrewTitle'], $_POST['englishTitle'], $_POST['russianTitle'],
 		$_POST['hebrewDescription'] = nl2br($_POST['hebrewDescription'], false);
 		$_POST['englishDescription'] = nl2br($_POST['englishDescription'], false);
 		$_POST['russianDescription'] = nl2br($_POST['russianDescription'], false);
-		$stmt = $mysqli->prepare('INSERT INTO event (hebrewTitle, englishTitle, russianTitle, hebrewDescription, englishDescription, russianDescription, image, eventDate, startHour, endHour) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
-		$stmt->bind_param('ssssssssss', $_POST['hebrewTitle'], $_POST['englishTitle'], $_POST['russianTitle'], $_POST['hebrewDescription'], $_POST['englishDescription'], $_POST['russianDescription'], $image_name, $_POST['eventDate'], $_POST['startHour'], $_POST['endHour']);
+		$stmt = $mysqli->prepare('UPDATE event SET hebrewTitle=?, englishTitle=?, russianTitle=?, hebrewDescription=?, englishDescription=?, russianDescription=?, image=?, eventDate=?, startHour=?, endHour=? WHERE id=?');
+		$stmt->bind_param('ssssssssssi', $_POST['hebrewTitle'], $_POST['englishTitle'], $_POST['russianTitle'], $_POST['hebrewDescription'], $_POST['englishDescription'], $_POST['russianDescription'], $image_name, $_POST['eventDate'], $_POST['startHour'], $_POST['endHour'], $_GET['id']);
 		$stmt->execute();
 		$stmt->close();
+		$result = $mysqli->query('SELECT hebrewTitle, englishTitle, russianTitle, hebrewDescription, englishDescription, russianDescription, image, eventDate, startHour, endHour FROM event WHERE id=' . $_GET['id']);
+		$row2 = $result->fetch_assoc();
+		$result->free();
 	}
 }
+$row2['hebrewDescription'] = str_replace('<br>', '', $row2['hebrewDescription']);
+$row2['englishDescription'] = str_replace('<br>', '', $row2['englishDescription']);
+$row2['russianDescription'] = str_replace('<br>', '', $row2['russianDescription']);
 ?>
 <!DOCTYPE html>
 <html lang="he">
@@ -120,54 +144,62 @@ if (isset($_POST['hebrewTitle'], $_POST['englishTitle'], $_POST['russianTitle'],
 <main>
 <div id="content-wrap">
 <div class="center-block">
-<form action="/private/addEvents.php" method="post" enctype="multipart/form-data">
+<form action="/private/updateEvent.php?id=<?php echo $_GET['id']; ?>" method="post" enctype="multipart/form-data">
 <fieldset class="customized-form">
-<legend><i class="fa fa-calendar-plus-o" aria-hidden="true"></i> הוספת אירועים</legend>
-<p>לא חובה למלא את השדות באנגלית ורוסית, במידה והם ריקים, הם יתורגמו אוטומטית.</p>
+<legend><i class="fa fa-pencil-square" aria-hidden="true"></i> עריכת אירועים</legend>
+<p>אם אתם מעוניינים לתרגם מחדש ערך מסויים, מחקו את הערך שאותו תרצו לתרגם לפני שליחת הטופס.</p>
 <div>
 <label for="hebrewTitle">כותרת בעברית</label>
-<input type="text" id="hebrewTitle" name="hebrewTitle" required maxlength="45" <?php if (!empty($validation)) echo 'value="' . $_POST['hebrewTitle'] . '"'; ?>>
+<input type="text" id="hebrewTitle" name="hebrewTitle" required maxlength="45" value="<?php echo (empty($validation) ? $row2['hebrewTitle'] : $_POST['hebrewTitle']); ?>">
 </div>
 <div>
 <label for="englishTitle">כותרת באנגלית</label>
-<input type="text" id="englishTitle" name="englishTitle" maxlength="45" <?php if (!empty($validation)) echo 'value="' . $_POST['englishTitle'] . '"'; ?>>
+<input type="text" id="englishTitle" name="englishTitle" maxlength="45" value="<?php echo (empty($validation) ? $row2['englishTitle'] : $_POST['englishTitle']); ?>">
 </div>
 <div>
 <label for="russianTitle">כותרת ברוסית</label>
-<input type="text" id="russianTitle" name="russianTitle" maxlength="45" <?php if (!empty($validation)) echo 'value="' . $_POST['russianTitle'] . '"'; ?>>
+<input type="text" id="russianTitle" name="russianTitle" maxlength="45" value="<?php echo (empty($validation) ? $row2['russianTitle'] : $_POST['russianTitle']); ?>">
 </div>
 <div>
 <label for="hebrewDescription">תאור בעברית</label>
-<textarea id="hebrewDescription" name="hebrewDescription" required><?php if (!empty($validation)) echo $_POST['hebrewDescription']; ?></textarea>
+<textarea id="hebrewDescription" name="hebrewDescription" required><?php echo (empty($validation) ? $row2['hebrewDescription'] : $_POST['hebrewDescription']); ?></textarea>
 </div>
 <div>
 <label for="englishDescription">תאור באנגלית</label>
-<textarea id="englishDescription" name="englishDescription"><?php if (!empty($validation)) echo $_POST['englishDescription']; ?></textarea>
+<textarea id="englishDescription" name="englishDescription"><?php echo (empty($validation) ? $row2['englishDescription'] : $_POST['englishDescription']); ?></textarea>
 </div>
 <div>
 <label for="russianDescription">תאור ברוסית</label>
-<textarea id="russianDescription" name="russianDescription"><?php if (!empty($validation)) echo $_POST['russianDescription']; ?></textarea>
+<textarea id="russianDescription" name="russianDescription"><?php echo (empty($validation) ? $row2['russianDescription'] : $_POST['russianDescription']); ?></textarea>
 </div>
 <div>
 <label for="eventDate">תאריך האירוע</label>
-<input type="date" id="eventDate" name="eventDate" <?php if (!empty($validation)) echo 'value="' . $_POST['eventDate'] . '"'; ?>>
+<input type="date" id="eventDate" name="eventDate" value="<?php echo (empty($validation) ? $row2['eventDate'] : $_POST['eventDate']); ?>">
 </div>
 <div>
 <label for="startHour">שעת התחלה</label>
-<input type="time" id="startHour" name="startHour" <?php if (!empty($validation)) echo 'value="' . $_POST['startHour'] . '"'; ?>>
+<input type="time" id="startHour" name="startHour" value="<?php echo (empty($validation) ? $row2['startHour'] : $_POST['startHour']); ?>">
 </div>
 <div>
 <label for="endHour">שעת סיום</label>
-<input type="time" id="endHour" name="endHour" <?php if (!empty($validation)) echo 'value="' . $_POST['endHour'] . '"'; ?>>
+<input type="time" id="endHour" name="endHour" value="<?php echo (empty($validation) ? $row2['endHour'] : $_POST['endHour']); ?>">
 </div>
 <div>
-<label for="image">תמונה</label>
+<?php
+if ($row2['image'] != null)
+{
+	list($width, $height) = getimagesize($_SERVER['DOCUMENT_ROOT'] . '/images/events/' . $row2['image']);
+	echo '<label for="delete"><a href="/images/events/' . $row2['image'] . '" class="imageModal" title="הצג תמונה נוכחית" data-width="' . $width . '" data-height="' . $height . '">תמונה</a> <input type="checkbox" id="delete" name="delete"> סמן למחיקה</label>';
+}
+else
+	echo '<label for="image">תמונה</label>';
+?>
 <input type="file" id="image" name="image" accept="image/*">
-<button id="button" class="button"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i> הוסף איורע</button>
+<button id="button" class="button"><i class="fa fa-pencil-square" aria-hidden="true"></i> עדכן איורע</button>
 </div>
 </fieldset>
 </form>
-<p><a href="/private" title="חזרה לעמוד הניהול"><i class="fa fa-undo" aria-hidden="true"></i> חזרה לעמוד הניהול</a></p>
+<p><a href="/private/updateEvents.php" title="חזרה לעריכת אירועים"><i class="fa fa-undo" aria-hidden="true"></i> חזרה לעריכת אירועים</a></p>
 </div>
 </div>
 </main>
@@ -178,10 +210,10 @@ if (isset($validation))
 {
 	echo '<script>';
 	if (empty($validation))
-		echo 'swal("הוספת אירוע", "האירוע נוסף בהצלחה.", "success");';
+		echo 'swal("עדכנת אירוע", "האירוע עודכן בהצלחה.", "success");';
 	else
 	{
-		echo 'swal("ההוספה נכשלה", "';
+		echo 'swal("העדכון נכשל", "';
 		foreach ($validation as $p)
 			echo $p . '\n';
 		echo '", "error");';
