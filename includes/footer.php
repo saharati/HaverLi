@@ -17,14 +17,14 @@ if (!isset($mysqli))
 <h3><i class="fa fa-certificate" aria-hidden="true"></i> עדכונים אחרונים</h3>
 <ul>
 <?php
-$result = $mysqli->query('SELECT id, DATE_FORMAT(postDate, "%d/%m") postDate, hebrewName, isDog, isMale FROM album WHERE isAdopted=0 ORDER BY postDate DESC LIMIT 4');
+$result = $mysqli->query('SELECT id, DATE_FORMAT(postDate, "%d/%m") ps, hebrewName, isDog, isMale FROM album WHERE isAdopted=0 ORDER BY postDate DESC LIMIT 4');
 while ($row = $result->fetch_assoc())
 {
 	if ($row['isMale'])
 		$text = 'נוסף ' . ($row['isDog'] ? 'כלב' : 'חתול') . ' חדש לאימוץ';
 	else
 		$text = 'נוספה ' . ($row['isDog'] ? 'כלבה' : 'חתולה') . ' חדשה לאימוץ';
-	echo '<li>' . $row['postDate'] . ' - ' . $text . ' - <a href="/pet-' . $row['id'] . '" title="' . $row['hebrewName'] . ' לאימוץ">' . $row['hebrewName'] . '</a></li>';
+	echo '<li>' . $row['ps'] . ' - ' . $text . ' - <a href="/pet-' . $row['id'] . '" title="' . $row['hebrewName'] . ' לאימוץ">' . $row['hebrewName'] . '</a></li>';
 }
 $result->free();
 ?>

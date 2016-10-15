@@ -11,7 +11,7 @@
 <article class="clearfix hr">
 <h2><i class="fa fa-flag" aria-hidden="true"></i> ברוכים הבאים לעמותת חבר לי!</h2>
 <div class="shadowy floated">
-<img src="/images/group.jpg" title="חברי העמותה" alt="חברי העמותה">
+<img class="wide" src="/images/group.jpg" title="חברי העמותה" alt="חברי העמותה">
 <p>חברי העמותה (<a title="אודות העמותה" href="/about">קרא עוד</a>)</p>
 </div>
 <p>עמותת חבר לי היא עמותה לאימוץ כלבים, שהוקמה בינואר 2006 ופועלת בשיתוף פעולה יחודי עם השירותים הוטרינרים של גוש דן בצומת מסובים.</p>
@@ -46,6 +46,32 @@ while ($row = $result->fetch_assoc())
 }
 $result->free();
 ?>
+</div>
+<div id="pets-from">
+<section id="pets-inner">
+<h3>הכלבתולים שלנו <i class="fa fa-gratipay" aria-hidden="true"></i> ממתינים לאימוץ</h3>
+<div>
+<?php
+$result = $mysqli->query('SELECT hebrewName, albumId, smallpic, smallwidth, smallheight FROM album LEFT JOIN album_photo ON album.id=albumId WHERE isAdopted=0 AND isCover=1 AND smallwidth>smallheight ORDER BY postDate DESC LIMIT 15');
+while ($row = $result->fetch_assoc())
+{
+	if ($row['smallheight'] < 100)
+	{
+		$newWidth = ($row['smallwidth'] / $row['smallheight']) * 100;
+		if ($newWidth > 150)
+			$margin = ($newWidth - 150) / 2;
+		else
+			$margin = 0;
+		$style = 'style="width:auto;height:100%;margin-left:-' . $margin . 'px"';
+	}
+	else
+		$style = 'style="margin-top:-' . (($row['smallheight'] - 100) / 2) . 'px"';
+	echo '<div class="shadowy"><div><a title="' . $row['hebrewName'] . ' לאימוץ" href="/pet-' . $row['albumId'] . '"><img ' . $style . ' src="/images/albums/' . $row['albumId'] . '/thumbs/' . $row['smallpic'] . '" title="' . $row['hebrewName'] . ' לאימוץ" alt="' . $row['hebrewName'] . ' לאימוץ"></a></div></div>';
+}
+$result->free();
+?>
+</div>
+</section>
 </div>
 </div>
 </main>

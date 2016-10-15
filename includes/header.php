@@ -113,8 +113,7 @@ $result->free();
 <li><a title="Ру́сский" href="/ru/">РУ</a></li>
 </ul>
 <form action="/search">​
-<input type="search" name="text" placeholder="חפש באתר...">
-<button title="חפש"><i class="fa fa-search"></i></button>
+<input type="search" name="text" placeholder="חפש באתר..."><button title="חפש"><i class="fa fa-search"></i></button>
 </form>
 </li>
 </ul>
