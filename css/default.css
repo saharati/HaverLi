@@ -7,7 +7,7 @@ header, footer {height:1px}
 .center-block {max-width:1000px;margin:0 auto;padding:0 7px}
 /* HEADER */
 header .center-block {max-width:900px;margin-top:10px;text-align:center;overflow:hidden}
-header .center-block ul {margin:0 0 10px;padding:0;list-style:none;font:bold 14px/22px Arial;display:inline-block}
+header .center-block ul {margin:0 0 10px;padding:0;list-style:none;font:bold 14px/22px Arial;display:inline-block;text-align:right}
 header .center-block li {position:relative;padding-right:30px;margin-bottom:5px}
 header .center-block li::before {content:"";background-image:url(/images/icons.png);width:22px;height:22px;display:block;position:absolute;top:0;right:0}
 header .center-block a {color:#0283df;text-decoration:none}
@@ -80,7 +80,7 @@ nav ul {list-style:none;margin:0;padding:0;display:inline-block}
 #sub-navigation ul li {float:none}
 #sub-navigation ul a {line-height:1;padding:10px;text-align:right;border:0}
 #sub-navigation ul i {font-size:16px;display:inline-block;margin:0 0 0 10px;vertical-align:middle}
-#sub-navigation .videos-link, #sub-navigation .articles-link, #sub-navigation .donate-link {display:none}
+#sub-navigation .videos-link, #sub-navigation .articles-link, #sub-navigation .help-link {display:none}
 @media all and (max-width:985px)
 {
 	#site-navigation .videos-link {display:none}
@@ -93,8 +93,8 @@ nav ul {list-style:none;margin:0;padding:0;display:inline-block}
 }
 @media all and (max-width:750px)
 {
-	#site-navigation .donate-link {display:none}
-	#sub-navigation .donate-link {display:block}
+	#site-navigation .help-link {display:none}
+	#sub-navigation .help-link {display:block}
 }
 @media all and (max-width:640px)
 {
@@ -162,7 +162,6 @@ main a {text-decoration:none;color:#e67e22}
 main a:hover {color:#f8b173}
 main a i {margin-left:7px}
 main article {margin-bottom:5px}
-.hr {border-bottom:1px dotted #E7E7E7;padding-bottom:5px;margin-bottom:8px}
 .clearfix:after {content:".";display:block;height:0;clear:both;visibility:hidden}
 .floated {float:left;margin-right:5px}
 .floated .wide {max-width:250px;width:100%;height:auto}
@@ -187,21 +186,33 @@ main article {margin-bottom:5px}
 .button:active {outline:none;box-shadow:0 1px 4px rgba(0, 0, 0, 0.5) inset}
 a.button i {margin:0 7px}
 /* PETS BOARD */
-#pets-from {margin-bottom:7px}
-#pets-from::before, #pets-from::after {content:"";display:block;height:6px}
-#pets-from::before {background-image:url(/images/pets-top.png)}
-#pets-from::after {background-image:url(/images/pets-bottom.png)}
-#pets-inner {background-image:url(/images/pets-bg.png);text-align:center;padding-bottom:7px}
-#pets-inner h3 {display:block;margin:0;padding:7px 0;border-bottom:0}
-#pets-inner h3 i {color:#F00}
-#pets-inner > div {max-width:950px;height:360px;margin:0 auto;overflow:hidden}
-#pets-inner div.shadowy {display:inline-block;width:150px;height:100px;margin:5px;padding:5px}
-#pets-inner div.shadowy div {width:100%;height:100%;overflow:hidden;direction:ltr}
-#pets-inner img {width:100%;height:auto;transition:0.3s}
-#pets-inner a:hover img {opacity:0.7}
+.petsBoard {margin-bottom:7px}
+.petsBoard::before, .petsBoard::after {content:"";display:block;height:6px}
+.petsBoard::before {background-image:url(/images/pets-top.png)}
+.petsBoard::after {background-image:url(/images/pets-bottom.png)}
+.petsInner {background-image:url(/images/pets-bg.png);padding-bottom:7px}
+.petsInner h3 {display:block;margin:0;padding:7px 0;border-bottom:0}
+.petsInner h3 i {color:#F00;display:inline-block;vertical-align:middle}
+.petsInner h3 label {display:block;color:#e67e22}
+section.petsInner {text-align:center}
+section.petsInner .petsDiv {overflow:hidden;height:360px}
+.petsDiv {max-width:950px;margin:0 auto;padding:0 7px}
+.petsDiv div.shadowy {display:inline-block;width:150px;height:100px;margin:5px;padding:5px}
+.petsDiv div.shadowy div {width:100%;height:100%;overflow:hidden;direction:ltr}
+.petsDiv img {width:100%;height:auto;transition:0.3s}
+.petsDiv > img {float:left;height:100%;width:auto;margin-top:10px}
+.petsDiv a:hover img {opacity:0.7}
+.petsDiv fieldset {border:0;text-align:right;margin-left:10px;vertical-align:top}
+.petsDiv button {background:none;outline:none;border:0;cursor:pointer}
+@media all and (max-width:780px)
+{
+	.petsInner {text-align:center}
+	.petsDiv > img {display:none}
+}
 @media all and (max-width:610px)
 {
-	#pets-inner h3 i {display:block}
+	.petsInner h3 i {display:block}
+	.petsInner h3 label {display:inline-block}
 }
 /* FORMS */
 fieldset {display:inline-block;margin-bottom:10px}
@@ -215,6 +226,19 @@ fieldset textarea {resize:vertical;overflow:auto;height:auto;min-height:115px}
 fieldset input:focus, fieldset select:focus {border:1px solid #e67e22}
 fieldset input[type="checkbox"], fieldset input[type="radio"] {width:auto;height:auto;padding:0}
 fieldset .button {margin:10px 0 0;float:left;outline:none}
+fieldset .special-select {box-sizing:border-box;position:relative;color:#777;width:100%;min-width:150px;line-height:33px;padding:0 30px 0 10px;background-color:#FFF;border:1px solid #E7E7E7;cursor:pointer;outline:none}
+fieldset .special-select::after {content:"";width:0;height:0;position:absolute;left:10px;top:50%;margin-top:-3px;color:#ffaa9f;border-width:6px 6px 0 6px;border-style:solid;border-color:#ffaa9f transparent}
+fieldset .special-select div {padding-left:20px}
+fieldset .special-select .dropdown {position:absolute;top:100%;z-index:3;margin-top:1px;left:-1px;right:-1px;padding:0;max-height:280px;overflow-y:auto;background-color:#FFF;border:inherit;border-top:none;list-style:none;transition:all 0.3s ease-out;opacity:0;pointer-events:none}
+fieldset .special-select .dropdown li::before, .special-select::before {content:"";width:4px;height:100%;position:absolute;top:0;right:15px;border:1px solid #ffaa9f;border-top:none;border-bottom:none;z-index:2}
+fieldset .special-select .dropdown li {position:relative}
+fieldset .special-select .dropdown li label {display:block;padding:0 30px 0 10px;line-height:35px;margin-top:0;border-bottom:1px dotted #1ccfcf;transition:all 0.3s ease-out}
+fieldset .special-select .dropdown li:last-of-type label {border:none}
+fieldset .special-select .dropdown li input {position:absolute;display:block;left:10px;top:50%;margin-top:-8px}
+fieldset .special-select .dropdown li:hover label {background-color:#F0F0F0}
+fieldset .special-select .dropdown li input:checked ~ label {color:#e67e22}
+fieldset .special-select.active::after {border-width:0 6px 6px 6px}
+fieldset .special-select.active .dropdown {opacity:1;pointer-events:auto}
 @media all and (min-width:900px)
 {
 	.customized-form > div {float:right;margin:0 15px;width:250px}

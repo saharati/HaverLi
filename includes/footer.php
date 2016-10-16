@@ -5,7 +5,7 @@ if (!isset($mysqli))
 <footer>
 <div class="center-block">
 <section>
-<h3><i class="fa fa-leaf" aria-hidden="true"></i> אודות <span>(<a title="אודות עמותת חבר לי" href="/about">קרא עוד</a>)</span></h3>
+<h3><i class="fa fa-leaf" aria-hidden="true"></i> אודות <span>(<a title="אודות עמותת חבר לי" href="/#usefulInfo">קרא עוד</a>)</span></h3>
 <ul>
 <li>&copy; 2005 - <?php echo date('Y'); ?> כל הזכויות שמורות</li>
 <li><a title="עמותת חבר לי - לחברים עוזרים תמיד" href="/">עמותת חבר לי - לחברים עוזרים תמיד</a></li>
@@ -38,7 +38,7 @@ $result = $mysqli->query('SELECT url, hebrewDescription FROM search ORDER BY sea
 while ($row = $result->fetch_assoc())
 {
 	$row['shortDescr'] = mb_strlen($row['hebrewDescription']) > 30 ? mb_substr($row['hebrewDescription'], 0, 30) . '...' : $row['hebrewDescription'];
-	echo '<li><a href="/adopt-' . $row['url'] . '" title="' . $row['hebrewDescription'] . '">' . $row['shortDescr'] . '</a></li>';
+	echo '<li><a href="/adopt?' . $row['url'] . '" title="' . $row['hebrewDescription'] . '">' . $row['shortDescr'] . '</a></li>';
 }
 $result->free();
 ?>

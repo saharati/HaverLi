@@ -14,6 +14,9 @@ Usefull links:
 * http://stackoverflow.com/questions/25668771/track-basic-html-form-post-progress
 * https://www.developphp.com/video/JavaScript/File-Upload-Progress-Bar-Meter-Tutorial-Ajax-PHP
 * https://robertnyman.com/html5/fileapi-upload/fileapi-upload.html
-
-isAdopted should be changed to adoptDate, where null means that the pet is still for adoption.
-what to do with bornDate after a pet is being adopted?
+Icons for help page:
+* http://fontawesome.io/icon/life-ring/
+* http://fontawesome.io/icon/desktop/
+* http://fontawesome.io/icon/users/
+* http://fontawesome.io/icon/thumbs-up/
+* http://fontawesome.io/icon/heartbeat/
