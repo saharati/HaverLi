@@ -8,55 +8,70 @@ html {box-sizing:border-box}
 *, *::before, *::after {box-sizing:inherit}
 html, body, main, #wrapper {height:100%}
 body {font-family:trashim}
-#wrapper {display:table;width:100%;min-width:200px;direction:rtl}
+#wrapper {display:table;width:100%;min-width:270px;direction:rtl}
 header, main, footer {display:table-row}
 header, footer {height:1px}
 /* TOP MENU */
-#topNav {background-color:#000;font-size:17px}
-#topNav div {max-width:950px;margin:0 auto;padding:10px}
+#topNav {background-color:#000;font-size:16px}
+#topNav div {max-width:1000px;margin:0 auto;padding:10px}
 #topNav ul {list-style:none;float:left;margin:0;padding:0;text-align:center}
 #topNav li {display:inline-block;margin:0 10px}
-#topNav a {color:#FFF;text-decoration:none;line-height:20px}
-#topNav img {width:20px;height:20px;vertical-align:middle}
-@media all and (max-width:700px)
+#topNav a {color:#FFF;text-decoration:none}
+#topNav img {vertical-align:bottom}
+@media all and (max-width:450px)
 {
-	#topNav span {display:none}
-}
-@media all and (max-width:300px)
-{
-	#topNav ul {float:none}
-	#topNav div > a {display:none}
-}
+	#topNav {font-size:14px}
+	#topNav div {text-align:center}
+ 	#topNav ul {float:none}
+	#topNav li {float:none}
+ 	#topNav div > a {display:none}
+ }
 /* TITLE */
 h1 {margin:0;display:table-cell}
 h1 img {max-width:300px;width:100%;height:auto;vertical-align:bottom}
+#mobiletitle {display:none}
+@media all and (max-width:430px)
+{
+	#desktoptitle {display:none}
+	#mobiletitle {display:inline}
+}
 /* BOTTOM MENU */
 #headBorder {position:relative;border-bottom:1px solid #000}
-#headBorder div {max-width:950px;margin:0 auto;padding:0 7px;font-size:18px}
+#headBorder div {max-width:1000px;margin:0 auto;padding:0 7px;font-size:18px}
 #headBorder div > nav {display:table-cell;vertical-align:bottom}
 #headBorder ul {list-style:none;padding:0;margin:0}
-#headBorder li {float:right;margin-left:11px}
+#headBorder li {float:right;margin-left:20px}
 #headBorder li:last-child {margin-left:0}
 #headBorder a {display:block;margin-bottom:5px;color:#000;text-decoration:none}
-#headBorder img {vertical-align:bottom}
 #headBorder li:hover > a, #headBorder a.active {color:#0283de}
 #headBorder ul nav {position:absolute;text-align:center;right:0;left:0;display:none;width:100%;padding-top:10px;border-top:1px solid #000;border-bottom:1px solid #000;background-color:#FFF;z-index:2}
 #headBorder li:hover nav {display:block}
-#headBorder ul ul {display:inline-block;font-size:15px;vertical-align:bottom}
-#headBorder ul ul li {margin-left:40px;display:table-cell}
+#headBorder ul ul {width:700px;float:left;font-size:15px;vertical-align:bottom;text-align:center}
+#headBorder ul ul li {margin-left:40px;display:inline-block;float:none}
 #headBorder span {display:block}
 #submenuLink {display:none}
-@media all and (max-width:970px)
+@media all and (max-width:1005px)
 {
 	#headBorder li {display:none}
-	#headBorder li:first-child {display:block}
+	#headBorder #submenuLink {display:block}
 }
-@media all and (max-width:430px)
+@media all and (max-width:435px)
 {
-	#headBorder li {float:none}
-	#headBorder div > nav {display:block;text-align:center}
+	#headBorder div {text-align:center}
+	#headBorder div > nav {display:block}
 	#headBorder ul {display:inline-block}
+	#headBorder li {float:none}
 }
+/* MOBILE MENU */
+main nav {text-align:center;margin:20px 0;font-size:18px;display:none}
+main nav ul {display:inline-block;width:100%;max-width:250px;list-style:none;margin:0;padding:0}
+main nav ul ul {display:none}
+main nav li {margin:10px 0}
+main nav a {color:#000;text-decoration:none}
+main nav span {display:block}
+main nav li:hover > a, main nav a.active {color:#0283de}
+main nav li:hover ul {display:inline-block}
+.firstLevel > a {display:block;line-height:40px;background-color:#FFF;border:1px solid #000}
 /* MAIN */
 main {background-color:#eaf1f7}
 /* FOOTER */

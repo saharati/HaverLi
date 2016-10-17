@@ -14,9 +14,3 @@ Pages:
 * Contact
 Links:
 * http://www.cubica.co.il/new-clothes
-
-header.php:
-* When clicking on menu link when screen is small, menus are opened on the right side.
-
-center the submenu icons according to the upper menu rather than entire page.
-remove enter link and make the other 3 links display block when screen is small.

@@ -6,7 +6,10 @@
 <div id="wrapper">
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php'; ?>
 <main>
+<?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/mobile.php'; ?>
+<div>
 test
+</div>
 </main>
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php'; ?>
 </div>
