@@ -7,9 +7,9 @@ if (!isset($page_url))
 	$page_url = 'http://v2.imutz.org/';
 if (!isset($page_image))
 {
-	$page_image = 'http://v2.imutz.org/images/title.png';
-	$page_image_width = 1177;
-	$page_image_height = 911;
+	$page_image = 'http://v2.imutz.org/images/logo.jpg';
+	$page_image_width = 960;
+	$page_image_height = 960;
 }
 ?>
 <head>
@@ -30,9 +30,5 @@ if (!isset($page_image))
 <meta property="og:url" content="<?php echo $page_url; ?>">
 <link rel="canonical" href="<?php echo $page_url; ?>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="/css/default.css">
-<script src="/js/sweetalert.js"></script>
-<script src="/js/sorttable.js"></script>
-<script src="/js/sahar.js"></script>
 </head>

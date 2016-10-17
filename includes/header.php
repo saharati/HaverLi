@@ -1,120 +1,52 @@
-<?php
-if (!isset($mysqli))
-	exit;
-$result = $mysqli->query('SELECT COUNT(id) c, isDog, isAdopted FROM album GROUP BY isDog, isAdopted');
-$pets = array_fill(0, 4, 0);
-while ($row = $result->fetch_assoc())
-{
-	if ($row['isDog'])
-		$row['isDog']++;
-	$pets[$row['isDog'] + $row['isAdopted']] = $row['c'];
-}
-$result->free();
-?>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/he_IL/sdk.js#xfbml=1&version=v2.8";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 <header>
-<div class="center-block">
-<div id="header-title">
+<nav id="topNav">
+<div>
+<a title="כניסה למערכת" href="/login">כניסה למערכת</a>
+<ul>
+<li><a title="רשימת משאלות" href="/wishlist"><span>רשימת משאלות</span> <img title="רשימת משאלות" alt="רשימת משאלות" src="/images/heart.png"></a></li>
+<li><a title="לתרומות לחצו כאן" href="/donate"><span>לתרומות לחצו כאן</span> <img title="לתרומות לחצו כאן" alt="לתרומות לחצו כאן" src="/images/paw.png"></a></li>
+<li><a title="מצאו אותנו בפייסבוק" href="https://www.facebook.com/haverli/" target="_blank" rel="nofollow"><span>מצאו אותנו בפייסבוק</span> <img title="מצאו אותנו בפייסבוק" alt="מצאו אותנו בפייסבוק" src="/images/fb.jpg"></a></li>
+</ul>
+</div>
+</nav>
+<div id="headBorder">
+<div>
 <h1>
 <a href="/" title="עמותת חבר לי - לחברים עוזרים תמיד">
 <img src="/images/title.png" title="עמותת חבר לי - לחברים עוזרים תמיד" alt="עמותת חבר לי - לחברים עוזרים תמיד">
 </a>
 </h1>
-</div>
-<div id="header-adoptdog">
-<div>
-<ul>
-<li class="adoptdog"><a title="כלבים לאימוץ" href="/adopt?isDog=1">כלבים לאימוץ: <?php echo $pets[2]; ?></a></li>
-<li class="adopteddog"><a title="כלבים שאומצו" href="/adopted?isDog=1">כלבים שאומצו: <?php echo $pets[3]; ?></a></li>
-</ul>
-</div>
-<a href="/adopt?isDog=1" title="פינת אימוץ כלבים">
-<img src="/images/adoptdog.png" title="פינת אימוץ כלבים" alt="פינת אימוץ כלבים">
-</a>
-</div>
-<div id="header-adoptcat">
-<div>
-<ul>
-<li class="adoptcat"><a title="חתולים לאימוץ" href="/adopt?isDog=0">חתולים לאימוץ: <?php echo $pets[0]; ?></a></li>
-<li class="adoptedcat"><a title="חתולים שאומצו" href="/adopted?isDog=0">חתולים שאומצו: <?php echo $pets[1]; ?></a></li>
-</ul>
-</div>
-<a href="/adopt?isDog=0" title="פינת אימוץ חתולים">
-<img src="/images/adoptcat.png" title="פינת אימוץ חתולים" alt="פינת אימוץ חתולים">
-</a>
-</div>
-</div>
 <nav>
-<ul id="site-navigation">
-<li>
-<a <?php if ($_SERVER['PHP_SELF'] == '/index.php') echo 'class="active"'; ?> href="/" title="דף הבית">
-<i class="fa fa-home" aria-hidden="true"></i>
-<strong>דף הבית</strong>
-<small>פעילות וימי אימוץ</small>
-</a>
-</li>
-<li>
-<a <?php if ($_SERVER['PHP_SELF'] == '/adopt.php') echo 'class="active"'; ?> href="/adopt" title="פינת אימוץ">
-<i class="fa fa-paw" aria-hidden="true"></i>
-<strong>פינת אימוץ</strong>
-<small>כלבים וחתולים לאימוץ</small>
-</a>
-</li>
-<li>
-<a <?php if ($_SERVER['PHP_SELF'] == '/adopted.php') echo 'class="active"'; ?> id="last-a" href="/adopted" title="מצאו בית">
-<i class="fa fa-font-awesome" aria-hidden="true"></i>
-<strong>מצאו בית</strong>
-<small>כלבים וחתולים שאומצו</small>
-</a>
-</li>
-<li class="help-link">
-<a <?php if ($_SERVER['PHP_SELF'] == '/help.php') echo 'class="active"'; ?> href="/help" title="עזרו לנו">
-<i class="fa fa-heartbeat" aria-hidden="true"></i>
-<strong>עזרו לנו</strong>
-<small>עזרה מצילה חיים</small>
-</a>
-</li>
-<li class="articles-link">
-<a <?php if ($_SERVER['PHP_SELF'] == '/articles.php') echo 'class="active"'; ?> href="/articles" title="מאמרים">
-<i class="fa fa-book" aria-hidden="true"></i>
-<strong>מאמרים</strong>
-<small>מידע שימושי למאמצים</small>
-</a>
-</li>
-<li class="videos-link">
-<a <?php if ($_SERVER['PHP_SELF'] == '/videos.php') echo 'class="active"'; ?> href="/videos" title="סרטונים">
-<i class="fa fa-youtube-play" aria-hidden="true"></i>
-<strong>סרטונים</strong>
-<small>למידת אילוף ופנאי</small>
-</a>
-</li>
-<li>
-<ul id="sub-navigation">
-<li>
-<a href="javascript:void(0);" title="לחץ לקישורים נוספים" class="fa fa-navicon" aria-hidden="true"></a>
 <ul>
-<li class="help-link <?php if ($_SERVER['PHP_SELF'] == '/help.php') echo 'active'; ?>"><a title="עזרו לנו" href="/help"><i class="fa fa-heartbeat" aria-hidden="true"></i>עזרו לנו</a></li>
-<li class="articles-link <?php if ($_SERVER['PHP_SELF'] == '/articles.php') echo 'active'; ?>"><a title="מאמרים" href="/articles"><i class="fa fa-book" aria-hidden="true"></i>מאמרים</a></li>
-<li class="videos-link <?php if ($_SERVER['PHP_SELF'] == '/videos.php') echo 'active'; ?>"><a title="סרטונים" href="/videos"><i class="fa fa-youtube-play" aria-hidden="true"></i>סרטונים</a></li>
-<li><a <?php if ($_SERVER['PHP_SELF'] == '/contact.php') echo 'class="active"'; ?> title="צרו קשר" href="/contact"><i class="fa fa-envelope" aria-hidden="true"></i>יצירת קשר</a></li>
-<li><a <?php if ($_SERVER['PHP_SELF'] == '/login.php') echo 'class="active"'; ?> title="כניסת משתמשים" href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i>כניסת משתמשים</a></li>
-</ul>
-</li>
-<li><a class="active" title="עברית" href="/">עב</a></li>
-<li><a title="English" href="/en/">EN</a></li>
-<li><a title="Ру́сский" href="/ru/">РУ</a></li>
-</ul>
-<form action="/search">​
-<input type="search" name="text" placeholder="חפש באתר..."><button title="חפש"><i class="fa fa-search" aria-hidden="true"></i></button>
-</form>
-</li>
+<li id="submenuLink"><a title="תפריט" href="javascript:void(0);"><img title="תפריט" alt="תפריט" src="/images/bars.png"> תפריט</a></li>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/index.php') echo 'class="active"'; ?> title="דף הבית" href="/">דף הבית</a></li>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/about.php') echo 'class="active"'; ?> title="אודות" href="/about">אודות</a></li>
+<li>
+<a <?php if ($_SERVER['PHP_SELF'] == '/dogs.php' || $_SERVER['PHP_SELF'] == '/cats.php' || $_SERVER['PHP_SELF'] == '/process.php') echo 'class="active"'; ?> title="פינת אימוץ" href="javascript:void(0);">פינת אימוץ</a>
+<nav>
+<ul>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/cats.php') echo 'class="active"'; ?> title="חתולים" href="/cats"><span>חתולים</span><img title="חתולים" alt="חתולים" src="/images/cat.png"></a></li>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/dogs.php') echo 'class="active"'; ?> title="כלבים" href="/dogs"><span>כלבים</span><img title="כלבים" alt="כלבים" src="/images/dog.png"></a></li>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/process.php') echo 'class="active"'; ?> title="תהליך אימוץ" href="/process"><span>תהליך אימוץ</span><img title="תהליך אימוץ" alt="תהליך אימוץ" src="/images/stairs.png"></a></li>
 </ul>
 </nav>
+</li>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/help.php') echo 'class="active"'; ?> title="איך ניתן לעזור?" href="/help">איך ניתן לעזור?</a></li>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/board.php') echo 'class="active"'; ?> title="לוח מודעות" href="/board">לוח מודעות</a></li>
+<li>
+<a <?php if ($_SERVER['PHP_SELF'] == '/recommand.php' || $_SERVER['PHP_SELF'] == '/help.php' || $_SERVER['PHP_SELF'] == '/articles.php' || $_SERVER['PHP_SELF'] == '/info.php') echo 'class="active"'; ?> title="מידע שימושי" href="javascript:void(0);">מידע שימושי</a>
+<nav>
+<ul>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/info.php') echo 'class="active"'; ?> title="מידע למאמץ" href="/info"><span>מידע למאמץ</span><img title="מידע למאמץ" alt="מידע למאמץ" src="/images/mark.png"></a></li>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/articles.php') echo 'class="active"'; ?> title="מאמרים" href="/articles"><span>מאמרים</span><img title="מאמרים" alt="מאמרים" src="/images/hat.png"></a></li>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/help.php') echo 'class="active"'; ?> title="הצילו! אבד לי הכלב" href="/help"><span>הצילו! אבד לי הכלב</span><img title="הצילו! אבד לי הכלב" alt="הצילו! אבד לי הכלב" src="/images/dog.png"></a></li>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/recommand.php') echo 'class="active"'; ?> title="המומלצים שלנו" href="/recommand"><span>המומלצים שלנו</span><img title="המומלצים שלנו" alt="המומלצים שלנו" src="/images/badge.png"></a></li>
+</ul>
+</nav>
+</li>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/contact.php') echo 'class="active"'; ?> title="צור קשר" href="/contact">צור קשר</a></li>
+</ul>
+</nav>
+</div>
+</div>
 </header>
