@@ -31,5 +31,6 @@ if (!isset($page_image))
 <link rel="canonical" href="<?php echo $page_url; ?>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel="stylesheet" href="/css/default.css">
+<script src="/js/sweetalert.js"></script>
 <script src="/js/sahar.js"></script>
 </head>
