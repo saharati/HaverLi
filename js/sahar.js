@@ -3,7 +3,7 @@ function switchContent()
 	var link = document.getElementById('submenuLink').getElementsByTagName('a')[0];
 	var main = document.getElementsByTagName('main')[0];
 	var menu = main.getElementsByTagName('nav')[0];
-	var content = main.getElementsByTagName('div')[0];
+	var content = document.getElementById('content');
 	if (menu.style.display == 'block')
 	{
 		link.className = '';
@@ -32,7 +32,7 @@ window.onresize = function()
 	if (menu.style.display == 'block')
 	{
 		var link = document.getElementById('submenuLink').getElementsByTagName('a')[0];
-		var content = main.getElementsByTagName('div')[0];
+		var content = document.getElementById('content');
 		
 		link.className = '';
 		menu.style.display = 'none';

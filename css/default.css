@@ -50,6 +50,7 @@ h1 img {max-width:300px;width:100%;height:auto;vertical-align:bottom}
 #headBorder ul ul li {margin-left:40px;display:inline-block;float:none}
 #headBorder span {display:block}
 #submenuLink {display:none}
+#submenuLink img {vertical-align:bottom}
 @media all and (max-width:1005px)
 {
 	#headBorder li {display:none}
@@ -74,6 +75,12 @@ main nav li:hover ul {display:inline-block}
 .firstLevel > a {display:block;line-height:40px;background-color:#FFF;border:1px solid #000}
 /* MAIN */
 main {background-color:#eaf1f7}
+#content {display:table;max-width:1000px;height:100%;margin:0 auto;text-align:center}
+#contentInner {display:table-cell;vertical-align:middle;font-size:18px}
+.right, .left {display:table-cell;width:50%}
+.notfound .right {width:30%}
+.notfound .left {width:70%;text-align:right;padding-right:5px}
+.notfound img {vertical-align:middle;width:100%;height:auto}
 /* FOOTER */
 footer {text-align:center}
 footer section {margin:10px 0}
