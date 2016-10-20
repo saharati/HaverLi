@@ -17,7 +17,7 @@ header, footer {height:1px}
 #topNav ul {list-style:none;float:left;margin:0;padding:0;text-align:center}
 #topNav li {display:inline-block;margin:0 10px}
 #topNav a {color:#FFF;text-decoration:none}
-#topNav img {vertical-align:bottom}
+#topNav img {vertical-align:bottom;width:20px;height:20px}
 @media all and (max-width:450px)
 {
 	#topNav {font-size:14px}
@@ -26,16 +26,10 @@ header, footer {height:1px}
 	#topNav li {float:none}
  	#topNav div > a {display:none}
  }
-/* TITLE */
+/* TITLE & BOTTOM MENU */
 h1 {margin:0;display:table-cell}
 h1 img {max-width:300px;width:100%;height:auto;vertical-align:bottom}
 #mobiletitle {display:none}
-@media all and (max-width:430px)
-{
-	#desktoptitle {display:none}
-	#mobiletitle {display:inline}
-}
-/* BOTTOM MENU */
 #headBorder {position:relative;border-bottom:1px solid #000}
 #headBorder div {max-width:1000px;margin:0 auto;padding:0 7px;font-size:18px}
 #headBorder div > nav {display:table-cell;vertical-align:bottom}
@@ -47,10 +41,11 @@ h1 img {max-width:300px;width:100%;height:auto;vertical-align:bottom}
 #headBorder ul nav {position:absolute;text-align:center;right:0;left:0;display:none;width:100%;padding-top:10px;border-top:1px solid #000;border-bottom:1px solid #000;background-color:#FFF;z-index:2}
 #headBorder li:hover nav {display:block}
 #headBorder ul ul {width:700px;float:left;font-size:15px;vertical-align:bottom;text-align:center}
-#headBorder ul ul li {margin-left:40px;display:inline-block;float:none}
+#headBorder ul ul li {margin-left:0;display:inline-block;float:none;width:24%}
 #headBorder span {display:block}
+#headBorder nav img {width:50px;height:50px}
 #submenuLink {display:none}
-#submenuLink img {vertical-align:bottom}
+#headBorder #submenuLink img {vertical-align:middle;width:auto;height:14px}
 @media all and (max-width:1005px)
 {
 	#headBorder li {display:none}
@@ -58,10 +53,12 @@ h1 img {max-width:300px;width:100%;height:auto;vertical-align:bottom}
 }
 @media all and (max-width:435px)
 {
+	#desktoptitle {display:none}
+	#mobiletitle {display:inline}
 	#headBorder div {text-align:center}
-	#headBorder div > nav {display:block}
+	h1, #headBorder div > nav {display:block}
 	#headBorder ul {display:inline-block}
-	#headBorder li {float:none}
+	#headBorder li {float:none;margin-left:0}
 }
 /* MOBILE MENU */
 main nav {text-align:center;margin:20px 0;font-size:18px;display:none}
@@ -70,35 +67,53 @@ main nav ul ul {display:none}
 main nav li {margin:10px 0}
 main nav a {color:#000;text-decoration:none}
 main nav span {display:block}
+main nav img {width:50px;height:50px}
 main nav li:hover > a, main nav a.active {color:#0283de}
 main nav li:hover ul {display:inline-block}
 .firstLevel > a {display:block;line-height:40px;background-color:#FFF;border:1px solid #000}
-/* MAIN */
-main {background-color:#eaf1f7}
-#content {display:table;max-width:1000px;height:100%;margin:0 auto;text-align:center}
-#content a {color:#0283de;text-decoration:none}
-#contentInner {display:table-cell;vertical-align:middle;font-size:18px}
-.right, .left {display:table-cell;width:50%}
-.notfound .right {width:30%}
-.notfound .left {width:70%;text-align:right;padding-right:5px}
-.notfound img {vertical-align:middle;width:100%;height:auto}
 /* FOOTER */
 footer {text-align:center}
 footer section {margin:10px 0}
 footer h3 {font-size:35px;margin:7px 0}
+footer h3 img {width:40px;height:40px}
 footer p {font-size:18px;margin:0}
+footer p img {width:18px;height:18px}
 footer a {color:#000;text-decoration:none;vertical-align:bottom}
-footer img {vertical-align:middle}
+footer img {vertical-align:top}
 @media all and (max-width:820px)
 {
 	footer span {visibility:hidden;display:block;width:0;height:0}
 }
+/* MAIN */
+main {background-color:#eaf1f7}
+#content {display:table;max-width:1000px;height:100%;margin:0 auto;padding:20px 0;text-align:center}
+#content a {color:#0283de;text-decoration:none}
+#contentInner {display:table-cell;vertical-align:middle;font-size:18px;padding:0 7px}
+.right, .left {display:table-cell}
+/* NOT FOUND PAGE */
+.notfound .right {width:30%}
+.notfound .left {width:70%;text-align:right;padding-right:5px}
+.notfound img {vertical-align:middle;width:100%;height:auto}
+/* HOME PAGE */
+.home {direction:ltr;width:100%}
 /* FORMS */
-fieldset {border:0;background-color:#FFF;padding:10px;text-align:right}
-fieldset h3 {text-align:right;margin:0;color:#0283de}
+fieldset {min-width:250px;border:0;background-color:#FFF;padding:10px;text-align:right}
+fieldset h3 {text-align:right;margin:0}
 fieldset p {margin:5px 0}
-fieldset input {background-color:#EEE;color:#999;border:1px solid #999;display:block;padding:5px;margin:5px 0}
-fieldset input[type="submit"] {float:left;cursor:pointer}
+fieldset input {font-family:trashim;width:100%;background-color:#EEE;color:#999;border:1px solid #999;display:block;padding:5px;margin:5px 0}
+fieldset input[type="submit"] {width:auto;float:left;cursor:pointer}
+/* BXSLIDER */
+.bx-wrapper {position:relative;margin:0 auto;padding:0 40px;touch-action:pan-y}
+.bx-wrapper img {max-width:290px;width:100%;display:block}
+.bxslider {list-style:none;margin:0;padding:0}
+.bx-viewport {-webkit-transform:translateZ(0)}
+.bx-wrapper .bx-loading {min-height:50px;background:url(/images/bx_loader.gif) center center no-repeat #eaf1f7;height:100%;width:100%;position:absolute;top:0;left:0;z-index:2000}
+.bx-wrapper .bx-prev {left:0;background:url(/images/left.svg) no-repeat 0 0}
+.bx-wrapper .bx-next {right:0;background:url(/images/right.svg) no-repeat 0 0}
+.bx-wrapper .bx-controls-direction a {position:absolute;top:50%;margin-top:-16px;outline:0;width:32px;height:32px;text-indent:-9999px;z-index:9999}
+.bx-wrapper .bx-controls-direction a.disabled {display:none}
+.bx-wrapper .bx-caption {width:100%}
+.bx-wrapper .bx-caption span {display:block;font-size:.85em;padding:5px}
 /* SWEET ALERT */
 .sweet-overlay {background-color:rgba(0, 0, 0, 0.4);position:fixed;left:0;right:0;top:0;bottom:0;display:none;z-index:10000}
 .sweet-alert {background-color:white;font-family:'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;width:478px;padding:17px;border-radius:5px;text-align:center;position:fixed;left:50%;top:50%;margin-left:-256px;margin-top:-200px;overflow:hidden;display:none;z-index:99999}

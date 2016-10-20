@@ -3,8 +3,8 @@
 <div>
 <a title="כניסה למערכת" href="/login">כניסה למערכת</a>
 <ul>
-<li><a title="רשימת משאלות" href="/wishlist">רשימת משאלות <img title="רשימת משאלות" alt="רשימת משאלות" src="/images/heart.png"></a></li>
-<li><a title="לתרומות לחצו כאן" href="/donate">לתרומות <img title="לתרומות לחצו כאן" alt="לתרומות לחצו כאן" src="/images/paw.png"></a></li>
+<li><a title="רשימת משאלות" href="/wishlist">רשימת משאלות <img title="רשימת משאלות" alt="רשימת משאלות" src="/images/heart.svg"></a></li>
+<li><a title="לתרומות לחצו כאן" href="/donate">לתרומות <img title="לתרומות לחצו כאן" alt="לתרומות לחצו כאן" src="/images/paw.svg"></a></li>
 </ul>
 </div>
 </nav>
@@ -12,13 +12,13 @@
 <div>
 <h1>
 <a href="/" title="עמותת חבר לי - לחברים עוזרים תמיד">
-<img id="desktoptitle" src="/images/title.jpg" title="עמותת חבר לי - לחברים עוזרים תמיד" alt="עמותת חבר לי - לחברים עוזרים תמיד">
-<img id="mobiletitle" src="/images/mobiletitle.jpg" title="עמותת חבר לי - לחברים עוזרים תמיד" alt="עמותת חבר לי - לחברים עוזרים תמיד">
+<img id="desktoptitle" src="/images/title.svg" title="עמותת חבר לי - לחברים עוזרים תמיד" alt="עמותת חבר לי - לחברים עוזרים תמיד">
+<img id="mobiletitle" src="/images/titlemobile.svg" title="עמותת חבר לי - לחברים עוזרים תמיד" alt="עמותת חבר לי - לחברים עוזרים תמיד">
 </a>
 </h1>
 <nav>
 <ul>
-<li id="submenuLink"><a title="תפריט" href="javascript:void(0);" onclick="switchContent();"><img title="תפריט" alt="תפריט" src="/images/bars.png"> תפריט</a></li>
+<li id="submenuLink"><a title="תפריט" href="javascript:void(0);" onclick="switchContent();"><img title="תפריט" alt="תפריט" src="/images/bars.svg"> תפריט</a></li>
 <li><a <?php if ($_SERVER['PHP_SELF'] == '/index.php') echo 'class="active"'; ?> title="דף הבית" href="/">דף הבית</a></li>
 <li><a <?php if ($_SERVER['PHP_SELF'] == '/about.php') echo 'class="active"'; ?> title="אודות" href="/about">אודות</a></li>
 <li>
@@ -26,9 +26,9 @@
 <nav>
 <div>
 <ul>
-<li><a <?php if ($_SERVER['PHP_SELF'] == '/cats.php') echo 'class="active"'; ?> title="חתולים" href="/cats"><img title="חתולים" alt="חתולים" src="/images/cat.png"><span>חתולים</span></a></li>
-<li><a <?php if ($_SERVER['PHP_SELF'] == '/dogs.php') echo 'class="active"'; ?> title="כלבים" href="/dogs"><img title="כלבים" alt="כלבים" src="/images/dog.png"><span>כלבים</span></a></li>
-<li><a <?php if ($_SERVER['PHP_SELF'] == '/process.php') echo 'class="active"'; ?> title="תהליך אימוץ" href="/process"><img title="תהליך אימוץ" alt="תהליך אימוץ" src="/images/stairs.png"><span>תהליך אימוץ</span></a></li>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/cats.php') echo 'class="active"'; ?> title="חתולים" href="/cats"><img title="חתולים" alt="חתולים" src="/images/cat.svg"><span>חתולים</span></a></li>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/dogs.php') echo 'class="active"'; ?> title="כלבים" href="/dogs"><img title="כלבים" alt="כלבים" src="/images/dog.svg"><span>כלבים</span></a></li>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/process.php') echo 'class="active"'; ?> title="תהליך אימוץ" href="/process"><img title="תהליך אימוץ" alt="תהליך אימוץ" src="/images/stairs.svg"><span>תהליך אימוץ</span></a></li>
 </ul>
 </div>
 </nav>
@@ -40,10 +40,10 @@
 <nav>
 <div>
 <ul>
-<li><a <?php if ($_SERVER['PHP_SELF'] == '/info.php') echo 'class="active"'; ?> title="מידע למאמץ" href="/info"><img title="מידע למאמץ" alt="מידע למאמץ" src="/images/mark.png"><span>מידע למאמץ</span></a></li>
-<li><a <?php if ($_SERVER['PHP_SELF'] == '/articles.php') echo 'class="active"'; ?> title="מאמרים" href="/articles"><img title="מאמרים" alt="מאמרים" src="/images/hat.png"><span>מאמרים</span></a></li>
-<li><a <?php if ($_SERVER['PHP_SELF'] == '/help.php') echo 'class="active"'; ?> title="הצילו! אבד לי הכלב" href="/help"><img title="הצילו! אבד לי הכלב" alt="הצילו! אבד לי הכלב" src="/images/dog.png"><span>הצילו! אבד לי הכלב</span></a></li>
-<li><a <?php if ($_SERVER['PHP_SELF'] == '/recommand.php') echo 'class="active"'; ?> title="המומלצים שלנו" href="/recommand"><img title="המומלצים שלנו" alt="המומלצים שלנו" src="/images/badge.png"><span>המומלצים שלנו</span></a></li>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/info.php') echo 'class="active"'; ?> title="מידע למאמץ" href="/info"><img title="מידע למאמץ" alt="מידע למאמץ" src="/images/mark.svg"><span>מידע למאמץ</span></a></li>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/articles.php') echo 'class="active"'; ?> title="מאמרים" href="/articles"><img title="מאמרים" alt="מאמרים" src="/images/hat.svg"><span>מאמרים</span></a></li>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/help.php') echo 'class="active"'; ?> title="הצילו! אבד לי הכלב" href="/help"><img title="הצילו! אבד לי הכלב" alt="הצילו! אבד לי הכלב" src="/images/dog.svg"><span>הצילו! אבד לי הכלב</span></a></li>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/recommand.php') echo 'class="active"'; ?> title="המומלצים שלנו" href="/recommand"><img title="המומלצים שלנו" alt="המומלצים שלנו" src="/images/badge.svg"><span>המומלצים שלנו</span></a></li>
 </ul>
 </div>
 </nav>

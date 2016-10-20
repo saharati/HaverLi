@@ -8,7 +8,7 @@ function switchContent()
 	{
 		link.className = '';
 		menu.style.display = 'none';
-		content.style.display = 'block';
+		content.style.display = 'table';
 	}
 	else
 	{
@@ -36,7 +36,7 @@ window.onresize = function()
 		
 		link.className = '';
 		menu.style.display = 'none';
-		content.style.display = 'block';
+		content.style.display = 'table';
 	}
 	
 	width = window.innerWidth;
