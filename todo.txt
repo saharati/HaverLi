@@ -34,14 +34,3 @@ Slideshow:
 * http://bxslider.com/examples/custom-next-prev-selectors
 * http://bxslider.com/examples/carousel-demystified
 * http://bxslider.com/examples/ticker
-
-menu on mobile when open make transition
-
-<ul class="bxslider">
-<li><img title="גם הירו מחכה לכם בפינת אימוץ" src="/images/home/temp1.jpg"></li>
-<li><img src="/images/home/temp2.jpg"></li>
-<li><img title="גם דאצ'ס מחכה לכם בפינת אימוץ" src="/images/home/temp3.jpg"></li>
-<li><img src="/images/home/temp4.jpg"></li>
-<li><img title="גם טייגר מחכה לכם בפינת אימוץ" src="/images/home/temp5.jpg"></li>
-<li><img src="/images/home/temp6.jpg"></li>
-</ul>

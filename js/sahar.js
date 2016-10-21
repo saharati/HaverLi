@@ -30,6 +30,15 @@ function switchContent()
 		content.style.display = 'none';
 	}
 }
+// SHOW/HIDE MOBILE MENU SUB LISTS.
+function toggleView(elem)
+{
+	var list = elem.getElementsByTagName('ul')[0];
+	if (list.className == 'activeList')
+		list.className = '';
+	else
+		list.className = 'activeList';
+}
 // FUNCTIONS TO RUN WHEN DOCUMENT LOADS.
 $(document).ready(function()
 {

@@ -11,10 +11,10 @@
 <div id="contentInner">
 <ul>
 <li>
-<h2>משתמש</h2>
+<h2>משתמשים</h2>
 <ul>
-<li><a title="שינוי סיסמה" href="/private/changepassword.php">שינוי סיסמה</a></li>
-<li><a title="יציאה" href="/login?logout=<?php echo $_SESSION['signature']; ?>">יציאה</a></li>
+<li><a title="הוספת משתמשים" href="/private/addusers.php">הוספת משתמשים</a></li>
+<li><a title="עדכון משתמשים" href="/private/updateusers.php">עדכון משתמשים</a></li>
 </ul>
 </li>
 <li>
@@ -22,6 +22,13 @@
 <ul>
 <li><a title="הוספת תמונות" href="/private/addimages.php">הוספת תמונות</a></li>
 <li><a title="עדכון תמונות" href="/private/updateimages.php">עדכון תמונות</a></li>
+</ul>
+</li>
+<li>
+<h2>אישי</h2>
+<ul>
+<li><a title="שינוי סיסמה" href="/private/changepassword.php">שינוי סיסמה</a></li>
+<li><a title="יציאה" href="/login?logout=<?php echo $_SESSION['signature']; ?>">יציאה</a></li>
 </ul>
 </li>
 </ul>
