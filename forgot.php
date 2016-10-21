@@ -54,7 +54,7 @@ if (isset($_POST['email']))
 <form action="/forgot" method="post">
 <fieldset>
 <h3>שחזור סיסמה</h3>
-<input type="email" name="email" required placeholder="אימייל">
+<input type="email" name="email" required placeholder="אימייל" title="אנא מלא ערך כלשהו">
 <input type="submit" value="שלח">
 </fieldset>
 </form>

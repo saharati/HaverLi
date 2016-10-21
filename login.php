@@ -105,8 +105,8 @@ if (isset($_POST['username'], $_POST['password']))
 <fieldset>
 <h3>כניסה למערכת</h3>
 <p>לשחזור סיסמה <a title="שחזור סיסמה" href="/forgot">לחץ כאן</a></p>
-<input type="text" name="username" required placeholder="שם משתמש">
-<input type="password" name="password" required placeholder="סיסמה">
+<input type="text" name="username" required placeholder="שם משתמש" title="אנא מלא ערך כלשהו">
+<input type="password" name="password" required placeholder="סיסמה" title="אנא מלא ערך כלשהו">
 <input type="submit" value="התחברות">
 </fieldset>
 </form>

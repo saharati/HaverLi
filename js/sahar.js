@@ -18,10 +18,33 @@ function switchContent()
 	}
 }
 var width;
-window.onload = function()
+$(document).ready(function()
 {
 	width = window.innerWidth;
-}
+	
+	var slider = $('.bxslider');
+	if (slider)
+	{
+		slider.bxSlider
+		(
+			{
+				slideWidth: 290,
+				minSlides: 2,
+				maxSlides: 3,
+				moveSlides: 3,
+				slideMargin: 15,
+				captions: true,
+				pager: false,
+				nextText: 'הבא',
+				prevText: 'הקודם',
+				auto: true,
+				pause: 6000,
+				autoHover: true,
+				shrinkItems: true
+			}
+		);
+	}
+});
 window.onresize = function()
 {
 	if (width == window.innerWidth)
