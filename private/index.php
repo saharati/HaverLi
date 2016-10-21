@@ -25,6 +25,21 @@
 </ul>
 </li>
 <li>
+<h2>דף האודות</h2>
+<ul>
+<li><a title="הוספת מתנדבים" href="/private/addvolunteers.php">הוספת מתנדבים</a></li>
+<li><a title="עדכון מתנדבים" href="/private/updatevolunteers.php">עדכון מתנדבים</a></li>
+<li><a title="עדכון תוכן" href="/private/updateabout.php">עדכון תוכן</a></li>
+</ul>
+</li>
+<li>
+<h2>מאגר תמונות</h2>
+<ul>
+<li><a title="הוספת תמונות" href="/private/adddatabase.php">הוספת תמונות</a></li>
+<li><a title="עדכון תמונות" href="/private/updatedatabase.php">עדכון תמונות</a></li>
+</ul>
+</li>
+<li>
 <h2>אישי</h2>
 <ul>
 <li><a title="שינוי סיסמה" href="/private/changepassword.php">שינוי סיסמה</a></li>

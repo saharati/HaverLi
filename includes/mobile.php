@@ -3,11 +3,12 @@
 <li class="firstLevel"><a <?php if ($_SERVER['PHP_SELF'] == '/index.php') echo 'class="active"'; ?> title="דף הבית" href="/">דף הבית</a></li>
 <li class="firstLevel"><a <?php if ($_SERVER['PHP_SELF'] == '/about.php') echo 'class="active"'; ?> title="אודות" href="/about">אודות</a></li>
 <li class="firstLevel">
-<a <?php if ($_SERVER['PHP_SELF'] == '/dogs.php' || $_SERVER['PHP_SELF'] == '/cats.php' || $_SERVER['PHP_SELF'] == '/process.php') echo 'class="active"'; ?> title="פינת אימוץ" href="javascript:void(0);" onclick="toggleView(this.parentNode);">פינת אימוץ</a>
+<a <?php if ($_SERVER['PHP_SELF'] == '/dogs.php' || $_SERVER['PHP_SELF'] == '/cats.php' || $_SERVER['PHP_SELF'] == '/process.php' || $_SERVER['PHP_SELF'] == '/adopted.php') echo 'class="active"'; ?> title="פינת אימוץ" href="javascript:void(0);" onclick="toggleView(this.parentNode);">פינת אימוץ</a>
 <ul>
 <li><a <?php if ($_SERVER['PHP_SELF'] == '/cats.php') echo 'class="active"'; ?> title="חתולים" href="/cats"><img title="חתולים" alt="חתולים" src="/images/cat.svg"><span>חתולים</span></a></li>
 <li><a <?php if ($_SERVER['PHP_SELF'] == '/dogs.php') echo 'class="active"'; ?> title="כלבים" href="/dogs"><img title="כלבים" alt="כלבים" src="/images/dog.svg"><span>כלבים</span></a></li>
 <li><a <?php if ($_SERVER['PHP_SELF'] == '/process.php') echo 'class="active"'; ?> title="תהליך אימוץ" href="/process"><img title="תהליך אימוץ" alt="תהליך אימוץ" src="/images/stairs.svg"><span>תהליך אימוץ</span></a></li>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/adopted.php') echo 'class="active"'; ?> title="משפחות מאושרות" href="/adopted"><img title="משפחות מאושרות" alt="משפחות מאושרות" src="/images/home.svg"><span>משפחות מאושרות</span></a></li>
 </ul>
 </li>
 <li class="firstLevel"><a <?php if ($_SERVER['PHP_SELF'] == '/help.php') echo 'class="active"'; ?> title="איך ניתן לעזור?" href="/help">איך ניתן לעזור?</a></li>

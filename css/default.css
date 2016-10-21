@@ -45,7 +45,7 @@ h1 img {max-width:300px;width:100%;height:auto;vertical-align:bottom}
 #headBorder span {display:block}
 #headBorder nav img {width:50px;height:50px}
 #submenuLink {display:none}
-#headBorder #submenuLink img {vertical-align:middle;width:auto;height:14px}
+#headBorder #submenuLink img {width:13px;height:auto}
 @media all and (max-width:1005px)
 {
 	#headBorder li {display:none}
@@ -86,26 +86,39 @@ footer img {vertical-align:top}
 }
 /* MAIN */
 main {background-color:#eaf1f7}
-main h2 {text-decoration:underline;margin:10px 0}
+main h2 {font-size:26px;text-decoration:underline;margin:10px 0}
+main p {font-size:17px;margin:5px 0}
 #content {display:table;max-width:1000px;height:100%;margin:0 auto;padding:20px 0;text-align:center}
 #content a {color:#0283de;text-decoration:none}
 #contentInner {display:table-cell;vertical-align:middle;font-size:18px;padding:0 7px}
 .right, .left {display:table-cell}
 #content.fullwidth {width:100%}
+.innerDiv {max-width:1000px;width:100%;margin:10px auto;padding:0 7px}
+.innerDiv img {width:100%;height:auto;vertical-align:bottom}
+.spaceDiv {width:100%;height:30px;background-color:#FFF}
 /* NOT FOUND PAGE */
 .notfound .right {width:30%}
 .notfound .left {width:70%;text-align:right;padding-right:5px}
 .notfound img {vertical-align:middle;width:100%;height:auto}
 /* HOME PAGE */
 .home {direction:ltr}
+/* ABOUT PAGE */
+#content.about {text-align:right;max-width:none;padding:0}
+#content.about #contentInner {padding:0}
 /* PRIVATE PAGE */
 .private #contentInner > ul {text-align:right;list-style:none;margin:0;padding:0}
 /* FORMS */
 fieldset {min-width:250px;border:0;background-color:#FFF;padding:10px;text-align:right}
-fieldset h3 {text-align:right;margin:0}
-fieldset p {margin:5px 0}
-fieldset input {font-family:trashim;width:100%;background-color:#EEE;color:#999;border:1px solid #999;display:block;padding:5px;margin:5px 0}
-fieldset input[type="submit"] {width:auto;float:left;cursor:pointer}
+fieldset h3 {font-size:30px;text-align:right;margin:0}
+fieldset input, fieldset textarea {font-family:trashim;width:100%;background-color:#EEE;color:#999;border:1px solid #999;display:block;padding:5px;margin:5px 0}
+fieldset textarea {resize:vertical;overflow:auto;height:auto;min-height:115px}
+fieldset input[type="submit"] {width:auto;float:left;cursor:pointer;min-width:100px}
+.inline-form div {float:right;width:25%;padding-left:10px}
+.inline-form div.nopadding {padding-left:0}
+@media all and (max-width:500px)
+{
+	.inline-form div {float:none;width:100%;padding-left:0}
+}
 /* MODAL */
 .imageModal img {transition:0.3s}
 .imageModal:hover img {opacity:0.7}
@@ -122,8 +135,12 @@ fieldset input[type="submit"] {width:auto;float:left;cursor:pointer}
 .sortable {width:100%;border-collapse:collapse;margin-bottom:10px;color:#999;text-align:center}
 .sortable tr {background-color:#FFF}
 .sortable tr:nth-child(even) {background-color:#EEE}
-.sortable th, .sortable td {position:relative;padding:5px;border:1px solid #ccc}
+.sortable th, .sortable td {position:relative;vertical-align:middle;padding:5px;border:1px solid #ccc}
 .sortable th {cursor:default;background-color:#dee6e8;color:#4F6B72}
+.sortable img {vertical-align:bottom;width:100px;height:auto}
+.sortable .edit {visibility:hidden;padding-right:10px}
+.sortable td:hover .edit {visibility:visible}
+.sortable td input {width:55%;height:18px;color:#777}
 @media all and (max-width:760px)
 {
 	.sortable, .sortable thead, .sortable tbody, .sortable th, .sortable td, .sortable tr {display:block}
@@ -142,8 +159,8 @@ fieldset input[type="submit"] {width:auto;float:left;cursor:pointer}
 .bx-wrapper .bx-next {right:0;background:url(/images/right.svg) no-repeat 0 0}
 .bx-wrapper .bx-controls-direction a {position:absolute;top:50%;margin-top:-16px;outline:0;width:32px;height:32px;text-indent:-9999px;z-index:9999}
 .bx-wrapper .bx-controls-direction a.disabled {display:none}
-.bx-wrapper .bx-caption {display:block;font-size:.85em;width:100%}
-.bx-wrapper .bx-caption p {margin:5px}
+.bx-wrapper .bx-caption {display:block;width:100%}
+.bx-wrapper .bx-caption p {font-size:14px}
 /* SWEET ALERT */
 .sweet-overlay {background-color:rgba(0, 0, 0, 0.4);position:fixed;left:0;right:0;top:0;bottom:0;display:none;z-index:10000}
 .sweet-alert {background-color:white;font-family:'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;width:478px;padding:17px;border-radius:5px;text-align:center;position:fixed;left:50%;top:50%;margin-left:-256px;margin-top:-200px;overflow:hidden;display:none;z-index:99999}

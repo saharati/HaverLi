@@ -28,14 +28,14 @@ if (isset($_POST['order'], $_POST['link'], $_POST['text'], $_FILES['image']))
 	if (!empty($_FILES['image']['name']))
 	{
 		$file_type = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
-		if ($file_type != 'jpg' && $file_type != 'png' && $file_type != 'jpeg' && $file_type != 'gif')
-			$validation['imagewrong'] = 'התמונה חייבת להיות אחת מהסוגים: JPG, JPEG, PNG, GIF.';
-		elseif ($_FILES['image']['type'] != 'image/jpeg' && $_FILES['image']['type'] != 'image/pjpeg' && $_FILES['image']['type'] != 'image/png' && $_FILES['image']['type'] != 'image/gif')
-			$validation['imagewrong'] = 'התמונה חייבת להיות אחת מהסוגים: JPG, JPEG, PNG, GIF.';
+		if ($file_type != 'jpg' && $file_type != 'png' && $file_type != 'jpeg' && $file_type != 'gif' && $file_type != 'svg')
+			$validation['imagewrong'] = 'התמונה חייבת להיות אחת מהסוגים: JPG, JPEG, PNG, GIF, SVG.';
+		elseif ($_FILES['image']['type'] != 'image/jpeg' && $_FILES['image']['type'] != 'image/pjpeg' && $_FILES['image']['type'] != 'image/png' && $_FILES['image']['type'] != 'image/gif' && $_FILES['image']['type'] != 'image/svg+xml')
+			$validation['imagewrong'] = 'התמונה חייבת להיות אחת מהסוגים: JPG, JPEG, PNG, GIF, SVG.';
 		else
 		{
 			$image_size = getimagesize($_FILES['image']['tmp_name']);
-			if ($image_size === false)
+			if ($image_size === false && $file_type != 'svg')
 				$validation['imagewrong'] = 'הקובץ חייב להיות תמונה.';
 		}
 	}
@@ -48,22 +48,7 @@ if (isset($_POST['order'], $_POST['link'], $_POST['text'], $_FILES['image']))
 			unlink($_SERVER['DOCUMENT_ROOT'] . '/images/home/' . $row2['image']);
 			$image_name = mt_rand(1, time()) . time() . '.' . $file_type;
 			$new_name = $_SERVER['DOCUMENT_ROOT'] . '/images/home/' . $image_name;
-			if ($file_type == 'jpg' || $file_type == 'jpeg')
-			{
-				$src = imagecreatefromjpeg($_FILES['image']['tmp_name']);
-				imagejpeg($src, $new_name, 100);
-			}
-			elseif ($file_type == 'png')
-			{
-				$src = imagecreatefrompng($_FILES['image']['tmp_name']);
-				imagepng($src, $new_name, 9);
-			}
-			else
-			{
-				$src = imagecreatefromgif($_FILES['image']['tmp_name']);
-				imagegif($src, $new_name);
-			}
-			imagedestroy($src);
+			move_uploaded_file($_FILES['image']['tmp_name'], $new_name);
 		}
 		$stmt = $mysqli->prepare('UPDATE home SET imageOrder=?, image=?, imageLink=?, imageCaption=? WHERE imageOrder=?');
 		$stmt->bind_param('isssi', $_POST['order'], $image_name, $_POST['link'], $_POST['text'], $_GET['id']);
@@ -89,9 +74,12 @@ if (isset($_POST['order'], $_POST['link'], $_POST['text'], $_FILES['image']))
 <form action="/private/updateimage.php?id=<?php echo $_GET['id']; ?>" method="post" enctype="multipart/form-data">
 <fieldset>
 <h3>עדכון תמונה</h3>
-<input type="number" name="order" placeholder="מיקום (בין 1 ל-99)" value="<?php echo (empty($validation) ? $row2['imageOrder'] : $_POST['order']); ?>">
+<input type="number" name="order" min="1" max="99" placeholder="מיקום (בין 1 ל-99)" value="<?php echo (empty($validation) ? $row2['imageOrder'] : $_POST['order']); ?>">
 <?php
-list($width, $height) = getimagesize($_SERVER['DOCUMENT_ROOT'] . '/images/home/' . $row2['image']);
+if (strpos($row['image'], '.svg') !== false)
+	$width = $height = 10000;
+else
+	list($width, $height) = getimagesize($_SERVER['DOCUMENT_ROOT'] . '/images/home/' . $row2['image']);
 echo '<a href="/images/home/' . $row2['image'] . '" class="imageModal" title="הצג תמונה נוכחית" data-width="' . $width . '" data-height="' . $height . '">הצג תמונה נוכחית</a>';
 ?>
 <input type="file" name="image" accept="image/*" placeholder="בחר תמונה">

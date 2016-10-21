@@ -18,9 +18,9 @@ if ($result->num_rows)
 	{
 		echo '<li><div>';
 		if (empty($row['imageLink']))
-			echo '<img src="/images/home/' . $row['image'] . '">';
+			echo '<img src="/images/home/' . $row['image'] . '" alt="">';
 		else
-			echo '<a href="imageLink"><img src="/images/home/' . $row['image'] . '"></a>';
+			echo '<a href="imageLink"><img src="/images/home/' . $row['image'] . '" alt=""></a>';
 		if (!empty($row['imageCaption']))
 			echo '<div class="bx-caption">' . $row['imageCaption'] . '</div>';
 		echo '</div></li>';

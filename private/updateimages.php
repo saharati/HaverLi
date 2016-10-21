@@ -34,10 +34,14 @@ if (isset($_GET['del']))
 $result = $mysqli->query('SELECT imageOrder, image FROM home ORDER BY imageOrder');
 while ($row = $result->fetch_assoc())
 {
-	list($width, $height) = getimagesize($_SERVER['DOCUMENT_ROOT'] . '/images/home/' . $row['image']);
+	if (strpos($row['image'], '.svg') !== false)
+		$width = $height = 10000;
+	else
+		list($width, $height) = getimagesize($_SERVER['DOCUMENT_ROOT'] . '/images/home/' . $row['image']);
 	echo '<tr>
-<td data-label="מיקום">' . $row['imageOrder'] . '</td>
-<td data-label="תמונה"><a href="/images/home/' . $row['image'] . '" class="imageModal" title="הצג תמונה נוכחית" data-width="' . $width . '" data-height="' . $height . '">צפייה</a></td>
+<input type="hidden" value="' . $row['imageOrder'] . '">
+<td data-label="מיקום">' . $row['imageOrder'] . ' <a class="edit" href="javascript:void(0);" onclick="edit(this.parentNode);" title="עריכה">✎</a></td>
+<td data-label="תמונה"><a class="imageModal" href="/images/home/' . $row['image'] . '" data-width="' . $width . '" data-height="' . $height . '"><img src="/images/home/' . $row['image'] . '"></a></td>
 <td data-label="עריכה"><a title="עריכה" href="/private/updateimage.php?id=' . $row['imageOrder'] . '">עריכה</a></td>
 <td data-label="מחיקה"><a title="מחיקה" href="javascript:void(0);" onclick="del(' . $row['imageOrder'] . ');">מחיקה</a></a></td>
 </tr>';
@@ -71,6 +75,40 @@ function del(num)
 			self.location.href = '/private/updateimages.php?del=' + num;
 		}
 	);
+}
+function edit(node)
+{
+	var imageOrder = node.parentNode.getElementsByTagName('input')[0].value;
+	node.innerHTML = '<input type="number" value="' + imageOrder + '" required min="1" max="99"><a class="edit" href="javascript:void(0);" onclick="save(this.parentNode);" title="שמירה">✓</a>';
+}
+function save(node)
+{
+	var oldValue = node.innerHTML;
+	var newValue = node.getElementsByTagName('input')[0].value;
+	
+	node.innerHTML = 'טוען...';
+	
+	var id = node.parentNode.getElementsByTagName('input')[0].value;
+	var http = new XMLHttpRequest();
+	http.open('POST', '/private/ajax/updateimages.php', true);
+	http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	http.onreadystatechange = function()
+	{
+		if (http.readyState == 4 && http.status == 200)
+		{
+			if (http.responseText == '')
+			{
+				node.parentNode.getElementsByTagName('input')[0].value = newValue;
+				node.innerHTML = newValue + ' <a class="edit" href="javascript:void(0);" onclick="edit(this.parentNode);" title="עריכה">✎</a>';
+			}
+			else
+			{
+				node.innerHTML = oldValue;
+				swal('הפעולה נכשלה', http.responseText, 'error');
+			}
+		}
+	}
+	http.send('imageOrder=' + id + '&newImageOrder=' + newValue);
 }
 <?php
 if (isset($_GET['del']))
