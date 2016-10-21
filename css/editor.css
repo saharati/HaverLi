@@ -1,0 +1,6 @@
+@font-face
+{
+	font-family:trashim;
+	src:url(/includes/fonts/trashim.otf);
+}
+body {font-family:trashim;font-size:16px}

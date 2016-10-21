@@ -7,7 +7,7 @@
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php'; ?>
 <main>
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/mobile.php'; ?>
-<div id="content" class="private">
+<div id="content" class="private fullwidth">
 <div id="contentInner">
 <ul>
 <li>

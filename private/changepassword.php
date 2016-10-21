@@ -37,7 +37,7 @@ if (isset($_POST['newpassword'], $_POST['repassword']))
 </div>
 </fieldset>
 </form>
-<p><a href="/private" title="חזרה לעמוד הניהול"><i class="fa fa-undo" aria-hidden="true"></i> חזרה לעמוד הניהול</a></p>
+<p><a title="חזרה לעמוד הניהול" href="/private">חזרה לעמוד הניהול</a></p>
 </div>
 </div>
 </main>

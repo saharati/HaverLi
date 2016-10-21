@@ -1,3 +1,16 @@
+// SWAL OBJECT ALWAYS PRESENT.
+swal.setDefaults({confirmButtonText: 'אישור'});
+// RICH TEXT EDITORS.
+tinymce.init({
+	selector: 'textarea.tinymce',
+	directionality: 'rtl',
+	language: 'he_IL',
+	language_url: '/js/tinymce/he_IL.js',
+	content_css: '/css/editor.css',
+	plugins: ['link', 'textcolor', 'placeholder'],
+	toolbar: 'undo redo | styleselect | bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link'
+});
+// SWITCH BETWEEN MOBILE AND DESKTOP MENUS.
 function switchContent()
 {
 	var link = document.getElementById('submenuLink').getElementsByTagName('a')[0];
@@ -17,50 +30,104 @@ function switchContent()
 		content.style.display = 'none';
 	}
 }
-var width;
+// FUNCTIONS TO RUN WHEN DOCUMENT LOADS.
 $(document).ready(function()
 {
-	width = window.innerWidth;
+	// WIDTH USED TO CLOSE MOBILE MENU IF WIDTH CHANGES DURING A RESIZE.
+	var width = window.innerWidth;
+	// SWAL POPUP, IF ANY.
+	var saharSwal = document.getElementsByClassName('sweet-alert')[0];
 	
+	// INITIALIZE BXSLIDER, IF ANY.
 	var slider = $('.bxslider');
 	if (slider)
 	{
-		slider.bxSlider
-		(
+		slider.bxSlider({
+			slideWidth: 290,
+			minSlides: 2,
+			maxSlides: 3,
+			moveSlides: 3,
+			slideMargin: 15,
+			pager: false,
+			nextText: 'הבא',
+			prevText: 'הקודם',
+			auto: true,
+			pause: 6000,
+			autoHover: true,
+			shrinkItems: true
+		});
+	}
+	
+	// INITIALIZE MODALS, IF ANY.
+	var modals = document.getElementsByClassName('imageModal');
+	if (modals.length > 0)
+	{
+		var imageModal = document.createElement('div');
+		var image = document.createElement('img');
+		var link = document.createElement('a');
+		
+		imageModal.setAttribute('id', 'imageModal');
+		imageModal.setAttribute('onclick', 'this.style.display=\'none\'');
+		image.setAttribute('title', 'לחץ לסגירת התמונה');
+		image.setAttribute('alt', 'לחץ לסגירת התמונה');
+		link.setAttribute('href', 'javascript:void(0);');
+		link.setAttribute('title', 'סגור');
+		link.innerHTML = 'X';
+		
+		imageModal.appendChild(image);
+		imageModal.appendChild(link);
+		document.body.appendChild(imageModal);
+		
+		for (i = 0;i < modals.length;i++)
+		{
+			modals[i].onclick = function(e)
 			{
-				slideWidth: 290,
-				minSlides: 2,
-				maxSlides: 3,
-				moveSlides: 3,
-				slideMargin: 15,
-				captions: true,
-				pager: false,
-				nextText: 'הבא',
-				prevText: 'הקודם',
-				auto: true,
-				pause: 6000,
-				autoHover: true,
-				shrinkItems: true
+				e.preventDefault();
+				
+				image.src = this.href;
+				
+				if (this.getAttribute('data-height') < window.innerHeight)
+					image.style.top = ((window.innerHeight - this.getAttribute('data-height')) / 2) + 'px';
+				else
+					image.style.top = '0';
+				
+				imageModal.style.display = 'block';
 			}
-		);
+		}
+	}
+	
+	// FUNCTIONS TO RUN WHEN DOCUMENT RESIZES.
+	window.onresize = function()
+	{
+		// MAKE CHANGES TO SWAL AND MODALS ACCORDING TO SCREEN CHANGES.
+		if (saharSwal && saharSwal.style.display == 'inline-block')
+			saharSwal.style.marginTop = -Math.round(saharSwal.offsetHeight / 2) + 'px';
+		else if (modals.length > 0 && imageModal.style.display == 'block')
+		{
+			if (image.offsetHeight < window.innerHeight)
+				image.style.top = ((window.innerHeight - image.offsetHeight) / 2) + 'px';
+			else
+				image.style.top = '0';
+		}
+		
+		// IF WIDTH HASN'T CHANGED, IGNORE.
+		if (width == window.innerWidth)
+			return;
+		
+		// HIDE MOBILE MENU UPON WIDTH RESIZE.
+		var main = document.getElementsByTagName('main')[0];
+		var menu = main.getElementsByTagName('nav')[0];
+		if (menu.style.display == 'block')
+		{
+			var link = document.getElementById('submenuLink').getElementsByTagName('a')[0];
+			var content = document.getElementById('content');
+			
+			link.className = '';
+			menu.style.display = 'none';
+			content.style.display = 'table';
+		}
+		
+		// KEEP TRACK OF NEW WIDTH.
+		width = window.innerWidth;
 	}
 });
-window.onresize = function()
-{
-	if (width == window.innerWidth)
-		return;
-	
-	var main = document.getElementsByTagName('main')[0];
-	var menu = main.getElementsByTagName('nav')[0];
-	if (menu.style.display == 'block')
-	{
-		var link = document.getElementById('submenuLink').getElementsByTagName('a')[0];
-		var content = document.getElementById('content');
-		
-		link.className = '';
-		menu.style.display = 'none';
-		content.style.display = 'table';
-	}
-	
-	width = window.innerWidth;
-}

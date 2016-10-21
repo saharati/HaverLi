@@ -32,8 +32,11 @@ if (!isset($page_image))
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel="stylesheet" href="/css/default.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script src="/js/tinymce/placeholder.js"></script>
 <script src="/js/fitvids.js"></script>
 <script src="/js/bxslider.js"></script>
+<script src="/js/sorttable.js"></script>
 <script src="/js/sweetalert.js"></script>
 <script src="/js/sahar.js"></script>
 </head>
