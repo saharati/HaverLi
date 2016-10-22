@@ -22,8 +22,10 @@ if ($row)
 echo '<div class="innerDiv">
 <h2>מתנדבי העמותה</h2>
 <p>כל פעילי העמותה עובדים בהתנדבות ושכרם הוא הסיפוק שבמציאת בתים טובים לכלבים ובקריאת מכתבי התודה שאנחנו מקבלים.</p>';
-// $result = $mysqli->query('');
-// TODO
+$result = $mysqli->query('SELECT image, imageName, imageCaption FROM volunteer ORDER BY imageOrder');
+while ($row2 = $result->fetch_assoc())
+	echo '<div class="rectDiv"><img src="/images/volunteers/' . $row2['image'] . '" title="' . $row2['imageName'] . '" alt="' . $row2['imageName'] . '"><h3>' . $row2['imageName'] . '</h3><div>' . $row2['imageCaption'] . '</div></div>';
+$result->free();
 echo '</div>
 <div class="spaceDiv"></div>';
 if ($row)
