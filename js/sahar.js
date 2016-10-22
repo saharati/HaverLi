@@ -55,6 +55,15 @@ function toggleView(elem)
 	else
 		list.className = 'activeList';
 }
+// TOGGLE BETWEEN IMAGE SRC ON HOVER.
+function toggleSrc(elem)
+{
+	var src = elem.getAttribute('src');
+	var dataSrc = elem.getAttribute('data-src');
+	
+	elem.setAttribute('src', dataSrc);
+	elem.setAttribute('data-src', src);
+}
 // FUNCTIONS TO RUN WHEN DOCUMENT LOADS.
 $(document).ready(function()
 {

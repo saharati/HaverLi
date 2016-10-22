@@ -9,14 +9,8 @@
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/mobile.php'; ?>
 <div id="content" class="private fullwidth">
 <div id="contentInner">
+<div class="right">
 <ul>
-<li>
-<h2>משתמשים</h2>
-<ul>
-<li><a title="הוספת משתמשים" href="/private/addusers.php">הוספת משתמשים</a></li>
-<li><a title="עדכון משתמשים" href="/private/updateusers.php">עדכון משתמשים</a></li>
-</ul>
-</li>
 <li>
 <h2>דף הבית</h2>
 <ul>
@@ -33,17 +27,36 @@
 </ul>
 </li>
 <li>
+<h2>איך ניתן לעזור</h2>
+<ul>
+<li><a title="הוספת תמונות" href="/private/addhelpimages.php">הוספת תמונות</a></li>
+<li><a title="עדכון תמונות" href="/private/updatehelpimages.php">עדכון תמונות</a></li>
+<li><a title="עדכון תוכן" href="/private/updatehelp.php">עדכון תוכן</a></li>
+</ul>
+</li>
+<li>
 <h2>לוח מודעות</h2>
 <ul>
 <li><a title="הוספת תמונות" href="/private/addboard.php">הוספת תמונות</a></li>
 <li><a title="עדכון תמונות" href="/private/updateboard.php">עדכון תמונות</a></li>
 </ul>
 </li>
+</ul>
+</div>
+<div class="left">
+<ul>
 <li>
 <h2>מאגר תמונות</h2>
 <ul>
 <li><a title="הוספת תמונות" href="/private/adddatabase.php">הוספת תמונות</a></li>
 <li><a title="עדכון תמונות" href="/private/updatedatabase.php">עדכון תמונות</a></li>
+</ul>
+</li>
+<li>
+<h2>משתמשים</h2>
+<ul>
+<li><a title="הוספת משתמשים" href="/private/addusers.php">הוספת משתמשים</a></li>
+<li><a title="עדכון משתמשים" href="/private/updateusers.php">עדכון משתמשים</a></li>
 </ul>
 </li>
 <li>
@@ -54,6 +67,7 @@
 </ul>
 </li>
 </ul>
+</div>
 </div>
 </div>
 </main>

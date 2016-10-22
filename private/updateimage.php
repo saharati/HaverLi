@@ -82,7 +82,7 @@ else
 	list($width, $height) = getimagesize($_SERVER['DOCUMENT_ROOT'] . '/images/home/' . $row2['image']);
 echo '<a href="/images/home/' . $row2['image'] . '" class="imageModal" title="הצג תמונה נוכחית" data-width="' . $width . '" data-height="' . $height . '">הצג תמונה נוכחית</a>';
 ?>
-<input type="file" name="image" accept="image/*" placeholder="בחר תמונה">
+<input type="file" name="image" accept="image/*">
 <input type="url" name="link" placeholder="קישור (אם יש)" value="<?php echo (empty($validation) ? $row2['imageLink'] : $_POST['link']); ?>">
 <textarea class="tinymce" name="text" placeholder="טקסט נילווה לתמונה"><?php echo (empty($validation) ? $row2['imageCaption'] : $_POST['text']); ?></textarea>
 <input type="submit" value="עדכן תמונה">

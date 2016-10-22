@@ -58,7 +58,7 @@ if (isset($_POST['order'], $_POST['link'], $_FILES['image']))
 <fieldset>
 <h3>הוספת תמונות ללוח מודעות</h3>
 <input type="number" name="order" min="1" max="99" placeholder="מיקום (בין 1 ל-99)" <?php if (!empty($validation)) echo 'value="' . $_POST['order'] . '"'; ?>>
-<input type="file" name="image" accept="image/*" required placeholder="בחר תמונה" title="חובה לבחור תמונה">
+<input type="file" name="image" accept="image/*" required title="בחר תמונה">
 <input type="url" name="link" placeholder="קישור (אם יש)" <?php if (!empty($validation)) echo 'value="' . $_POST['link'] . '"'; ?>>
 <input type="submit" value="הוסף תמונה">
 </fieldset>

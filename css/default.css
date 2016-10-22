@@ -91,14 +91,16 @@ main p {font-size:17px;margin:5px 0}
 #content {display:table;max-width:1000px;height:100%;margin:0 auto;padding:20px 0;text-align:center}
 #content a {color:#0283de;text-decoration:none}
 #contentInner {display:table-cell;vertical-align:middle;font-size:18px;padding:0 7px}
-.right, .left {display:table-cell}
+.right, .left {display:table-cell;width:33%;float:right;text-align:right}
 #content.fullwidth {width:100%}
 .innerDiv {max-width:1000px;width:100%;margin:10px auto;padding:0 7px}
+.innerDiv h2 {text-align:center}
 .innerDiv img {width:100%;height:auto;vertical-align:bottom}
-.spaceDiv {width:100%;height:30px;background-color:#FFF}
+.spaceDiv {width:100%;min-height:30px;background-color:#FFF}
 /* NOT FOUND PAGE */
+.notfound .right, .notfound .left {float:none}
 .notfound .right {width:30%}
-.notfound .left {width:70%;text-align:right;padding-right:5px}
+.notfound .left {width:70%;padding-right:5px}
 .notfound img {vertical-align:middle;width:100%;height:auto}
 /* HOME PAGE */
 .home {direction:ltr}
@@ -111,13 +113,14 @@ main p {font-size:17px;margin:5px 0}
 .board li:last-child {margin:0}
 .board img {max-width:800px;width:100%;height:auto}
 /* PRIVATE PAGE */
-.private #contentInner > ul {text-align:right;list-style:none;margin:0;padding:0}
+.private #contentInner > ul {list-style:none;margin:0;padding:0}
 /* FORMS */
 fieldset {min-width:250px;border:0;background-color:#FFF;padding:10px;text-align:right}
 fieldset h3 {font-size:30px;text-align:right;margin:0}
 fieldset input, fieldset textarea {font-family:trashim;width:100%;background-color:#EEE;color:#999;border:1px solid #999;display:block;padding:5px;margin:5px 0}
 fieldset textarea {resize:vertical;overflow:auto;height:auto;min-height:115px}
 fieldset input[type="submit"] {width:auto;float:left;cursor:pointer;min-width:100px}
+.mce-container {margin:5px 0 !important}
 .inline-form div {float:right;width:25%;padding-left:10px}
 .inline-form div.nopadding {padding-left:0}
 @media all and (max-width:500px)

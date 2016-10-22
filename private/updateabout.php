@@ -72,12 +72,12 @@ if ($row)
 	else
 		list($width, $height) = getimagesize($_SERVER['DOCUMENT_ROOT'] . '/images/pages/' . $row['image']);
 	echo '<a href="/images/pages/' . $row['image'] . '" class="imageModal" title="הצג תמונה נוכחית" data-width="' . $width . '" data-height="' . $height . '">הצג תמונה נוכחית</a>
-<input type="file" name="image" accept="image/*" placeholder="בחר תמונה">';
+<input type="file" name="image" accept="image/*">';
 }
 else
 {
 	echo 'הוסף תמונה חדשה
-<input type="file" name="image" accept="image/*" required placeholder="בחר תמונה" title="חובה לבחור תמונה.">';
+<input type="file" name="image" accept="image/*" required title="בחר תמונה">';
 }
 ?>
 <input type="url" name="link" placeholder="קישור (אם יש)" value="<?php echo (empty($validation) ? ($row ? $row['imageLink'] : '') : $_POST['link']); ?>">
