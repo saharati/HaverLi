@@ -41,6 +41,13 @@
 <li><a title="עדכון תמונות" href="/private/updateboard.php">עדכון תמונות</a></li>
 </ul>
 </li>
+<li>
+<h2>צור קשר</h2>
+<ul>
+<li><a title="הוספת דרכי תקשורת" href="/private/addcontact.php">הוספת דרכי תקשורת</a></li>
+<li><a title="עדכון דרכי תקשורת" href="/private/updatecontact.php">עדכון דרכי תקשורת</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="left">

@@ -33,10 +33,12 @@ if (isset($_POST['name'], $_POST['phone'], $_POST['city'], $_POST['email'], $_PO
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 <fieldset class="inline-form">
 <h3>צור קשר</h3>
-<div><input type="text" name="name" required placeholder="שם" title="אנא מלא את שמך" <?php if (!empty($validation)) echo 'value="' . $_POST['name'] . '"'; ?>></div>
-<div><input type="tel" name="phone" required placeholder="טלפון" title="אנא מלא מספר טלפון" <?php if (!empty($validation)) echo 'value="' . $_POST['phone'] . '"'; ?>></div>
-<div><input type="text" name="city" required placeholder="עיר" title="אנא מלא את עיר מגורך" <?php if (!empty($validation)) echo 'value="' . $_POST['city'] . '"'; ?>></div>
-<div class="nopadding"><input type="email" name="email" required placeholder="אימייל" title="אנא הזן אימייל" <?php if (!empty($validation)) echo 'value="' . $_POST['email'] . '"'; ?>></div>
+<div class="clearfix">
+<div class="small"><input type="text" name="name" required placeholder="שם" title="אנא מלא את שמך" <?php if (!empty($validation)) echo 'value="' . $_POST['name'] . '"'; ?>></div>
+<div class="small"><input type="tel" name="phone" required placeholder="טלפון" title="אנא מלא מספר טלפון" <?php if (!empty($validation)) echo 'value="' . $_POST['phone'] . '"'; ?>></div>
+<div class="small"><input type="text" name="city" required placeholder="עיר" title="אנא מלא את עיר מגורך" <?php if (!empty($validation)) echo 'value="' . $_POST['city'] . '"'; ?>></div>
+<div class="small nopadding"><input type="email" name="email" required placeholder="אימייל" title="אנא הזן אימייל" <?php if (!empty($validation)) echo 'value="' . $_POST['email'] . '"'; ?>></div>
+</div>
 <textarea name="content" required placeholder="תוכן" title="אנא הזן את תוכן ההודעה"><?php if (!empty($validation)) echo $_POST['content']; ?></textarea>
 <input type="submit" value="שליחה">
 </fieldset>

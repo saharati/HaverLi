@@ -77,7 +77,7 @@ $(document).ready(function()
 	if (slider)
 	{
 		slider.bxSlider({
-			slideWidth: 290,
+			slideWidth: 400,
 			minSlides: 2,
 			maxSlides: 3,
 			moveSlides: 3,
