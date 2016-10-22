@@ -16,18 +16,13 @@ $result->free();
 if ($row)
 	echo '<div class="innerDiv"><h2>תרומות</h2>' . $row['donateText'] . '</div>';
 echo '<div class="spaceDiv">';
-$result = $mysqli->query('SELECT image, image2, imageLink FROM help_image ORDER BY imageOrder');
+$result = $mysqli->query('SELECT image, image2 FROM help_image ORDER BY imageOrder');
 if ($result->num_rows)
 {
 	echo '<div class="innerDiv">';
 	$width = floor(100 / $result->num_rows);
 	while ($row2 = $result->fetch_assoc())
-	{
-		if (empty($row2['imageLink']))
-			echo '<img style="width:' . $width . '%" src="/images/help/' . $row2['image'] . '" alt="" data-src="/images/help/' . $row2['image2'] . '" onmouseover="toggleSrc(this);" onmouseout="toggleSrc(this);">';
-		else
-			echo '<a href="' . $row2['imageLink'] . '"><img style="width:' . $width . '%" alt="" src="/images/help/' . $row2['image'] . '" data-src="/images/help/' . $row2['image2'] . '" onmouseover="toggleSrc(this);" onmouseout="toggleSrc(this);"></a>';
-	}
+		echo '<img style="width:' . $width . '%" src="/images/help/' . $row2['image'] . '" alt="" data-src="/images/help/' . $row2['image2'] . '" onmouseover="toggleSrc(this);" onmouseout="toggleSrc(this);">';
 	echo '</div>';
 }
 $result->free();

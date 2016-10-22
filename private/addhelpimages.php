@@ -1,6 +1,6 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/private/authenticate.php';
-if (isset($_POST['order'], $_POST['link'], $_FILES['image'], $_FILES['image2']))
+if (isset($_POST['order'], $_FILES['image'], $_FILES['image2']))
 {
 	$validation = array();
 	$_POST = sanitize($_POST);
@@ -14,8 +14,6 @@ if (isset($_POST['order'], $_POST['link'], $_FILES['image'], $_FILES['image2']))
 		if ($row)
 			$validation['orderEmpty'] = 'המיקום שהוזן כבר קיים, יש לבחור מיקום אחר.';
 	}
-	if (!empty($_POST['link']) && !filter_var($_POST['link'], FILTER_VALIDATE_URL))
-		$validation['linkwrong'] = 'הקישור שהוזן לא תקין.';
 	if (empty($_FILES['image']['name']))
 		$validation['imageempty'] = 'חובה להוסיף תמונה ראשית.';
 	else
@@ -56,8 +54,8 @@ if (isset($_POST['order'], $_POST['link'], $_FILES['image'], $_FILES['image2']))
 		$image_name2 = mt_rand(1, time()) . time() . '.' . $file_type2;
 		$new_name2 = $_SERVER['DOCUMENT_ROOT'] . '/images/help/' . $image_name2;
 		move_uploaded_file($_FILES['image2']['tmp_name'], $new_name2);
-		$stmt = $mysqli->prepare('INSERT INTO help_image VALUES (?, ?, ?, ?)');
-		$stmt->bind_param('isss', $_POST['order'], $image_name, $image_name2, $_POST['link']);
+		$stmt = $mysqli->prepare('INSERT INTO help_image VALUES (?, ?, ?)');
+		$stmt->bind_param('iss', $_POST['order'], $image_name, $image_name2);
 		$stmt->execute();
 		$stmt->close();
 	}
@@ -81,7 +79,6 @@ if (isset($_POST['order'], $_POST['link'], $_FILES['image'], $_FILES['image2']))
 <input type="file" name="image" accept="image/*" required title="בחר תמונה ראשית">
 תמונה משנית
 <input type="file" name="image2" accept="image/*" required title="בחר תמונה משנית">
-<input type="url" name="link" placeholder="קישור (אם יש)" <?php if (!empty($validation)) echo 'value="' . $_POST['link'] . '"'; ?>>
 <input type="submit" value="הוסף תמונה">
 </fieldset>
 </form>

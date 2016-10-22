@@ -8,7 +8,7 @@ if (!$row2)
 	header('Location: /private');
 	exit;
 }
-if (isset($_POST['order'], $_POST['link'], $_FILES['image'], $_FILES['image2']))
+if (isset($_POST['order'], $_FILES['image'], $_FILES['image2']))
 {
 	$validation = array();
 	$_POST = sanitize($_POST);
@@ -22,8 +22,6 @@ if (isset($_POST['order'], $_POST['link'], $_FILES['image'], $_FILES['image2']))
 		if ($row)
 			$validation['orderEmpty'] = 'המיקום שהוזן כבר קיים, יש לבחור מיקום אחר.';
 	}
-	if (!empty($_POST['link']) && !filter_var($_POST['link'], FILTER_VALIDATE_URL))
-		$validation['linkwrong'] = 'הקישור שהוזן לא תקין.';
 	if (!empty($_FILES['image']['name']))
 	{
 		$file_type = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
@@ -72,8 +70,8 @@ if (isset($_POST['order'], $_POST['link'], $_FILES['image'], $_FILES['image2']))
 			$new_name2 = $_SERVER['DOCUMENT_ROOT'] . '/images/help/' . $image_name2;
 			move_uploaded_file($_FILES['image2']['tmp_name'], $new_name2);
 		}
-		$stmt = $mysqli->prepare('UPDATE help_image SET imageOrder=?, image=?, image2=?, imageLink=? WHERE imageOrder=?');
-		$stmt->bind_param('isssi', $_POST['order'], $image_name, $image_name2, $_POST['link'], $_GET['id']);
+		$stmt = $mysqli->prepare('UPDATE help_image SET imageOrder=?, image=?, image2=?, WHERE imageOrder=?');
+		$stmt->bind_param('issi', $_POST['order'], $image_name, $image_name2, $_GET['id']);
 		$stmt->execute();
 		$stmt->close();
 		$_GET['id'] = $_POST['order'];
@@ -113,7 +111,6 @@ else
 echo '<a href="/images/help/' . $row2['image2'] . '" class="imageModal" title="הצג תמונה נוכחית" data-width="' . $width . '" data-height="' . $height . '">הצג תמונה משנית</a>';
 ?>
 <input type="file" name="image2" accept="image/*">
-<input type="url" name="link" placeholder="קישור (אם יש)" value="<?php echo (empty($validation) ? $row2['imageLink'] : $_POST['link']); ?>">
 <input type="submit" value="עדכן תמונה">
 </fieldset>
 </form>
