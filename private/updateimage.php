@@ -73,10 +73,10 @@ if (isset($_POST['order'], $_POST['link'], $_POST['text'], $_FILES['image']))
 <div id="contentInner">
 <form action="/private/updateimage.php?id=<?php echo $_GET['id']; ?>" method="post" enctype="multipart/form-data">
 <fieldset>
-<h3>עדכון תמונה</h3>
+<h3>עדכון תמונה בדף הבית</h3>
 <input type="number" name="order" min="1" max="99" placeholder="מיקום (בין 1 ל-99)" value="<?php echo (empty($validation) ? $row2['imageOrder'] : $_POST['order']); ?>">
 <?php
-if (strpos($row['image'], '.svg') !== false)
+if (strpos($row2['image'], '.svg') !== false)
 	$width = $height = 10000;
 else
 	list($width, $height) = getimagesize($_SERVER['DOCUMENT_ROOT'] . '/images/home/' . $row2['image']);

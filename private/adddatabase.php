@@ -56,7 +56,7 @@ if (isset($_POST['imageName'], $_FILES['image']))
 <div id="contentInner">
 <form action="/private/adddatabase.php" method="post" enctype="multipart/form-data">
 <fieldset>
-<h3>הוספת תמונות</h3>
+<h3>הוספת תמונות למאגר</h3>
 <input type="text" name="imageName" maxlength="45" placeholder="שם התמונה" <?php if (!empty($validation)) echo 'value="' . $_POST['imageName'] . '"'; ?>>
 <input type="file" name="image" accept="image/*" required placeholder="בחר תמונה" title="חובה לבחור תמונה">
 <input type="submit" value="הוסף תמונה">

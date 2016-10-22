@@ -11,7 +11,20 @@ tinymce.init({
 	toolbar: 'undo redo | styleselect | bold italic underline forecolor fontsizeselect | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
 	image_list: '/private/ajax/imagelist.php',
 	fontsize_formats: '8pt 10pt 12pt 14pt 18pt 24pt 36pt',
-	min_height: 200
+	min_height: 200,
+	setup: function(editor){
+		editor.on('init', function(args){
+			editor = args.target;
+	        editor.on('NodeChange', function(e){
+	        	if (e && e.element.nodeName.toLowerCase() == 'img'){
+	        		width = e.element.width;
+	        		height = e.element.height;
+	        		tinyMCE.DOM.setAttribs(e.element, {'width': null, 'height': null});
+	        		tinyMCE.DOM.setAttribs(e.element, {'style': 'width:' + width + 'px; height:' + height + 'px;vertical-align:baseline'});
+	        	}
+	        });
+		});
+	}
 });
 // SWITCH BETWEEN MOBILE AND DESKTOP MENUS.
 function switchContent()

@@ -16,8 +16,19 @@ $result->free();
 if ($row)
 {
 	echo '<div class="innerDiv">' . $row['description'] . '</div>
-<div class="spaceDiv"></div>
-<div class="innerDiv">';
+<div class="spaceDiv"></div>';
+}
+
+echo '<div class="innerDiv">
+<h2>מתנדבי העמותה</h2>
+<p>כל פעילי העמותה עובדים בהתנדבות ושכרם הוא הסיפוק שבמציאת בתים טובים לכלבים ובקריאת מכתבי התודה שאנחנו מקבלים.</p>';
+// $result = $mysqli->query('');
+// TODO
+echo '</div>
+<div class="spaceDiv"></div>';
+if ($row)
+{
+	echo '<div class="innerDiv">';
 	if (empty($row['imageLink']))
 		echo '<img src="/images/pages/' . $row['image'] . '" alt="">';
 	else

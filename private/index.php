@@ -33,6 +33,13 @@
 </ul>
 </li>
 <li>
+<h2>לוח מודעות</h2>
+<ul>
+<li><a title="הוספת תמונות" href="/private/addboard.php">הוספת תמונות</a></li>
+<li><a title="עדכון תמונות" href="/private/updateboard.php">עדכון תמונות</a></li>
+</ul>
+</li>
+<li>
 <h2>מאגר תמונות</h2>
 <ul>
 <li><a title="הוספת תמונות" href="/private/adddatabase.php">הוספת תמונות</a></li>

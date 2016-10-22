@@ -7,23 +7,21 @@
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php'; ?>
 <main>
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/mobile.php'; ?>
-<div id="content" class="home fullwidth">
+<div id="content" class="board">
 <div id="contentInner">
 <?php
-$result = $mysqli->query('SELECT image, imageLink, imageCaption FROM home ORDER BY imageOrder');
+$result = $mysqli->query('SELECT image, imageLink FROM board ORDER BY imageOrder');
 if ($result->num_rows)
 {
-	echo '<ul class="bxslider">';
+	echo '<ul>';
 	while ($row = $result->fetch_assoc())
 	{
-		echo '<li><div>';
+		echo '<li>';
 		if (empty($row['imageLink']))
-			echo '<img src="/images/home/' . $row['image'] . '" alt="">';
+			echo '<img src="/images/board/' . $row['image'] . '" alt="">';
 		else
-			echo '<a href="' . $row['imageLink'] . '"><img src="/images/home/' . $row['image'] . '" alt=""></a>';
-		if (!empty($row['imageCaption']))
-			echo '<div class="bx-caption">' . $row['imageCaption'] . '</div>';
-		echo '</div></li>';
+			echo '<a href="' . $row['imageLink'] . '"><img src="/images/board/' . $row['image'] . '" alt=""></a>';
+		echo '</li>';
 	}
 	echo '</ul>';
 }

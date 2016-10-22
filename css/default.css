@@ -105,6 +105,11 @@ main p {font-size:17px;margin:5px 0}
 /* ABOUT PAGE */
 #content.about {text-align:right;max-width:none;padding:0}
 #content.about #contentInner {padding:0}
+/* BOARD PAGE */
+.board ul {list-style:none;margin:0;padding:0}
+.board li {margin:0 0 15px 0;padding:0}
+.board li:last-child {margin:0}
+.board img {max-width:800px;width:100%;height:auto}
 /* PRIVATE PAGE */
 .private #contentInner > ul {text-align:right;list-style:none;margin:0;padding:0}
 /* FORMS */

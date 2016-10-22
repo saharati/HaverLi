@@ -10,6 +10,14 @@ if (isset($_POST['username'], $_POST['password']))
 		$validation['usernamelong'] = 'שם המשתמש לא יכול להכיל יותר מ-50 תווים.';
 	elseif (!filter_var($_POST['username'], FILTER_VALIDATE_EMAIL))
 		$validation['usernamewrong'] = 'שם משתמש חייב להיות אימייל.';
+	else
+	{
+		$result = $mysqli->query('SELECT username FROM user WHERE username="' . $mysqli->real_escape_string($_POST['username']) . '"');
+		$row = $result->fetch_assoc();
+		$result->free();
+		if ($row)
+			$validation['usernameexist'] = 'קיים כבר משתמש עם אימייל זה.';
+	}
 	if (empty($_POST['password']))
 		$validation['passwordempty'] = 'יש להזין סיסמה.';
 	if (empty($validation))

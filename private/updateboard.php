@@ -5,13 +5,13 @@ if (isset($_GET['del']))
 	$_GET['del'] = sanitize($_GET['del']);
 	if (is_numeric($_GET['del']) && $_GET['del'] > 0 && $_GET['del'] < 100)
 	{
-		$result = $mysqli->query('SELECT image FROM home WHERE imageOrder=' . $_GET['del']);
+		$result = $mysqli->query('SELECT image FROM board WHERE imageOrder=' . $_GET['del']);
 		$row = $result->fetch_assoc();
 		$result->free();
 		if ($row)
 		{
-			unlink($_SERVER['DOCUMENT_ROOT'] . '/images/home/' . $row['image']);
-			$mysqli->query('DELETE FROM home WHERE imageOrder=' . $_GET['del']);
+			unlink($_SERVER['DOCUMENT_ROOT'] . '/images/board/' . $row['image']);
+			$mysqli->query('DELETE FROM board WHERE imageOrder=' . $_GET['del']);
 		}
 	}
 }
@@ -26,23 +26,22 @@ if (isset($_GET['del']))
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/mobile.php'; ?>
 <div id="content" class="fullwidth">
 <div id="contentInner">
-<h2>עדכון תמונות בדף הבית</h2>
+<h2>עדכון תמונות בלוח מודעות</h2>
 <table class="sortable">
-<thead><tr><th>מיקום</th><th>תמונה</th><th>עריכה</th><th>מחיקה</th></tr></thead>
+<thead><tr><th>מיקום</th><th>תמונה</th><th>מחיקה</th></tr></thead>
 <tbody>
 <?php
-$result = $mysqli->query('SELECT imageOrder, image FROM home ORDER BY imageOrder');
+$result = $mysqli->query('SELECT imageOrder, image FROM board ORDER BY imageOrder');
 while ($row = $result->fetch_assoc())
 {
 	if (strpos($row['image'], '.svg') !== false)
 		$width = $height = 10000;
 	else
-		list($width, $height) = getimagesize($_SERVER['DOCUMENT_ROOT'] . '/images/home/' . $row['image']);
+		list($width, $height) = getimagesize($_SERVER['DOCUMENT_ROOT'] . '/images/board/' . $row['image']);
 	echo '<tr>
 <input type="hidden" value="' . $row['imageOrder'] . '">
 <td data-label="מיקום">' . $row['imageOrder'] . ' <a class="edit" href="javascript:void(0);" onclick="edit(this.parentNode);" title="עריכה">✎</a></td>
-<td data-label="תמונה"><a class="imageModal" href="/images/home/' . $row['image'] . '" data-width="' . $width . '" data-height="' . $height . '"><img src="/images/home/' . $row['image'] . '"></a></td>
-<td data-label="עריכה"><a title="עריכה" href="/private/updateimage.php?id=' . $row['imageOrder'] . '">עריכה</a></td>
+<td data-label="תמונה"><a class="imageModal" href="/images/board/' . $row['image'] . '" data-width="' . $width . '" data-height="' . $height . '"><img src="/images/board/' . $row['image'] . '"></a></td>
 <td data-label="מחיקה"><a title="מחיקה" href="javascript:void(0);" onclick="del(' . $row['imageOrder'] . ');">מחיקה</a></a></td>
 </tr>';
 }
@@ -72,7 +71,7 @@ function del(num)
 		},
 		function()
 		{
-			self.location.href = '/private/updateimages.php?del=' + num;
+			self.location.href = '/private/updateboard.php?del=' + num;
 		}
 	);
 }
@@ -90,7 +89,7 @@ function save(node)
 	
 	var id = node.parentNode.getElementsByTagName('input')[0].value;
 	var http = new XMLHttpRequest();
-	http.open('POST', '/private/ajax/updateimages.php', true);
+	http.open('POST', '/private/ajax/updateboard.php', true);
 	http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	http.onreadystatechange = function()
 	{
