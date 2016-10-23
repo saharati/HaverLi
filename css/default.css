@@ -151,7 +151,7 @@ main h4 {font-size:17px;margin:10px 0 0;text-decoration:underline}
 /* FORMS */
 fieldset {border:0;background-color:#FFF;padding:10px;text-align:right}
 fieldset h3 {font-size:30px;text-align:right;margin:0}
-fieldset input, fieldset textarea {font-family:trashim;width:100%;background-color:#EEE;color:#999;border:1px solid #999;display:block;padding:5px;margin:5px 0}
+fieldset input, fieldset textarea, fieldset select {font-family:trashim;width:100%;background-color:#EEE;color:#999;border:1px solid #999;display:block;padding:5px;margin:5px 0}
 fieldset textarea {resize:vertical;overflow:auto;height:auto;min-height:115px}
 fieldset input[type="submit"] {width:auto;float:left;cursor:pointer;min-width:100px}
 .mce-container {margin:5px 0 !important}
@@ -160,6 +160,21 @@ fieldset input[type="submit"] {width:auto;float:left;cursor:pointer;min-width:10
 @media all and (max-width:500px)
 {
 	.inline-form .small {float:none;width:100% !important;padding-left:0}
+}
+/* SOCIAL */
+#social {text-align:center}
+#social ul {display:inline-block;list-style:none;margin:20px 0 0;padding:0}
+#social li {position:relative;padding-right:30px;text-align:right;display:inline-block;margin-left:30px;margin-bottom:10px}
+#social li::before {content:"";width:22px;height:22px;background-size:22px 22px;display:block;position:absolute;top:-2px;right:0}
+#social li:last-child {margin-left:0}
+#social a {color:#000}
+.send::before {background-image:url(/images/envelope.svg)}
+.share::before {background-image:url(/images/share.svg)}
+.addwish::before {background-image:url(/images/addwish.svg)}
+.virtualadopt::before {background-image:url(/images/virtualadopt.svg)}
+@media all and (max-width:680px)
+{
+	#social li {display:block}
 }
 /* MODAL */
 .imageModal img {transition:0.3s}

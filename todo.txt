@@ -11,5 +11,7 @@ Usefull links:
 * http://stackoverflow.com/questions/25668771/track-basic-html-form-post-progress
 * https://www.developphp.com/video/JavaScript/File-Upload-Progress-Bar-Meter-Tutorial-Ajax-PHP
 * https://robertnyman.com/html5/fileapi-upload/fileapi-upload.html
-Slideshow:
-* http://bxslider.com/examples/thumbnail-pager-1
+
+pet.php
+* Virtual Adopt.
+* Add to wishlist.

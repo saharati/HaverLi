@@ -54,6 +54,13 @@
 <div class="left">
 <ul>
 <li>
+<h2>גזעים</h2>
+<ul>
+<li><a title="הוספת גזעים" href="/private/addbreeds.php">הוספת גזעים</a></li>
+<li><a title="עדכון גזעים" href="/private/updatebreeds.php">עדכון גזעים</a></li>
+</ul>
+</li>
+<li>
 <h2>מאגר תמונות</h2>
 <ul>
 <li><a title="הוספת תמונות" href="/private/adddatabase.php">הוספת תמונות</a></li>

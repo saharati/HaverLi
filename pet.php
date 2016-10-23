@@ -5,13 +5,18 @@ if (!isset($_GET['page']) || !is_numeric($_GET['page']) || $_GET['page'] < 0)
 	exit;
 }
 require $_SERVER['DOCUMENT_ROOT'] . '/includes/config.php';
+$result = $mysqli->query('SELECT name, description, isDog, isMale, breedId, size, bornDate FROM album WHERE id=' . $_GET['page']);
+$row = $result->fetch_assoc();
+$result->free();
+if (!$row)
+{
+	header('Location: /notfound');
+	exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="he">
 <?php
-$result = $mysqli->query('SELECT name, description, isDog, isMale, breedId, size, bornDate FROM album WHERE id=' . $_GET['page']);
-$row = $result->fetch_assoc();
-$result->free();
 $page_title = ($row['isDog'] == 1 ? 'כלבים לאימוץ' : 'חתולים לאימוץ') . ' - ' . $row['name'];
 $page_description = str_replace(array('<br>', "\r", "\n"), array(' ', '', ''), $row['description']);
 $page_url = 'http://v2.imutz.org/pet-' . $_GET['page'];
@@ -83,6 +88,14 @@ echo '<br>
 <div class="spaceDiv"></div>
 <div class="innerDiv petDescr">
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/contact.php'; ?>
+<div id="social">
+<ul>
+<li class="send"><a title="שלח לחבר" href="send-<?php echo $_GET['page']; ?>">שלח לחבר</a></li>
+<li class="share"><a title="שתף בפייסבוק" href="javascript:void(0);" onclick="window.open('http://www.facebook.com/share.php?u=<?php echo $page_url; ?>' , 'sharer', 'toolbar=0, status=0, width=675, height=475');">שתף</a></li>
+<li class="addwish">הוסף לרשימת המשאלות</li>
+<li class="virtualadopt">אימוץ וירטואלי</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
