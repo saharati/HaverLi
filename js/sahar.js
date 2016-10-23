@@ -81,26 +81,6 @@ $(document).ready(function()
 	// SWAL POPUP, IF ANY.
 	var saharSwal = document.getElementsByClassName('sweet-alert')[0];
 	
-	// INITIALIZE BXSLIDER, IF ANY.
-	var slider = $('.bxslider');
-	if (slider)
-	{
-		slider.bxSlider({
-			slideWidth: 400,
-			minSlides: 2,
-			maxSlides: 3,
-			moveSlides: 3,
-			slideMargin: 15,
-			pager: false,
-			nextText: 'הבא',
-			prevText: 'הקודם',
-			auto: true,
-			pause: 6000,
-			autoHover: true,
-			shrinkItems: true
-		});
-	}
-	
 	// INITIALIZE MODALS, IF ANY.
 	var modals = document.getElementsByClassName('imageModal');
 	if (modals.length > 0)

@@ -1,34 +1,15 @@
-Pages:
-* Homepage - Only rotating images.
-* About - Activity and volunteers.
-* Adopt - How to Adopt - Explains about adopting, pricing and matching.
-* Adopt - Dogs - Albums of dogs with names below each image.
-* Adopt - Cats - Albums of cats with names below each image.
-* Pet - Pictures of pet, video (if any), contact, social.
-* Help - Explains on donations, volunteer, foster and virtual adoption.
-* Board - Posts as images only.
-* Info - Adopter Info - Proccess, pricing and matching.
-* Info - Articles - Health, diet, sterelizing and behaviour.
-* Info - Recommandations - Haircuts, vets, training, play grounds, traveling and hotels.
-* Info - Help! lost dog.
-* Contact
-Links:
-* http://www.cubica.co.il/new-clothes
 Stuff to do when finished:
 * Delete v2.imutz.org from cloudflare and kloxo.
 * Remove "v2" from $page_url and $page_image in head.php.
 * Remove "v2" from forgot.php.
 * Remove "v2" from login.php.
-* Validate the whole site.
 * Add forward from support@imutz.org to puah.
 * Delete transfer.php script.
+* Delete this file.
 Usefull links:
-* http://1stwebdesigner.com/css-image-effects/
-* http://zurb.com/playground/css3-polaroids
-* https://designshack.net/articles/css/4-fun-css-image-effects-you-can-copy-and-paste/
 * https://www.google.co.il/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=form+submit+progress+bar+html5
 * http://stackoverflow.com/questions/25668771/track-basic-html-form-post-progress
 * https://www.developphp.com/video/JavaScript/File-Upload-Progress-Bar-Meter-Tutorial-Ajax-PHP
 * https://robertnyman.com/html5/fileapi-upload/fileapi-upload.html
 Slideshow:
-* http://bxslider.com/examples/carousel-demystified
+* http://bxslider.com/examples/thumbnail-pager-1
