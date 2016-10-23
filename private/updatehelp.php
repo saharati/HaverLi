@@ -1,66 +1,66 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/private/authenticate.php';
-$result = $mysqli->query('SELECT * FROM help');
-$row = $result->fetch_assoc();
+$result = $mysqli->query('SELECT * FROM help WHERE position=' . $_GET['id']);
+$row2 = $result->fetch_assoc();
 $result->free();
-if (isset($_POST['donateText'], $_POST['adoptText'], $_POST['volunteerText'], $_POST['fosterText'], $_FILES['image']))
+if (!$row2)
+{
+	header('Location: /private');
+	exit;
+}
+if (isset($_POST['order'], $_POST['name'], $_POST['text'], $_FILES['image']))
 {
 	$validation = array();
-	if (empty($_POST['donateText']))
-		$validation['donatetextempty'] = 'חובה להזין טקסט לתרומות.';
-	if (empty($_POST['adoptText']))
-		$validation['adopttextempty'] = 'חובה להזין טקסט לאימוץ.';
-	if (empty($_POST['volunteerText']))
-		$validation['volunteertextempty'] = 'חובה להזין טקסט למתנדבים.';
-	if (empty($_POST['fosterText']))
-		$validation['fostertextempty'] = 'חובה להזין טקסט לאומנות.';
-	$file_types = array();
-	for ($i = 0;$i < 4;$i++)
+	$_POST = sanitize($_POST);
+	$_POST['text'] = htmlspecialchars_decode($_POST['text'], ENT_QUOTES);
+	if (empty($_POST['order']) || !is_numeric($_POST['order']) || $_POST['order'] < 1 || $_POST['order'] > 99)
+		$validation['orderEmpty'] = 'המיקום חייב להיות מספר בין 1 ל-99.';
+	elseif ($_POST['order'] != $_GET['id'])
 	{
-		if (!$row && empty($_FILES['image']['name'][$i]))
-			$validation['imageempty'] = 'חובה להוסיף את כל התמונות.';
-		elseif (!empty($_FILES['image']['name'][$i]))
+		$result = $mysqli->query('SELECT position FROM help WHERE position=' . $_POST['order']);
+		$row = $result->fetch_assoc();
+		$result->free();
+		if ($row)
+			$validation['orderEmpty'] = 'המיקום שהוזן כבר קיים, יש לבחור מיקום אחר.';
+	}
+	if (empty($_POST['name']))
+		$validation['nameempty'] = 'יש להזין כותרת.';
+	elseif (mb_strlen($_POST['name']) > 45)
+		$validation['namelong'] = 'הכותרת לא יכולה להכיל יותר מ-45 תווים.';
+	if (empty($_POST['text']))
+		$validation['textempty'] = 'יש להזין תוכן.';
+	if (!empty($_FILES['image']['name']))
+	{
+		$file_type = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
+		if ($file_type != 'jpg' && $file_type != 'png' && $file_type != 'jpeg' && $file_type != 'gif' && $file_type != 'svg')
+			$validation['imagewrong'] = 'התמונה חייבת להיות אחת מהסוגים: JPG, JPEG, PNG, GIF, SVG.';
+		elseif ($_FILES['image']['type'] != 'image/jpeg' && $_FILES['image']['type'] != 'image/pjpeg' && $_FILES['image']['type'] != 'image/png' && $_FILES['image']['type'] != 'image/gif' && $_FILES['image']['type'] != 'image/svg+xml')
+			$validation['imagewrong'] = 'התמונה חייבת להיות אחת מהסוגים: JPG, JPEG, PNG, GIF, SVG.';
+		else
 		{
-			$file_type = strtolower(pathinfo($_FILES['image']['name'][$i], PATHINFO_EXTENSION));
-			if ($file_type != 'jpg' && $file_type != 'png' && $file_type != 'jpeg' && $file_type != 'gif' && $file_type != 'svg')
-				$validation['imagewrong'] = 'התמונה חייבת להיות אחת מהסוגים: JPG, JPEG, PNG, GIF, SVG.';
-			elseif ($_FILES['image']['type'][$i] != 'image/jpeg' && $_FILES['image']['type'][$i] != 'image/pjpeg' && $_FILES['image']['type'][$i] != 'image/png' && $_FILES['image']['type'][$i] != 'image/gif' && $_FILES['image']['type'][$i] != 'image/svg+xml')
-				$validation['imagewrong'] = 'התמונה חייבת להיות אחת מהסוגים: JPG, JPEG, PNG, GIF, SVG.';
-			else
-			{
-				$image_size = getimagesize($_FILES['image']['tmp_name'][$i]);
-				if ($image_size === false && $file_type != 'svg')
-					$validation['imagewrong'] = 'הקובץ חייב להיות תמונה.';
-				else
-					$file_types[$_FILES['image']['name'][$i]] = $file_type;
-			}
+			$image_size = getimagesize($_FILES['image']['tmp_name']);
+			if ($image_size === false && $file_type != 'svg')
+				$validation['imagewrong'] = 'הקובץ חייב להיות תמונה.';
 		}
 	}
 	if (empty($validation))
 	{
-		$image_names = array();
-		for ($i = 0;$i < 4;$i++)
-		{
-			if (empty($_FILES['image']['name'][$i]))
-				$image_names[] = $row['image' . ($i + 1)];
-			else
-			{
-				if ($row)
-					unlink($_SERVER['DOCUMENT_ROOT'] . '/images/pages/' . $row['image' . $i]);
-				$image_names[] = mt_rand(1, time()) . time() . '.' . $file_types[$_FILES['image']['name'][$i]];
-				$new_name = $_SERVER['DOCUMENT_ROOT'] . '/images/pages/' . $image_names[$i];
-				move_uploaded_file($_FILES['image']['tmp_name'][$i], $new_name);
-			}
-		}
-		if ($row)
-			$stmt = $mysqli->prepare('UPDATE help SET donateText=?, adoptText=?, volunteerText=?, fosterText=?, image1=?, image2=?, image3=?, image4=?');
+		if (empty($_FILES['image']['name']))
+			$image_name = $row2['image'];
 		else
-			$stmt = $mysqli->prepare('INSERT INTO help VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
-		$stmt->bind_param('ssssssss', $_POST['donateText'], $_POST['adoptText'], $_POST['volunteerText'], $_POST['fosterText'], $image_names[0], $image_names[1], $image_names[2], $image_names[3]);
+		{
+			unlink($_SERVER['DOCUMENT_ROOT'] . '/images/pages/' . $row2['image']);
+			$image_name = mt_rand(1, time()) . time() . '.' . $file_type;
+			$new_name = $_SERVER['DOCUMENT_ROOT'] . '/images/pages/' . $image_name;
+			move_uploaded_file($_FILES['image']['tmp_name'], $new_name);
+		}
+		$stmt = $mysqli->prepare('UPDATE help SET position=?, title=?, caption=?, image=? WHERE position=?');
+		$stmt->bind_param('isssi', $_POST['order'], $_POST['name'], $_POST['text'], $image_name, $_GET['id']);
 		$stmt->execute();
 		$stmt->close();
-		$result = $mysqli->query('SELECT * FROM help');
-		$row = $result->fetch_assoc();
+		$_GET['id'] = $_POST['order'];
+		$result = $mysqli->query('SELECT * FROM help WHERE position=' . $_GET['id']);
+		$row2 = $result->fetch_assoc();
 		$result->free();
 	}
 }
@@ -75,57 +75,24 @@ if (isset($_POST['donateText'], $_POST['adoptText'], $_POST['volunteerText'], $_
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/mobile.php'; ?>
 <div id="content">
 <div id="contentInner">
-<form action="/private/updatehelp.php" method="post" enctype="multipart/form-data">
+<form action="/private/updatehelp.php?id=<?php echo $_GET['id']; ?>" method="post" enctype="multipart/form-data">
 <fieldset>
-<h3>עדכון תוכן לאיך ניתן לעזור</h3>
-<textarea class="tinymce" name="donateText" placeholder="טקסט לתרומות"><?php echo (empty($validation) ? ($row ? $row['donateText'] : '') : $_POST['donateText']); ?></textarea>
-<textarea class="tinymce" name="adoptText" placeholder="טקסט לאימוץ וירטואלי"><?php echo (empty($validation) ? ($row ? $row['adoptText'] : '') : $_POST['adoptText']); ?></textarea>
-<textarea class="tinymce" name="volunteerText" placeholder="טקסט למתנדבים"><?php echo (empty($validation) ? ($row ? $row['volunteerText'] : '') : $_POST['volunteerText']); ?></textarea>
-<textarea class="tinymce" name="fosterText" placeholder="טקסט לאומנות"><?php echo (empty($validation) ? ($row ? $row['fosterText'] : '') : $_POST['fosterText']); ?></textarea>
+<h3>עדכון תוכן באיך ניתן לעזור</h3>
+<input type="number" name="order" min="1" max="99" required placeholder="מיקום (בין 1 ל-99)" value="<?php echo (empty($validation) ? $row2['position'] : $_POST['order']); ?>">
+<input type="text" name="name" placeholder="כותרת" required maxlength="45" value="<?php echo (empty($validation) ? $row2['title'] : $_POST['name']); ?>">
 <?php
-if ($row)
-{
-	for ($i = 1;$i <= 4;$i++)
-	{
-		switch ($i)
-		{
-			case 1:
-				$text = 'ראשונה';
-				break;
-			case 2:
-				$text = 'שנייה';
-				break;
-			case 3:
-				$text = 'שלישית';
-				break;
-			case 4:
-				$text = 'רביעית';
-				break;
-		}
-		if (strpos($row['image' . $i], '.svg') !== false)
-			$width = $height = 10000;
-		else
-			list($width, $height) = getimagesize($_SERVER['DOCUMENT_ROOT'] . '/images/pages/' . $row['image' . $i]);
-		echo '<a href="/images/pages/' . $row['image' . $i] . '" class="imageModal" title="הצג תמונה נוכחית" data-width="' . $width . '" data-height="' . $height . '">הצג תמונה ' . $text . '</a>
-<input type="file" name="image[]" accept="image/*">';
-	}
-}
+if (strpos($row2['image'], '.svg') !== false)
+	$width = $height = 10000;
 else
-{
-	echo 'הוסף תמונה ראשונה
-<input type="file" name="image[]" accept="image/*" required title="בחר תמונה ראשונה">
-הוסף תמונה שנייה
-<input type="file" name="image[]" accept="image/*" required title="בחר תמונה שנייה">
-הוסף תמונה שלישית
-<input type="file" name="image[]" accept="image/*" required title="בחר תמונה שלישית">
-הוסף תמונה רביעית
-<input type="file" name="image[]" accept="image/*" required title="בחר תמונה רביעית">';
-}
+	list($width, $height) = getimagesize($_SERVER['DOCUMENT_ROOT'] . '/images/pages/' . $row2['image']);
+echo '<a href="/images/pages/' . $row2['image'] . '" class="imageModal" title="הצג תמונה נוכחית" data-width="' . $width . '" data-height="' . $height . '">הצג תמונה נוכחית</a>';
 ?>
-<input type="submit" value="עדכן תוכן">
+<input type="file" name="image" accept="image/*">
+<textarea class="tinymce" name="text" placeholder="מלל"><?php echo (empty($validation) ? $row2['caption'] : $_POST['text']); ?></textarea>
+<input type="submit" value="עדכן תמונה">
 </fieldset>
 </form>
-<p><a title="חזרה לעמוד הניהול" href="/private">חזרה לעמוד הניהול</a></p>
+<p><a title="חזרה לעדכון תוכן" href="/private/updatehelppage.php">חזרה לעדכון תוכן</a></p>
 </div>
 </div>
 </main>

@@ -77,7 +77,7 @@ if (isset($_POST['order'], $_POST['name'], $_POST['text'], $_FILES['image']))
 <fieldset>
 <h3>עדכון תמונה בדף הבית</h3>
 <input type="number" name="order" min="1" max="99" placeholder="מיקום (בין 1 ל-99)" value="<?php echo (empty($validation) ? $row2['imageOrder'] : $_POST['order']); ?>">
-<input type="text" name="name" placeholder="שם המתנדב" value="<?php echo (empty($validation) ? $row2['imageName'] : $_POST['name']); ?>">
+<input type="text" name="name" placeholder="שם המתנדב" required maxlength="45" value="<?php echo (empty($validation) ? $row2['imageName'] : $_POST['name']); ?>">
 <?php
 if (strpos($row2['image'], '.svg') !== false)
 	$width = $height = 10000;

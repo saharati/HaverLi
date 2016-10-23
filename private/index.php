@@ -31,7 +31,8 @@
 <ul>
 <li><a title="הוספת תמונות" href="/private/addhelpimages.php">הוספת תמונות</a></li>
 <li><a title="עדכון תמונות" href="/private/updatehelpimages.php">עדכון תמונות</a></li>
-<li><a title="עדכון תוכן" href="/private/updatehelp.php">עדכון תוכן</a></li>
+<li><a title="הוספת תוכן" href="/private/addhelp.php">הוספת תוכן</a></li>
+<li><a title="עדכון תוכן" href="/private/updatehelppage.php">עדכון תוכן</a></li>
 </ul>
 </li>
 <li>
