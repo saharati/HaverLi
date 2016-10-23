@@ -128,6 +128,16 @@ main p {font-size:17px;margin:5px 0}
 {
 	.contact .right, .contact .left {width:100%;display:block}
 }
+/* ADOPT PAGE */
+.adopt #contentInner {vertical-align:top}
+.gallerybox {direction:ltr;display:inline-block;margin-left:10px;margin-bottom:10px}
+.gallerybox div {overflow:hidden;width:260px;height:260px}
+.gallerybox p {margin-bottom:0}
+#content .gallerybox a {color:#000}
+@media all and (max-width:480px)
+{
+	.gallerybox {margin-left:0}
+}
 /* PRIVATE PAGE */
 .private #contentInner > ul {list-style:none;margin:0;padding:0}
 /* FORMS */

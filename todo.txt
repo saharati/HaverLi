@@ -31,6 +31,4 @@ Usefull links:
 * https://www.developphp.com/video/JavaScript/File-Upload-Progress-Bar-Meter-Tutorial-Ajax-PHP
 * https://robertnyman.com/html5/fileapi-upload/fileapi-upload.html
 Slideshow:
-* http://bxslider.com/examples/custom-next-prev-selectors
 * http://bxslider.com/examples/carousel-demystified
-* http://bxslider.com/examples/ticker

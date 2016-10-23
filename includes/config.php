@@ -17,6 +17,54 @@ function sanitize($data)
 		$data = htmlspecialchars(trim(htmlspecialchars_decode($data, ENT_QUOTES)), ENT_QUOTES);
 	return $data;
 }
+function calcSize($image)
+{
+	$boxSize = 260;
+	// Resize the image so at least one of its dimensions is precicely $boxSize.
+	if ($image['width'] < $boxSize)
+	{
+		// Formula: desiredHeight = desiredWidth * (height/width)
+		$image['height'] = $boxSize * ($image['height'] / $image['width']);
+		$image['width'] = $boxSize;
+	}
+	if ($image['height'] < $boxSize)
+	{
+		// Formula: desiredWidth = desiredHeight * (width/height)
+		$image['width'] = $boxSize * ($image['width'] / $image['height']);
+		$image['height'] = $boxSize;
+	}
+	if ($image['width'] > $boxSize && $image['height'] > $boxSize)
+	{
+		// Wide image.
+		if ($image['width'] > $image['height'])
+		{
+			// Bring height to $boxSize.
+			$image['width'] = $boxSize * ($image['width'] / $image['height']);
+			$image['height'] = $boxSize;
+		}
+		else
+		{
+			// Bring width to $boxSize.
+			$image['height'] = $boxSize * ($image['height'] / $image['width']);
+			$image['width'] = $boxSize;
+		}
+	}
+	$image['style'] = 'style="';
+	// For wide/square images use width:{imageWidth};height:auto
+	// For high images use height:{imageHeight};width:auto
+	// High images first.
+	if ($image['height'] > $image['width'])
+		$image['style'] .= 'height:' . $image['height'] . 'px;width:auto;';
+	else
+		$image['style'] .= 'width:' . $image['width'] . 'px;height:auto;';
+	// Here one of the values equals to $boxSize for sure, so need to style negative margin the other to center it.
+	if ($image['width'] > $boxSize)
+		$image['style'] .= 'margin-left:-' . (round(($image['width'] - $boxSize) / 2)) . 'px"';
+	elseif ($image['height'] > $boxSize)
+		$image['style'] .= 'margin-top:-' . (round(($image['height'] - $boxSize) / 2)) . 'px"';
+	$image['style'] .= '"';
+	return $image;
+}
 function initMailer()
 {
 	require $_SERVER['DOCUMENT_ROOT'] . '/includes/mailer/PHPMailerAutoload.php';

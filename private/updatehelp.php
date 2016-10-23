@@ -42,7 +42,7 @@ if (isset($_POST['donateText'], $_POST['adoptText'], $_POST['volunteerText'], $_
 		for ($i = 0;$i < 4;$i++)
 		{
 			if (empty($_FILES['image']['name'][$i]))
-				$image_names[] = $row['image' . $i];
+				$image_names[] = $row['image' . ($i + 1)];
 			else
 			{
 				if ($row)

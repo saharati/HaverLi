@@ -1,19 +1,9 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/private/authenticate.php';
-if (isset($_POST['order'], $_FILES['image'], $_FILES['image2']))
+if (isset($_FILES['image'], $_FILES['image2']))
 {
 	$validation = array();
 	$_POST = sanitize($_POST);
-	if (empty($_POST['order']) || !is_numeric($_POST['order']) || $_POST['order'] < 1 || $_POST['order'] > 99)
-		$validation['orderEmpty'] = 'המיקום חייב להיות מספר בין 1 ל-99.';
-	else
-	{
-		$result = $mysqli->query('SELECT imageOrder FROM help_image WHERE imageOrder=' . $_POST['order']);
-		$row = $result->fetch_assoc();
-		$result->free();
-		if ($row)
-			$validation['orderEmpty'] = 'המיקום שהוזן כבר קיים, יש לבחור מיקום אחר.';
-	}
 	if (empty($_FILES['image']['name']))
 		$validation['imageempty'] = 'חובה להוסיף תמונה ראשית.';
 	else
@@ -48,16 +38,25 @@ if (isset($_POST['order'], $_FILES['image'], $_FILES['image2']))
 	}
 	if (empty($validation))
 	{
-		$image_name = mt_rand(1, time()) . time() . '.' . $file_type;
-		$new_name = $_SERVER['DOCUMENT_ROOT'] . '/images/help/' . $image_name;
-		move_uploaded_file($_FILES['image']['tmp_name'], $new_name);
-		$image_name2 = mt_rand(1, time()) . time() . '.' . $file_type2;
-		$new_name2 = $_SERVER['DOCUMENT_ROOT'] . '/images/help/' . $image_name2;
-		move_uploaded_file($_FILES['image2']['tmp_name'], $new_name2);
-		$stmt = $mysqli->prepare('INSERT INTO help_image VALUES (?, ?, ?)');
-		$stmt->bind_param('iss', $_POST['order'], $image_name, $image_name2);
-		$stmt->execute();
-		$stmt->close();
+		$result = $mysqli->query('SELECT MAX(imageOrder) imageOrder FROM help_image');
+		$row = $result->fetch_assoc();
+		$result->free();
+		if ($row['imageOrder'] == 99)
+			$validation['full'] = 'אין מקומות פנויים, נא לפנות.';
+		else
+		{
+			$row['imageOrder']++;
+			$image_name = mt_rand(1, time()) . time() . '.' . $file_type;
+			$new_name = $_SERVER['DOCUMENT_ROOT'] . '/images/help/' . $image_name;
+			move_uploaded_file($_FILES['image']['tmp_name'], $new_name);
+			$image_name2 = mt_rand(1, time()) . time() . '.' . $file_type2;
+			$new_name2 = $_SERVER['DOCUMENT_ROOT'] . '/images/help/' . $image_name2;
+			move_uploaded_file($_FILES['image2']['tmp_name'], $new_name2);
+			$stmt = $mysqli->prepare('INSERT INTO help_image VALUES (?, ?, ?)');
+			$stmt->bind_param('iss', $row['imageOrder'], $image_name, $image_name2);
+			$stmt->execute();
+			$stmt->close();
+		}
 	}
 }
 ?>
@@ -74,7 +73,6 @@ if (isset($_POST['order'], $_FILES['image'], $_FILES['image2']))
 <form action="/private/addhelpimages.php" method="post" enctype="multipart/form-data">
 <fieldset>
 <h3>הוספת תמונות לאיך ניתן לעזור</h3>
-<input type="number" name="order" min="1" max="99" placeholder="מיקום (בין 1 ל-99)" <?php if (!empty($validation)) echo 'value="' . $_POST['order'] . '"'; ?>>
 תמונה ראשית
 <input type="file" name="image" accept="image/*" required title="בחר תמונה ראשית">
 תמונה משנית

@@ -14,7 +14,7 @@ $result = $mysqli->query('SELECT * FROM help');
 $row = $result->fetch_assoc();
 $result->free();
 if ($row)
-	echo '<div class="innerDiv"><h2>תרומות</h2>' . $row['donateText'] . '</div>';
+	echo '<div class="innerDiv">' . $row['donateText'] . '</div>';
 echo '<div class="spaceDiv">';
 $result = $mysqli->query('SELECT image, image2 FROM help_image ORDER BY imageOrder');
 if ($result->num_rows)
@@ -30,11 +30,11 @@ echo '</div>';
 if ($row)
 {
 	echo '<div class="innerDiv"><img src="/images/pages/' . $row['image1'] . '" alt=""></div><div class="spaceDiv"></div>
-<div class="innerDiv"><h2>אימוץ וירטואלי</h2>' . $row['adoptText'] . '</div><div class="spaceDiv"></div>
+<div class="innerDiv">' . $row['adoptText'] . '</div><div class="spaceDiv"></div>
 <div class="innerDiv"><img src="/images/pages/' . $row['image2'] . '" alt=""></div><div class="spaceDiv"></div>
-<div class="innerDiv"><h2>התנדבות</h2>' . $row['volunteerText'] . '</div><div class="spaceDiv"></div>
+<div class="innerDiv">' . $row['volunteerText'] . '</div><div class="spaceDiv"></div>
 <div class="innerDiv"><img src="/images/pages/' . $row['image3'] . '" alt=""></div><div class="spaceDiv"></div>
-<div class="innerDiv"><h2>אומנה</h2>' . $row['fosterText'] . '</div><div class="spaceDiv"></div>
+<div class="innerDiv">' . $row['fosterText'] . '</div><div class="spaceDiv"></div>
 <div class="innerDiv"><img src="/images/pages/' . $row['image4'] . '" alt=""></div><div class="spaceDiv"></div>';
 }
 ?>

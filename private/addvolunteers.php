@@ -1,20 +1,10 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/private/authenticate.php';
-if (isset($_POST['order'], $_POST['name'], $_POST['text'], $_FILES['image']))
+if (isset($_POST['name'], $_POST['text'], $_FILES['image']))
 {
 	$validation = array();
 	$_POST = sanitize($_POST);
 	$_POST['text'] = htmlspecialchars_decode($_POST['text'], ENT_QUOTES);
-	if (empty($_POST['order']) || !is_numeric($_POST['order']) || $_POST['order'] < 1 || $_POST['order'] > 99)
-		$validation['orderEmpty'] = 'המיקום חייב להיות מספר בין 1 ל-99.';
-	else
-	{
-		$result = $mysqli->query('SELECT imageOrder FROM volunteer WHERE imageOrder=' . $_POST['order']);
-		$row = $result->fetch_assoc();
-		$result->free();
-		if ($row)
-			$validation['orderEmpty'] = 'המיקום שהוזן כבר קיים, יש לבחור מיקום אחר.';
-	}
 	if (empty($_POST['name']))
 		$validation['nameempty'] = 'יש להזין את שם המתנדב.';
 	elseif (mb_strlen($_POST['name']) > 45)
@@ -37,13 +27,22 @@ if (isset($_POST['order'], $_POST['name'], $_POST['text'], $_FILES['image']))
 	}
 	if (empty($validation))
 	{
-		$image_name = mt_rand(1, time()) . time() . '.' . $file_type;
-		$new_name = $_SERVER['DOCUMENT_ROOT'] . '/images/volunteers/' . $image_name;
-		move_uploaded_file($_FILES['image']['tmp_name'], $new_name);
-		$stmt = $mysqli->prepare('INSERT INTO volunteer VALUES (?, ?, ?, ?)');
-		$stmt->bind_param('isss', $_POST['order'], $image_name, $_POST['name'], $_POST['text']);
-		$stmt->execute();
-		$stmt->close();
+		$result = $mysqli->query('SELECT MAX(imageOrder) imageOrder FROM volunteer');
+		$row = $result->fetch_assoc();
+		$result->free();
+		if ($row['imageOrder'] == 99)
+			$validation['full'] = 'אין מקומות פנויים, נא לפנות.';
+		else
+		{
+			$row['imageOrder']++;
+			$image_name = mt_rand(1, time()) . time() . '.' . $file_type;
+			$new_name = $_SERVER['DOCUMENT_ROOT'] . '/images/volunteers/' . $image_name;
+			move_uploaded_file($_FILES['image']['tmp_name'], $new_name);
+			$stmt = $mysqli->prepare('INSERT INTO volunteer VALUES (?, ?, ?, ?)');
+			$stmt->bind_param('isss', $row['imageOrder'], $image_name, $_POST['name'], $_POST['text']);
+			$stmt->execute();
+			$stmt->close();
+		}
 	}
 }
 ?>
@@ -60,7 +59,6 @@ if (isset($_POST['order'], $_POST['name'], $_POST['text'], $_FILES['image']))
 <form action="/private/addvolunteers.php" method="post" enctype="multipart/form-data">
 <fieldset>
 <h3>הוספת מתנדבים</h3>
-<input type="number" name="order" min="1" max="99" placeholder="מיקום (בין 1 ל-99)" <?php if (!empty($validation)) echo 'value="' . $_POST['order'] . '"'; ?>>
 <input type="text" name="name" placeholder="שם המתנדב" <?php if (!empty($validation)) echo 'value="' . $_POST['name'] . '"'; ?>>
 <input type="file" name="image" accept="image/*" required title="בחר תמונה">
 <textarea class="tinymce" name="text" placeholder="טקסט חופשי למתנדב"><?php if (!empty($validation)) echo $_POST['text']; ?></textarea>

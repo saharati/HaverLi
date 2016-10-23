@@ -1,19 +1,9 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/private/authenticate.php';
-if (isset($_POST['order'], $_POST['name'], $_POST['value']))
+if (isset($_POST['name'], $_POST['value']))
 {
 	$validation = array();
 	$_POST = sanitize($_POST);
-	if (empty($_POST['order']) || !is_numeric($_POST['order']) || $_POST['order'] < 1 || $_POST['order'] > 99)
-		$validation['orderEmpty'] = 'המיקום חייב להיות מספר בין 1 ל-99.';
-	else
-	{
-		$result = $mysqli->query('SELECT name FROM contact WHERE viewOrder=' . $_POST['order']);
-		$row = $result->fetch_assoc();
-		$result->free();
-		if ($row)
-			$validation['orderEmpty'] = 'המיקום שהוזן כבר קיים, יש לבחור מיקום אחר.';
-	}
 	if (empty($_POST['name']))
 		$validation['nameempty'] = 'יש להזין שם כלשהו.';
 	elseif (mb_strlen($_POST['name']) > 45)
@@ -24,10 +14,19 @@ if (isset($_POST['order'], $_POST['name'], $_POST['value']))
 		$validation['valuelong'] = 'הערך לא יכול להכיל יותר מ-45 תווים.';
 	if (empty($validation))
 	{
-		$stmt = $mysqli->prepare('INSERT INTO contact VALUES (?, ?, ?)');
-		$stmt->bind_param('iss', $_POST['order'], $_POST['name'], $_POST['value']);
-		$stmt->execute();
-		$stmt->close();
+		$result = $mysqli->query('SELECT MAX(viewOrder) viewOrder FROM contact');
+		$row = $result->fetch_assoc();
+		$result->free();
+		if ($row['viewOrder'] == 99)
+			$validation['full'] = 'אין מקומות פנויים, נא לפנות.';
+		else
+		{
+			$row['viewOrder']++;
+			$stmt = $mysqli->prepare('INSERT INTO contact VALUES (?, ?, ?)');
+			$stmt->bind_param('iss', $row['viewOrder'], $_POST['name'], $_POST['value']);
+			$stmt->execute();
+			$stmt->close();
+		}
 	}
 }
 ?>
@@ -44,7 +43,6 @@ if (isset($_POST['order'], $_POST['name'], $_POST['value']))
 <form action="/private/addcontact.php" method="post">
 <fieldset>
 <h3>הוספת דרכים ליצירת קשר</h3>
-<input type="number" name="order" min="1" max="99" placeholder="מיקום (בין 1 ל-99)" <?php if (!empty($validation)) echo 'value="' . $_POST['order'] . '"'; ?>>
 <input type="text" name="name" required maxlength="45" placeholder="שם" title="הזן שם כלשהו" <?php if (!empty($validation)) echo 'value="' . $_POST['name'] . '"'; ?>>
 <input type="text" name="value" required maxlength="45" placeholder="ערך" title="הזן ערך כלשהו" <?php if (!empty($validation)) echo 'value="' . $_POST['value'] . '"'; ?>>
 <input type="submit" value="הוסף דרך התקשרות">

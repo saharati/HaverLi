@@ -22,7 +22,7 @@
 <li><a <?php if ($_SERVER['PHP_SELF'] == '/index.php') echo 'class="active"'; ?> title="דף הבית" href="/">דף הבית</a></li>
 <li><a <?php if ($_SERVER['PHP_SELF'] == '/about.php') echo 'class="active"'; ?> title="אודות" href="/about">אודות</a></li>
 <li>
-<a <?php if ($_SERVER['PHP_SELF'] == '/dogs.php' || $_SERVER['PHP_SELF'] == '/cats.php' || $_SERVER['PHP_SELF'] == '/process.php' || $_SERVER['PHP_SELF'] == '/adopted.php') echo 'class="active"'; ?> title="פינת אימוץ" href="javascript:void(0);">פינת אימוץ</a>
+<a <?php if ($_SERVER['PHP_SELF'] == '/dogs.php' || $_SERVER['PHP_SELF'] == '/cats.php' || $_SERVER['PHP_SELF'] == '/process.php' || $_SERVER['PHP_SELF'] == '/adopted.php' || $_SERVER['PHP_SELF'] == '/pet.php') echo 'class="active"'; ?> title="פינת אימוץ" href="javascript:void(0);">פינת אימוץ</a>
 <nav>
 <div>
 <ul>
