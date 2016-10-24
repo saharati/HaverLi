@@ -38,5 +38,6 @@ if (!isset($page_image))
 <script src="/js/bxslider.js"></script>
 <script src="/js/sorttable.js"></script>
 <script src="/js/sweetalert.js"></script>
+<script src="/js/fine-uploader.js"></script>
 <script src="/js/sahar.js"></script>
 </head>

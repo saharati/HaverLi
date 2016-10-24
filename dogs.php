@@ -17,6 +17,11 @@ $result = $mysqli->query('SELECT id, name FROM album WHERE isDog=1 AND isAdopted
 while ($row = $result->fetch_assoc())
 {
 	$result2 = $mysqli->query('SELECT albumId, image, width, height FROM album_photo WHERE albumId=' . $row['id'] . ' ORDER BY cover DESC LIMIT 2');
+	if ($result2->num_rows == 0)
+	{
+		$result2->free();
+		continue;
+	}
 	$image1 = $result2->fetch_assoc();
 	$image2 = $result2->fetch_assoc();
 	$result2->free();
@@ -27,6 +32,8 @@ while ($row = $result->fetch_assoc())
 }
 $result->free();
 ?>
+<div class="gallerybox emptybox"></div>
+<div class="gallerybox emptybox"></div>
 </div>
 </div>
 </main>

@@ -15,6 +15,15 @@ if (time() - $_SESSION['LAST_ACTIVITY'] > 900)
 }
 else
 	$_SESSION['LAST_ACTIVITY'] = time();
+function pagination($pageNum, $lastPage, $url)
+{
+	if ($lastPage < 2)
+		return;
+	echo '<div class="clearfix">
+<a title="הקודם" ' . ($pageNum > 1 ? 'class="prev" href="' . $url . ($pageNum - 1) . '"' : 'class="prev prev_disabled" href="javascript:void(0);"') . '>הקודם</a>
+<a title="הבא" ' . ($pageNum < $lastPage ? 'class="next" href="' . $url . ($pageNum + 1) . '"' : 'class="next next_disabled" href="javascript:void(0);"') . '>הבא</a>
+</div>';
+}
 function rrmdir($dir)
 {
 	$fp = opendir($dir);

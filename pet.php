@@ -38,6 +38,10 @@ require $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php';
 <?php
 echo '<h2>' . $row['name'] . '</h2>
 <ul class="bxslider">';
+$result2 = $mysqli->query('SELECT video FROM album_video WHERE albumId=' . $_GET['page']);
+while ($row2 = $result2->fetch_assoc())
+	echo '<li><iframe src="' . $row2['video'] . '" frameborder="0" allowfullscreen></iframe></li>';
+$result2->free();
 while ($row2 = $result->fetch_assoc())
 	echo '<li><img ' . calcStyle($row2, false, 400) . ' src="/images/albums/' . $row2['albumId'] . '/' . $row2['image'] . '" alt=""></li>';
 $result->free();
@@ -90,10 +94,10 @@ echo '<br>
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/contact.php'; ?>
 <div id="social">
 <ul>
-<li class="send"><a title="שלח לחבר" href="send-<?php echo $_GET['page']; ?>">שלח לחבר</a></li>
+<li class="send"><a title="שלח לחבר" href="/send-<?php echo $_GET['page']; ?>">שלח לחבר</a></li>
 <li class="share"><a title="שתף בפייסבוק" href="javascript:void(0);" onclick="window.open('http://www.facebook.com/share.php?u=<?php echo $page_url; ?>' , 'sharer', 'toolbar=0, status=0, width=675, height=475');">שתף</a></li>
 <li class="addwish">הוסף לרשימת המשאלות</li>
-<li class="virtualadopt">אימוץ וירטואלי</li>
+<li class="virtualadopt"><a title="אימוץ וירטואלי" href="/help">אימוץ וירטואלי</a></li>
 </ul>
 </div>
 </div>

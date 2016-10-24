@@ -34,8 +34,8 @@ if (isset($_POST['isDog'], $_POST['name']))
 <h3>הוספת גזעים</h3>
 <select name="isDog" title="יש לבחור סוג מהרשימה" required>
 <option value="">בחר סוג</option>
-<option value="1">כלב</option>
-<option value="0">חתול</option>
+<option value="1" <?php if (!empty($validation) && $_POST['isDog'] == 1) echo 'selected'; ?>>כלב</option>
+<option value="0" <?php if (!empty($validation) && $_POST['isDog'] == 0) echo 'selected'; ?>>חתול</option>
 </select>
 <input type="text" name="name" required maxlength="40" placeholder="שם" title="הזן שם כלשהו" <?php if (!empty($validation)) echo 'value="' . $_POST['name'] . '"'; ?>>
 <input type="submit" value="הוסף גזע">

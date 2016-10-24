@@ -61,6 +61,13 @@
 </ul>
 </li>
 <li>
+<h2>אלבומים</h2>
+<ul>
+<li><a title="הוספת אלבומים" href="/private/addalbums.php">הוספת אלבומים</a></li>
+<li><a title="עדכון אלבומים" href="/private/updatealbums.php">עדכון אלבומים</a></li>
+</ul>
+</li>
+<li>
 <h2>מאגר תמונות</h2>
 <ul>
 <li><a title="הוספת תמונות" href="/private/adddatabase.php">הוספת תמונות</a></li>

@@ -13,5 +13,4 @@ Usefull links:
 * https://robertnyman.com/html5/fileapi-upload/fileapi-upload.html
 
 pet.php
-* Virtual Adopt.
-* Add to wishlist.
+* Finish with social links.
