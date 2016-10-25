@@ -6,11 +6,4 @@ Stuff to do when finished:
 * Add forward from support@imutz.org to puah.
 * Delete transfer.php script.
 * Delete this file.
-Usefull links:
-* https://www.google.co.il/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=form+submit+progress+bar+html5
-* http://stackoverflow.com/questions/25668771/track-basic-html-form-post-progress
-* https://www.developphp.com/video/JavaScript/File-Upload-Progress-Bar-Meter-Tutorial-Ajax-PHP
-* https://robertnyman.com/html5/fileapi-upload/fileapi-upload.html
-
-pet.php
-* Finish with social links.
+* Remove v2 from everywhere.

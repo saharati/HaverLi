@@ -8,9 +8,10 @@ tinymce.init({
 	language_url: '/js/tinymce/he_IL.js',
 	content_css: '/css/editor.css',
 	plugins: ['link', 'textcolor', 'placeholder', 'image'],
-	toolbar: 'undo redo | styleselect | bold italic underline forecolor fontsizeselect | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+	toolbar: 'undo redo | styleselect | bold italic underline forecolor | fontsizeselect fontselect | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
 	image_list: '/private/ajax/imagelist.php',
 	fontsize_formats: '8pt 10pt 12pt 14pt 18pt 24pt 36pt',
+	font_formats: 'Arial=arial,helvetica,sans-serif;Courier New=courier new,courier,monospace;Trashim=trashim',
 	min_height: 200,
 	setup: function(editor){
 		editor.on('init', function(args){

@@ -148,14 +148,28 @@ main h4 {font-size:17px;margin:10px 0 0;text-decoration:underline}
 .pet .bx-viewport {height:auto !important}
 .petDescr {text-align:right;direction:rtl;max-width:950px}
 /* ADOPTED PAGE */
-.adopted .right, .adopted .left {height:300px;overflow:hidden;text-align:center}
-.adopted .right {width:60%}
-.adopted .left {width:40%;background-color:#FFF;box-shadow:0 0 5px #888888}
+.adopted .right, .adopted .left {float:none;height:300px;overflow:hidden;vertical-align:middle}
+.adopted .right {width:50%}
+.adopted .left {width:50%;background-color:#FFF;box-shadow:0 0 5px #888888;padding:0 10px}
 .adopted img {width:auto;height:300px;border:1px solid #000}
-@media all and (max-width:900px)
+@media all and (max-width:1000px)
 {
-	.adopted .right, .adopted .left {float:none;display:block;width:100%;height:auto}
+	.adopted .right, .adopted .left {display:block;width:100%;height:auto}
 	.adopted img {width:100%;height:auto}
+}
+/* WISHLIST PAGE */
+.wishlist #contentInner {vertical-align:top}
+.wishlist h2 {font-size:32px;text-decoration:none;text-align:right}
+.wishlist h2 img {width:30px;height:30px;vertical-align:top}
+.wishlist .spaceDiv {margin:10px 0;border-top:1px solid #000;border-bottom:1px solid #000}
+.wishlist .spaceDiv img {max-width:100%;width:auto;height:200px}
+.wishlist ul {list-style:none;margin:0 0 10px;padding:0}
+.wishlist .social {text-align:right}
+.floated {float:left;display:block;margin-right:10px;text-align:center}
+.specs li {display:inline-block;background-color:#eaf1f7;border:1px solid #000;margin:5px;padding:5px}
+@media all and (max-width:500px)
+{
+	.floated {float:none}
 }
 /* PRIVATE PAGE */
 .private #contentInner > ul {list-style:none;margin:0;padding:0}
@@ -175,19 +189,20 @@ fieldset input[type="submit"] {width:auto;float:left;cursor:pointer;min-width:10
 	.inline-form .small {float:none;width:100% !important;padding-left:0}
 }
 /* SOCIAL */
-#social {text-align:center}
-#social ul {display:inline-block;list-style:none;margin:20px 0 0;padding:0}
-#social li {position:relative;padding-right:30px;text-align:right;display:inline-block;margin-left:30px;margin-bottom:10px}
-#social li::before {content:"";width:22px;height:22px;background-size:22px 22px;display:block;position:absolute;top:-2px;right:0}
-#social li:last-child {margin-left:0}
-#social a {color:#000}
+.social {text-align:center}
+.social ul {display:inline-block;list-style:none;margin:20px 0 0;padding:0}
+.social li {position:relative;padding-right:30px;text-align:right;display:inline-block;margin-left:30px;margin-bottom:10px}
+.social li::before {content:"";width:22px;height:22px;background-size:22px 22px;display:block;position:absolute;top:-2px;right:0}
+.social li:last-child {margin-left:0}
+.social a {color:#000}
 .send::before {background-image:url(/images/envelope.svg)}
 .share::before {background-image:url(/images/share.svg)}
 .addwish::before {background-image:url(/images/addwish.svg)}
 .virtualadopt::before {background-image:url(/images/virtualadopt.svg)}
+.garbage::before {background-image:url(/images/garbage.svg)}
 @media all and (max-width:680px)
 {
-	#social li {display:block}
+	.social li {display:block}
 }
 /* MODAL */
 .imageModal img {transition:0.3s}

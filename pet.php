@@ -92,7 +92,7 @@ echo '<br>
 <div class="spaceDiv"></div>
 <div class="innerDiv petDescr">
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/contact.php'; ?>
-<div id="social">
+<div class="social">
 <ul>
 <li class="send"><a title="שלח לחבר" href="/send-<?php echo $_GET['page']; ?>">שלח לחבר</a></li>
 <li class="share"><a title="שתף בפייסבוק" href="javascript:void(0);" onclick="window.open('http://www.facebook.com/share.php?u=<?php echo $page_url; ?>' , 'sharer', 'toolbar=0, status=0, width=675, height=475');">שתף</a></li>
