@@ -96,7 +96,7 @@ echo '<br>
 <ul>
 <li class="send"><a title="שלח לחבר" href="/send-<?php echo $_GET['page']; ?>">שלח לחבר</a></li>
 <li class="share"><a title="שתף בפייסבוק" href="javascript:void(0);" onclick="window.open('http://www.facebook.com/share.php?u=<?php echo $page_url; ?>' , 'sharer', 'toolbar=0, status=0, width=675, height=475');">שתף</a></li>
-<li class="addwish">הוסף לרשימת המשאלות</li>
+<li class="addwish"><a title="הוסף לרשימת המשאלות" href="javascript:void(0);" onclick="addToWishlist(<?php echo $_GET['page']; ?>);">הוסף לרשימת המשאלות</a></li>
 <li class="virtualadopt"><a title="אימוץ וירטואלי" href="/help">אימוץ וירטואלי</a></li>
 </ul>
 </div>
@@ -135,6 +135,21 @@ $(document).ready(function()
 		}
 	});
 });
+function addToWishlist(num)
+{
+	var http = new XMLHttpRequest();
+	http.open('POST', '/addtowishlist.php', true);
+	http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	http.onreadystatechange = function()
+	{
+		if (http.readyState == 4 && http.status == 200)
+		{
+			var arr = http.responseText.split('sys');
+			swal('רשימת המשאלות', arr[0], arr[1]);
+		}
+	}
+	http.send('petId=' + num);
+}
 </script>
 </body>
 </html>

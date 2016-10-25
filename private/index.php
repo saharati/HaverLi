@@ -75,6 +75,12 @@
 </ul>
 </li>
 <li>
+<h2>תהליך אימוץ</h2>
+<ul>
+<li><a title="עדכון תוכן" href="/private/updateprocess.php">עדכון תוכן</a></li>
+</ul>
+</li>
+<li>
 <h2>מאגר תמונות לטקסט</h2>
 <ul>
 <li><a title="הוספת תמונות" href="/private/adddatabase.php">הוספת תמונות</a></li>
