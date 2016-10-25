@@ -18,7 +18,7 @@
 <ul>
 <li><a <?php if ($_SERVER['PHP_SELF'] == '/info.php') echo 'class="active"'; ?> title="מידע למאמץ" href="/info"><img title="מידע למאמץ" alt="מידע למאמץ" src="/images/mark.svg"><span>מידע למאמץ</span></a></li>
 <li><a <?php if ($_SERVER['PHP_SELF'] == '/articles.php') echo 'class="active"'; ?> title="מאמרים" href="/articles"><img title="מאמרים" alt="מאמרים" src="/images/hat.svg"><span>מאמרים</span></a></li>
-<li><a <?php if ($_SERVER['PHP_SELF'] == '/lost.php') echo 'class="active"'; ?> title="הצילו! אבד לי הכלב" href="/help"><img title="הצילו! אבד לי הכלב" alt="הצילו! אבד לי הכלב" src="/images/dog.svg"><span>הצילו! אבד לי הכלב</span></a></li>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/lost.php') echo 'class="active"'; ?> title="הצילו! אבד לי הכלב" href="/lost"><img title="הצילו! אבד לי הכלב" alt="הצילו! אבד לי הכלב" src="/images/dog.svg"><span>הצילו! אבד לי הכלב</span></a></li>
 <li><a <?php if ($_SERVER['PHP_SELF'] == '/recommand.php') echo 'class="active"'; ?> title="המומלצים שלנו" href="/recommand"><img title="המומלצים שלנו" alt="המומלצים שלנו" src="/images/badge.svg"><span>המומלצים שלנו</span></a></li>
 </ul>
 </li>

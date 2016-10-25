@@ -99,7 +99,7 @@ main h4 {font-size:17px;margin:10px 0 0;text-decoration:underline}
 .innerDiv h2 {text-align:center}
 .innerDiv img {width:100%;height:auto;vertical-align:bottom}
 .spaceDiv {width:100%;min-height:30px;background-color:#FFF}
-.rectDiv {width:100%;margin-bottom:10px;background-color:#FFF;border:1px solid #000;padding:10px}
+.rectDiv {width:100%;margin-bottom:10px;background-color:#FFF;border:1px solid #000;padding:10px;text-align:right}
 .rectDiv h3 {font-size:20px;text-decoration:underline;margin:0}
 .rectDiv p {margin:0}
 .rectDiv img {float:left;width:auto;height:150px;margin-right:10px}
