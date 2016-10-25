@@ -93,7 +93,7 @@ if (!isset($_SESSION['albumId']))
 <p><a title="עבור לעדכון תמונות" href="/private/updatephotos.php?id=<?php echo $_SESSION['albumId']; ?>">עבור לעדכון תמונות</a></p>
 <p><a title="עבור להוספת סרטונים" href="/private/addvideos.php?id=<?php echo $_SESSION['albumId']; ?>">עבור להוספת סרטונים</a></p>
 <p><a title="עבור לעדכון סרטונים" href="/private/updatevideos.php?id=<?php echo $_SESSION['albumId']; ?>">עבור לעדכון סרטונים</a></p>
-<p><a title="עבור לעדכון אלבומים" href="/private/updatealbums">עבור לעדכון אלבומים</a></p>
+<p><a title="עבור לעדכון אלבומים" href="/private/updatealbums.php">עבור לעדכון אלבומים</a></p>
 <p><a title="חזרה לעמוד הניהול" href="/private">חזרה לעמוד הניהול</a></p>
 </div>
 </div>

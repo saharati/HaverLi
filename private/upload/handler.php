@@ -201,6 +201,41 @@ class UploadHandler {
                 if (move_uploaded_file($file['tmp_name'], $target)){
                 	require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/config.php';
                 	list($width, $height) = getimagesize($target);
+                	if ($width >= $height)
+                	{
+                		if ($width > 800)
+                		{
+                			$newHeight = round($height / $width * 800);
+                			$newWidth = 800;
+                			$image = imagecreatetruecolor($newWidth, $newHeight);
+                		}
+                	}
+                	elseif ($height > 800)
+                	{
+                		$newWidth = round($width / $height * 800);
+                		$newHeight = 800;
+                		$image = imagecreatetruecolor($newWidth, $newHeight);
+                	}
+                	if (isset($image))
+                	{
+                		if ($pathinfo['extension'] == 'jpg' || $pathinfo['extension'] == 'jpeg')
+                			$src = imagecreatefromjpeg($target);
+	                	elseif ($pathinfo['extension'] == 'png')
+	                		$src = imagecreatefrompng($target);
+	                	else
+	                		$src = imagecreatefromgif($target);
+                		imagecopyresampled($image, $src, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+                		if ($pathinfo['extension'] == 'jpg' || $pathinfo['extension'] == 'jpeg')
+                			imagejpeg($image, $target, 100);
+                		elseif ($pathinfo['extension'] == 'png')
+                			imagepng($image, $target, 9);
+                		else
+                			imagegif($image, $target);
+                		imagedestroy($src);
+                		imagedestroy($image);
+                		$width = $newWidth;
+                		$height = $newHeight;
+                	}
                 	$mysqli->query('INSERT INTO album_photo (albumId, image, width, height) VALUES (' . $_SESSION['albumId'] . ', "' . $name . '", ' . $width . ', ' . $height . ')');
                     return array('success'=> true, "uuid" => $uuid);
                 }

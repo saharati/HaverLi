@@ -19,7 +19,7 @@
 </ul>
 </li>
 <li>
-<h2>דף האודות</h2>
+<h2>אודות</h2>
 <ul>
 <li><a title="הוספת מתנדבים" href="/private/addvolunteers.php">הוספת מתנדבים</a></li>
 <li><a title="עדכון מתנדבים" href="/private/updatevolunteers.php">עדכון מתנדבים</a></li>
@@ -49,6 +49,13 @@
 <li><a title="עדכון דרכי תקשורת" href="/private/updatecontact.php">עדכון דרכי תקשורת</a></li>
 </ul>
 </li>
+<li>
+<h2>משפחות מאושרות</h2>
+<ul>
+<li><a title="הוספת משפחות" href="/private/addfamilies.php">הוספת משפחות</a></li>
+<li><a title="עדכון משפחות" href="/private/updatefamilies.php">עדכון משפחות</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="left">
@@ -61,14 +68,14 @@
 </ul>
 </li>
 <li>
-<h2>אלבומים</h2>
+<h2>פינת אימוץ</h2>
 <ul>
 <li><a title="הוספת אלבומים" href="/private/addalbums.php">הוספת אלבומים</a></li>
 <li><a title="עדכון אלבומים" href="/private/updatealbums.php">עדכון אלבומים</a></li>
 </ul>
 </li>
 <li>
-<h2>מאגר תמונות</h2>
+<h2>מאגר תמונות לטקסט</h2>
 <ul>
 <li><a title="הוספת תמונות" href="/private/adddatabase.php">הוספת תמונות</a></li>
 <li><a title="עדכון תמונות" href="/private/updatedatabase.php">עדכון תמונות</a></li>

@@ -147,6 +147,16 @@ main h4 {font-size:17px;margin:10px 0 0;text-decoration:underline}
 .pet .bxslider li {overflow:hidden}
 .pet .bx-viewport {height:auto !important}
 .petDescr {text-align:right;direction:rtl;max-width:950px}
+/* ADOPTED PAGE */
+.adopted .right, .adopted .left {height:300px;overflow:hidden;text-align:center}
+.adopted .right {width:60%}
+.adopted .left {width:40%;background-color:#FFF;box-shadow:0 0 5px #888888}
+.adopted img {width:auto;height:300px;border:1px solid #000}
+@media all and (max-width:900px)
+{
+	.adopted .right, .adopted .left {float:none;display:block;width:100%;height:auto}
+	.adopted img {width:100%;height:auto}
+}
 /* PRIVATE PAGE */
 .private #contentInner > ul {list-style:none;margin:0;padding:0}
 /* FORMS */
@@ -158,6 +168,8 @@ fieldset input[type="submit"] {width:auto;float:left;cursor:pointer;min-width:10
 .mce-container {margin:5px 0 !important}
 .inline-form .small {float:right;width:25%;padding-left:10px}
 .inline-form .small.nopadding {padding-left:0}
+.search-form {margin-bottom:10px}
+.search-form input, .search-form select {display:inline-block;width:33%}
 @media all and (max-width:500px)
 {
 	.inline-form .small {float:none;width:100% !important;padding-left:0}
