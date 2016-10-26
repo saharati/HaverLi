@@ -13,7 +13,7 @@
 <p>כולם בעלי שבב אלקטרוני, מחוסנים בחיסון כלבת ומשושה, הנקבות מעוקרות והזכרים מסורסים.</p>
 <p>האימוץ כרוך בתשלום מסובסד עבור עיקור/סירוס וחיסון כלבת/משושה.</p>
 <?php
-$result = $mysqli->query('SELECT id, name FROM album WHERE isDog=1 AND isAdopted=0 ORDER BY postDate DESC');
+$result = $mysqli->query('SELECT id, name FROM album WHERE isDog=1 AND isAdopted=0 ORDER BY important DESC, postDate DESC');
 while ($row = $result->fetch_assoc())
 {
 	$result2 = $mysqli->query('SELECT albumId, image, width, height FROM album_photo WHERE albumId=' . $row['id'] . ' ORDER BY cover DESC LIMIT 2');
