@@ -109,9 +109,10 @@ echo '<br>
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php'; ?>
 </div>
 <script>
+var slider = null;
 $(document).ready(function()
 {
-	$('.bxslider').bxSlider({
+	slider = $('.bxslider').bxSlider({
 		slideWidth: 400,
 		minSlides: 2,
 		maxSlides: 3,
@@ -136,6 +137,71 @@ $(document).ready(function()
 			$('.bxslider li').css('height' , width + 'px');
 		}
 	});
+});
+function bxslider()
+{
+	var width = $(document).width();
+	if (width < 400)
+	{
+		slider.reloadSlider({
+			slideWidth: width - 20,
+			minSlides: 1,
+			maxSlides: 1,
+			moveSlides: 1,
+			slideMargin: 0,
+			pager: false,
+			nextText: 'הבא',
+			prevText: 'הקודם',
+			auto: true,
+			pause: 4000,
+			autoHover: true,
+			shrinkItems: true,
+			video: true,
+			onSliderLoad: function()
+			{
+				var width = $('.bxslider li').width();
+				$('.bxslider li').css('height' , width + 'px');
+			},
+			onSliderResize: function()
+			{
+				var width = $('.bxslider li').width();
+				$('.bxslider li').css('height' , width + 'px');
+			}
+		});
+	}
+	else
+	{
+		slider.reloadSlider({
+			slideWidth: 400,
+			minSlides: 2,
+			maxSlides: 3,
+			moveSlides: 3,
+			slideMargin: 15,
+			pager: false,
+			nextText: 'הבא',
+			prevText: 'הקודם',
+			auto: true,
+			pause: 4000,
+			autoHover: true,
+			shrinkItems: true,
+			video: true,
+			onSliderLoad: function()
+			{
+				var width = $('.bxslider li').width();
+				$('.bxslider li').css('height' , width + 'px');
+			},
+			onSliderResize: function()
+			{
+				var width = $('.bxslider li').width();
+				$('.bxslider li').css('height' , width + 'px');
+			}
+		});
+	}
+}
+$(window).on("orientationchange load resize", function()
+{
+	if (slider != null)
+		bxslider();
 });
 function addToWishlist(num)
 {
