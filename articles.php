@@ -12,12 +12,33 @@
 <?php
 $result = $mysqli->query('SELECT id, image, imageName, imageCaption FROM article ORDER BY imageOrder');
 while ($row = $result->fetch_assoc())
+{
 	echo '<div class="rectDiv clearfix">
 <img src="/images/articles/' . $row['image'] . '" title="' . $row['imageName'] . '" alt="' . $row['imageName'] . '">
-<h3>' . $row['imageName'] . '</h3>
-' . (mb_strlen($row['imageCaption']) > 255 ? mb_substr($row['imageCaption'], 0, 255) . '...' : $row['imageCaption']) . '
+<h3>' . $row['imageName'] . '</h3>';
+	if (mb_strpos($row['imageCaption'], '</span>') !== false)
+	{
+		$caption = explode('</span>', $row['imageCaption']);
+		$text = '';
+		foreach ($caption as $c)
+		{
+			if (mb_strlen($c) > 300)
+				$c = mb_substr($c, 0, 300) . '...';
+			$text .= $c;
+			if (mb_strlen($text) > 300)
+			{
+				$text .= '...</span>';
+				break;
+			}
+			$text .= '</span>';
+		}
+	}
+	else
+		$text = $row['imageCaption'];
+echo $text . '
 <p class="lastp"><a href="/article-' . $row['id'] . '">למאמר המלא לחץ כאן</a></p>
 </div>';
+}
 $result->free();
 ?>
 </div>

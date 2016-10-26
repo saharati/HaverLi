@@ -21,8 +21,8 @@ $page_title = 'מאמרים - ' . $row['imageName'];
 $page_description = strip_tags($row['imageCaption']);
 $page_description = str_replace(array('<br>', "\r", "\n"), array(' ', '', ''), $page_description);
 $page_description = htmlspecialchars($page_description, ENT_QUOTES);
-$page_url = 'http://v2.imutz.org/article-' . $_GET['page'];
-$page_image = 'http://v2.imutz.org/images/articles/' . $row['image'];
+$page_url = 'http://imutz.org/article-' . $_GET['page'];
+$page_image = 'http://imutz.org/images/articles/' . $row['image'];
 list($page_image_width, $page_image_height) = getimagesize($page_image);
 require $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php';
 ?>

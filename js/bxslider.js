@@ -733,7 +733,7 @@
         var title = $(this).children('*:first').attr('data-caption');
         // append the caption
         if (title !== undefined && ('' + title).length) {
-          $(this).append('<div class="bx-caption"><span>' + document.getElementById(title).innerHTML + '</span></div>');
+          $(this).append('<div class="bx-caption">' + document.getElementById(title).innerHTML + '</div>');
         }
       });
     };

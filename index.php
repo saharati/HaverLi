@@ -15,7 +15,7 @@ if ($result->num_rows)
 {
 	while ($row = $result->fetch_assoc())
 		if (!empty($row['imageCaption']))
-			echo '<span style="display:none" id="a' . $row['imageOrder'] . '">' . $row['imageCaption'] . '</span>';
+			echo '<div style="display:none" id="a' . $row['imageOrder'] . '">' . $row['imageCaption'] . '</div>';
 	$result->data_seek(0);
 	echo '<ul class="bxslider">';
 	while ($row = $result->fetch_assoc())

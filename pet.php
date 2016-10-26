@@ -21,11 +21,11 @@ $page_title = ($row['isDog'] == 1 ? 'כלבים לאימוץ' : 'חתולים ל
 $page_description = strip_tags($row['description']);
 $page_description = str_replace(array('<br>', "\r", "\n"), array(' ', '', ''), $page_description);
 $page_description = htmlspecialchars($page_description, ENT_QUOTES);
-$page_url = 'http://v2.imutz.org/pet-' . $_GET['page'];
+$page_url = 'http://imutz.org/pet-' . $_GET['page'];
 $result = $mysqli->query('SELECT albumId, image, width, height FROM album_photo WHERE albumId=' . $_GET['page'] . ' ORDER BY cover DESC');
 $row2 = $result->fetch_assoc();
 $result->data_seek(0);
-$page_image = 'http://v2.imutz.org/images/albums/' . $row2['albumId'] . '/' . $row2['image'];
+$page_image = 'http://imutz.org/images/albums/' . $row2['albumId'] . '/' . $row2['image'];
 $page_image_width = $row2['width'];
 $page_image_height = $row2['height'];
 require $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php';

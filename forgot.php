@@ -31,7 +31,7 @@ if (isset($_POST['email']))
 		$mysqli->query('UPDATE user SET activateCode="' . $activatecode . '" WHERE id=' . $row['id']);
 		$mailtext = 'שלום רב,
 לאחרונה שלחתם טופס לשחזור סיסמתכם באתר פט פאל, אם אינכם ביצעתם בקשה זו אנא התעלמו ממנה.
-ע"מ לשחזר את סיסמתכם אנא בקרו בעמוד הבא: http://v2.imutz.org/login?code=' . $activatecode . '
+ע"מ לשחזר את סיסמתכם אנא בקרו בעמוד הבא: http://imutz.org/login?code=' . $activatecode . '
 לאחר מכן תקבלו הודעת דוא"ל נוספת עם סיסמתכם החדשה.
 
 בברכה,

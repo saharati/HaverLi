@@ -10,10 +10,10 @@
 <div id="content" class="about fullwidth">
 <div id="contentInner">
 <?php
-$result = $mysqli->query('SELECT title, caption, image FROM help ORDER BY position');
+$result = $mysqli->query('SELECT position, title, caption, image FROM help ORDER BY position');
 $row = $result->fetch_assoc();
 if ($row)
-	echo '<div class="innerDiv"><h2>' . $row['title'] . '</h2>' . $row['caption'] . '</div>';
+	echo '<div id="section' . $row['position'] . '" class="innerDiv"><h2>' . $row['title'] . '</h2>' . $row['caption'] . '</div>';
 echo '<div class="spaceDiv">';
 $result2 = $mysqli->query('SELECT image, image2 FROM help_image ORDER BY imageOrder');
 if ($result2->num_rows)
@@ -29,7 +29,7 @@ echo '</div>';
 if ($row)
 	echo '<div class="innerDiv"><img src="/images/pages/' . $row['image'] . '" alt=""></div><div class="spaceDiv"></div>';
 while ($row = $result->fetch_assoc())
-	echo '<div class="innerDiv"><h2>' . $row['title'] . '</h2>' . $row['caption'] . '</div><div class="spaceDiv"></div><div class="innerDiv"><img src="/images/pages/' . $row['image'] . '" alt=""></div><div class="spaceDiv"></div>';
+	echo '<div id="section' . $row['position'] . '" class="innerDiv"><h2>' . $row['title'] . '</h2>' . $row['caption'] . '</div><div class="spaceDiv"></div><div class="innerDiv"><img src="/images/pages/' . $row['image'] . '" alt=""></div><div class="spaceDiv"></div>';
 $result->free();
 ?>
 <div class="innerDiv">

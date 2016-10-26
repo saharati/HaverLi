@@ -4,10 +4,10 @@ if (!isset($page_title))
 if (!isset($page_description))
 	$page_description = 'ברוכים הבאים לעמותת חבר לי - כאן תמצאו כלבים וחתולים לאימוץ ומסירה מכל הגדלים והמינים, גורים ובוגרים לאימוץ, אירועים וימי אימוץ ועוד.';
 if (!isset($page_url))
-	$page_url = 'http://v2.imutz.org/';
+	$page_url = 'http://imutz.org/';
 if (!isset($page_image))
 {
-	$page_image = 'http://v2.imutz.org/images/logo.jpg';
+	$page_image = 'http://imutz.org/images/logo.jpg';
 	$page_image_width = 960;
 	$page_image_height = 960;
 }

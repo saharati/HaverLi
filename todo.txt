@@ -1,9 +1,0 @@
-Stuff to do when finished:
-* Delete v2.imutz.org from cloudflare and kloxo.
-* Remove "v2" from $page_url and $page_image in head.php.
-* Remove "v2" from forgot.php.
-* Remove "v2" from login.php.
-* Add forward from support@imutz.org to puah.
-* Delete transfer.php script.
-* Delete this file.
-* Remove v2 from everywhere.
