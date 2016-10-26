@@ -63,7 +63,7 @@
 <h2>לוח מודעות</h2>
 <ul>
 <li><a title="הוספת תמונות" href="/private/addboard.php">הוספת תמונות</a></li>
-<li><a title="עדכון תמונות" href="/private/updateboard.php">עדכון תמונות</a></li>
+<li><a title="עדכון תמונות" href="/private/updateboards.php">עדכון תמונות</a></li>
 </ul>
 </li>
 <li>

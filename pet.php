@@ -18,7 +18,9 @@ if (!$row)
 <html lang="he">
 <?php
 $page_title = ($row['isDog'] == 1 ? 'כלבים לאימוץ' : 'חתולים לאימוץ') . ' - ' . $row['name'];
-$page_description = str_replace(array('<br>', "\r", "\n"), array(' ', '', ''), $row['description']);
+$page_description = strip_tags($row['description']);
+$page_description = str_replace(array('<br>', "\r", "\n"), array(' ', '', ''), $page_description);
+$page_description = htmlspecialchars($page_description, ENT_QUOTES);
 $page_url = 'http://v2.imutz.org/pet-' . $_GET['page'];
 $result = $mysqli->query('SELECT albumId, image, width, height FROM album_photo WHERE albumId=' . $_GET['page'] . ' ORDER BY cover DESC');
 $row2 = $result->fetch_assoc();
@@ -119,7 +121,7 @@ $(document).ready(function()
 		nextText: 'הבא',
 		prevText: 'הקודם',
 		auto: true,
-		pause: 6000,
+		pause: 4000,
 		autoHover: true,
 		shrinkItems: true,
 		video: true,

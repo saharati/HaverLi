@@ -18,7 +18,9 @@ if (!$row)
 <html lang="he">
 <?php
 $page_title = 'מאמרים - ' . $row['imageName'];
-$page_description = str_replace(array('<br>', "\r", "\n"), array(' ', '', ''), $row['imageCaption']);
+$page_description = strip_tags($row['imageCaption']);
+$page_description = str_replace(array('<br>', "\r", "\n"), array(' ', '', ''), $page_description);
+$page_description = htmlspecialchars($page_description, ENT_QUOTES);
 $page_url = 'http://v2.imutz.org/article-' . $_GET['page'];
 $page_image = 'http://v2.imutz.org/images/articles/' . $row['image'];
 list($page_image_width, $page_image_height) = getimagesize($page_image);

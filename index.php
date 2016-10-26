@@ -47,7 +47,7 @@ $(document).ready(function()
 		nextText: 'הבא',
 		prevText: 'הקודם',
 		auto: true,
-		pause: 6000,
+		pause: 4000,
 		autoHover: true,
 		shrinkItems: true
 	});
