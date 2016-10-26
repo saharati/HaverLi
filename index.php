@@ -48,6 +48,8 @@ $result->free();
 </div>
 <script>
 var slider = null;
+var state = 0;
+var prevWidth = 0;
 $(document).ready(function()
 {
 	slider = $('.bxslider').bxSlider({
@@ -65,10 +67,15 @@ $(document).ready(function()
 		shrinkItems: true,
 		captions: true
 	});
+
+	state = 2;
 });
 function bxslider()
 {
 	var width = $(document).width();
+	if (prevWidth == width)
+		return;
+	
 	if (width < 400)
 	{
 		slider.reloadSlider({
@@ -86,9 +93,14 @@ function bxslider()
 			shrinkItems: true,
 			captions: true
 		});
+
+		state = 1;
 	}
 	else
 	{
+		if (state == 2)
+			return;
+		
 		slider.reloadSlider({
 			slideWidth: 400,
 			minSlides: 2,
@@ -104,11 +116,15 @@ function bxslider()
 			shrinkItems: true,
 			captions: true
 		});
+
+		state = 2;
 	}
+
+	prevWidth = width;
 }
 $(window).on("orientationchange load resize", function()
 {
-	if (slider != null)
+	if (slider != null && state != 0)
 		bxslider();
 });
 </script>
