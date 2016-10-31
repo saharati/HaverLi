@@ -77,7 +77,7 @@ $result->free();
 $result = $mysqli->query('SELECT COUNT(id) c FROM album WHERE ' . $sql . '1=1');
 $row = $result->fetch_assoc();
 $result->free();
-pagination($_GET['page'], ceil($row['c'] / $rowsPerPage), '/private/updatealbums.php?page=');
+pagination($_GET['page'], ceil($row['c'] / $rowsPerPage), '/private/updatealbums.php?text=' . $_GET['text'] . '&status=' . $_GET['status'] . '&page=');
 ?>
 <p><a title="חזרה לעמוד הניהול" href="/private">חזרה לעמוד הניהול</a></p>
 </div>

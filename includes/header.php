@@ -1,7 +1,7 @@
 <header>
 <nav id="topNav">
 <div>
-<a title="כניסה למערכת" href="/login">כניסה למערכת</a>
+<a title="כניסה למערכת" href="/private">כניסה למערכת</a>
 <ul>
 <li><a title="רשימת משאלות" href="/wishlist">רשימת משאלות <img title="רשימת משאלות" alt="רשימת משאלות" src="/images/heart.svg"></a></li>
 <li><a title="לתרומות לחצו כאן" href="/help">לתרומות <img title="לתרומות לחצו כאן" alt="לתרומות לחצו כאן" src="/images/paw.svg"></a></li>

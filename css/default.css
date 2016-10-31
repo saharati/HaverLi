@@ -148,6 +148,7 @@ main h4 {font-size:17px;margin:10px 0 0;text-decoration:underline}
 .pet .bxslider li {overflow:hidden}
 .pet .bx-viewport {height:auto !important}
 .petDescr {text-align:right;direction:rtl;max-width:950px}
+.petDescr p {display:inline}
 /* ADOPTED PAGE */
 .adopted .right, .adopted .left {float:none;height:300px;overflow:hidden;vertical-align:middle}
 .adopted .right {width:50%}

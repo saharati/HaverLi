@@ -23,7 +23,7 @@ while ($row = $result->fetch_assoc())
 		foreach ($caption as $c)
 		{
 			if (mb_strlen($c) > 300)
-				$c = mb_substr($c, 0, 300) . '...';
+				$c = mb_substr($c, 0, 301);
 			$text .= $c;
 			if (mb_strlen($text) > 300)
 			{
