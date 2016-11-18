@@ -31,6 +31,7 @@
 <ul>
 <li><a title="הוספת אלבומים" href="/private/addalbums.php">הוספת אלבומים</a></li>
 <li><a title="עדכון אלבומים" href="/private/updatealbums.php">עדכון אלבומים</a></li>
+<li><a title="עדכון תוכן" href="/private/updateadopt.php">עדכון תוכן</a></li>
 </ul>
 </li>
 <li>

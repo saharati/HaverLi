@@ -1,7 +1,12 @@
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/config.php'; ?>
 <!DOCTYPE html>
 <html lang="he">
-<?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php'; ?>
+<?php
+$page_title = 'עמותת חבר לי - אודות';
+$page_description = "עמותת חבר לי היא עמותה לאימוץ כלבים, שהוקמה ב 2006 ופועלת בשיתוף פעולה ייחודי עם השירותים הוטרינרים של גוש דן. \r\nמאז הקמתה מצאה העמותה בתים טובים ללמעלה מ- 2500 כלבים שהיו אמורים לסיים את חייהם בצורה שונה.";
+$page_url = 'http://imutz.org/about';
+require $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php';
+?>
 <body>
 <div id="wrapper">
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php'; ?>
@@ -15,12 +20,12 @@ $row = $result->fetch_assoc();
 $result->free();
 if ($row)
 {
-	echo '<div class="innerDiv">' . $row['description'] . '</div>
+	echo '<div class="innerDiv">' . $row['aboutdescription'] . '</div>
 <div class="spaceDiv"></div>';
 }
-echo '<div class="innerDiv">
-<h2>מתנדבי העמותה</h2>
-<p>כל פעילי העמותה עובדים בהתנדבות ושכרם הוא הסיפוק שבמציאת בתים טובים לכלבים ובקריאת מכתבי התודה שאנחנו מקבלים.</p>';
+echo '<div class="innerDiv">';
+if ($row)
+	echo $row['volunteersdescription'];
 $result = $mysqli->query('SELECT image, imageName, imageCaption FROM volunteer ORDER BY imageOrder');
 while ($row2 = $result->fetch_assoc())
 	echo '<div class="rectDiv clearfix"><img src="/images/volunteers/' . $row2['image'] . '" title="' . $row2['imageName'] . '" alt="' . $row2['imageName'] . '"><h3>' . $row2['imageName'] . '</h3>' . $row2['imageCaption'] . '</div>';

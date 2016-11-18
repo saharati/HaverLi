@@ -50,7 +50,7 @@ if (isset($_POST['myemail'], $_POST['friendemail'], $_POST['content']))
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/mobile.php'; ?>
 <div id="content" class="contact fullwidth">
 <div id="contentInner">
-<form action="/send-<?php echo $_GET['page']; ?>" method="post">
+<form action="<?php echo strlen($_SERVER['QUERY_STRING']) ? basename($_SERVER['PHP_SELF']) . '?' . $_SERVER['QUERY_STRING'] : basename($_SERVER['PHP_SELF']); ?>" method="post">
 <fieldset class="inline-form">
 <h3>ספר לחבר על <?php echo $row['name']; ?></h3>
 <div class="clearfix">

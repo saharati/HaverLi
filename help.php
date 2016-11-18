@@ -1,7 +1,12 @@
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/config.php'; ?>
 <!DOCTYPE html>
 <html lang="he">
-<?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php'; ?>
+<?php
+$page_title = 'עמותת חבר לי - איך ניתן לעזור?';
+$page_description = "עמותת חבר לי זקוקה למתנדבים, תרומות, שמיכות וכל עזרה שיש לכל אחד להציע. \r\nאנחנו מזמינים אתכם להצטרף למשפחת עמותת חבר לי ולהיות חלק משמעותי בחיי הכלבים הזקוקים לחום ואהבה.";
+$page_url = 'http://imutz.org/help';
+require $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php';
+?>
 <body>
 <div id="wrapper">
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php'; ?>

@@ -1,7 +1,12 @@
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/config.php'; ?>
 <!DOCTYPE html>
 <html lang="he">
-<?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php'; ?>
+<?php
+$page_title = 'עמותת חבר לי - תהליך אימוץ';
+$page_description = "אנו מאמינים בתהליך אימוץ פרטני בו גם לכלב וגם למשפחה תהיה חוויה נעימה והאימוץ יהיה נכון ומותאם לכל הצדדים. התאמת הכלב למשפחה הוא הדבר הכי חשוב והליווי האישי ממשיך אצלנו גם לאחר האימוץ.";
+$page_url = 'http://imutz.org/process';
+require $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php';
+?>
 <body>
 <div id="wrapper">
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php'; ?>

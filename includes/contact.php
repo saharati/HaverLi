@@ -30,7 +30,7 @@ if (isset($_POST['name'], $_POST['phone'], $_POST['city'], $_POST['email'], $_PO
 	}
 }
 ?>
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+<form action="<?php echo strlen($_SERVER['QUERY_STRING']) ? basename($_SERVER['PHP_SELF']) . '?' . $_SERVER['QUERY_STRING'] : basename($_SERVER['PHP_SELF']); ?>" method="post">
 <fieldset class="inline-form">
 <h3>צור קשר</h3>
 <div class="clearfix">

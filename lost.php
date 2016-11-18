@@ -1,7 +1,12 @@
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/config.php'; ?>
 <!DOCTYPE html>
 <html lang="he">
-<?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php'; ?>
+<?php
+$page_title = 'עמותת חבר לי - אבד לי הכלב';
+$page_description = "הכלב שלכם אבד? קודם כל קחו נשימה עמוקה. בשביל זה ארגנו לכם מספר פעולות פשוטות לעזור לכם למצוא את כלבכם האהוב.";
+$page_url = 'http://imutz.org/lost';
+require $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php';
+?>
 <body>
 <div id="wrapper">
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php'; ?>

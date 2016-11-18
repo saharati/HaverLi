@@ -104,6 +104,7 @@ main h4 {font-size:17px;margin:10px 0 0;text-decoration:underline}
 .rectDiv p {margin:0}
 .rectDiv img {float:left;width:auto;height:150px;margin-right:10px}
 .lastp {margin-top:10px !important}
+.center {text-align:center}
 /* NOT FOUND PAGE */
 .notfound .right, .notfound .left {float:none}
 .notfound .right {width:30%}

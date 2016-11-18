@@ -3,12 +3,15 @@ require $_SERVER['DOCUMENT_ROOT'] . '/private/authenticate.php';
 $result = $mysqli->query('SELECT * FROM about');
 $row = $result->fetch_assoc();
 $result->free();
-if (isset($_POST['description'], $_POST['link'], $_FILES['image']))
+if (isset($_POST['aboutdescription'], $_POST['volunteersdescription'], $_POST['link'], $_FILES['image']))
 {
 	$validation = array();
 	$_POST = sanitize($_POST);
-	$_POST['description'] = htmlspecialchars_decode($_POST['description'], ENT_QUOTES);
-	if (empty($_POST['description']))
+	$_POST['aboutdescription'] = htmlspecialchars_decode($_POST['aboutdescription'], ENT_QUOTES);
+	$_POST['volunteersdescription'] = htmlspecialchars_decode($_POST['volunteersdescription'], ENT_QUOTES);
+	if (empty($_POST['aboutdescription']))
+		$validation['descriptionempty'] = 'חובה להזין טקסט.';
+	elseif (empty($_POST['volunteersdescription']))
 		$validation['descriptionempty'] = 'חובה להזין טקסט.';
 	if (!$row && empty($_FILES['image']['name']))
 		$validation['imageempty'] = 'חובה להוסיף תמונה.';
@@ -39,10 +42,10 @@ if (isset($_POST['description'], $_POST['link'], $_FILES['image']))
 			move_uploaded_file($_FILES['image']['tmp_name'], $new_name);
 		}
 		if ($row)
-			$stmt = $mysqli->prepare('UPDATE about SET description=?, image=?, imageLink=?');
+			$stmt = $mysqli->prepare('UPDATE about SET aboutdescription=?, volunteersdescription=?, image=?, imageLink=?');
 		else
-			$stmt = $mysqli->prepare('INSERT INTO about VALUES (?, ?, ?)');
-		$stmt->bind_param('sss', $_POST['description'], $image_name, $_POST['link']);
+			$stmt = $mysqli->prepare('INSERT INTO about VALUES (?, ?, ?, ?)');
+		$stmt->bind_param('ssss', $_POST['aboutdescription'], $_POST['volunteersdescription'], $image_name, $_POST['link']);
 		$stmt->execute();
 		$stmt->close();
 		$result = $mysqli->query('SELECT * FROM about');
@@ -81,7 +84,8 @@ else
 }
 ?>
 <input type="url" name="link" placeholder="קישור (אם יש)" value="<?php echo (empty($validation) ? ($row ? $row['imageLink'] : '') : $_POST['link']); ?>">
-<textarea class="tinymce" name="description" placeholder="טקסט לחלק העליון של דף האודות"><?php echo (empty($validation) ? ($row ? $row['description'] : '') : $_POST['description']); ?></textarea>
+<textarea class="tinymce" name="aboutdescription" placeholder="טקסט לחלק העליון של דף האודות"><?php echo (empty($validation) ? ($row ? $row['aboutdescription'] : '') : $_POST['aboutdescription']); ?></textarea>
+<textarea class="tinymce" name="volunteersdescription" placeholder="טקסט למתנדבים"><?php echo (empty($validation) ? ($row ? $row['volunteersdescription'] : '') : $_POST['volunteersdescription']); ?></textarea>
 <input type="submit" value="עדכן תוכן">
 </fieldset>
 </form>

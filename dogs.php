@@ -1,7 +1,12 @@
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/config.php'; ?>
 <!DOCTYPE html>
 <html lang="he">
-<?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php'; ?>
+<?php
+$page_title = 'עמותת חבר לי - פינת אימוץ כלבים';
+$page_description = "הכלבים המהממים שלנו מחכים לכם בפינת האימוץ. \r\nבואו להתאהב!";
+$page_url = 'http://imutz.org/dogs';
+require $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php';
+?>
 <body>
 <div id="wrapper">
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php'; ?>
@@ -9,10 +14,12 @@
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/mobile.php'; ?>
 <div id="content" class="adopt">
 <div id="contentInner">
-<h2>הכלבים שלנו</h2>
-<p>כולם בעלי שבב אלקטרוני, מחוסנים בחיסון כלבת ומשושה, הנקבות מעוקרות והזכרים מסורסים.</p>
-<p>האימוץ כרוך בתשלום מסובסד עבור עיקור/סירוס וחיסון כלבת/משושה.</p>
 <?php
+$result = $mysqli->query('SELECT dogdescription FROM adopt');
+$row = $result->fetch_assoc();
+$result->free();
+if ($row)
+	echo $row['dogdescription'];
 $result = $mysqli->query('SELECT id, name FROM album WHERE isDog=1 AND isAdopted=0 ORDER BY important DESC, postDate DESC');
 while ($row = $result->fetch_assoc())
 {
