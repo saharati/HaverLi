@@ -5,6 +5,9 @@
 $page_title = 'עמותת חבר לי - מידע למאמץ';
 $page_description = "מזל טוב, יש לכם כלב! עכשיו מה עושים? בשביל זה ארגנו לכם מספר פעולות וטיפים ליום שאחרי.";
 $page_url = 'http://imutz.org/info';
+$page_image = 'http://imutz.org/images/og/info.jpg';
+$page_image_width = 1200;
+$page_image_height = 630;
 require $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php';
 ?>
 <body>

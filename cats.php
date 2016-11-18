@@ -5,6 +5,9 @@
 $page_title = 'עמותת חבר לי - פינת אימוץ חתולים';
 $page_description = "החתולים המתוקים שלנו מחכים לכם בפינת האימוץ.";
 $page_url = 'http://imutz.org/cats';
+$page_image = 'http://imutz.org/images/og/cats.jpg';
+$page_image_width = 1200;
+$page_image_height = 630;
 require $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php';
 ?>
 <body>

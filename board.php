@@ -5,6 +5,9 @@
 $page_title = 'עמותת חבר לי - לוח מודעות';
 $page_description = "עמותת חבר לי מזמינה אתכם להתעדכן באירועים, ימי אימוץ, אבדות ומציאות בלוח המודעות שלנו.";
 $page_url = 'http://imutz.org/board';
+$page_image = 'http://imutz.org/images/og/board.jpg';
+$page_image_width = 1200;
+$page_image_height = 630;
 require $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php';
 ?>
 <body>

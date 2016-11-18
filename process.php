@@ -5,6 +5,9 @@
 $page_title = 'עמותת חבר לי - תהליך אימוץ';
 $page_description = "אנו מאמינים בתהליך אימוץ פרטני בו גם לכלב וגם למשפחה תהיה חוויה נעימה והאימוץ יהיה נכון ומותאם לכל הצדדים. התאמת הכלב למשפחה הוא הדבר הכי חשוב והליווי האישי ממשיך אצלנו גם לאחר האימוץ.";
 $page_url = 'http://imutz.org/process';
+$page_image = 'http://imutz.org/images/og/process.jpg';
+$page_image_width = 1200;
+$page_image_height = 630;
 require $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php';
 ?>
 <body>

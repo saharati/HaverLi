@@ -5,6 +5,9 @@
 $page_title = 'עמותת חבר לי - איך ניתן לעזור?';
 $page_description = "עמותת חבר לי זקוקה למתנדבים, תרומות, שמיכות וכל עזרה שיש לכל אחד להציע. \r\nאנחנו מזמינים אתכם להצטרף למשפחת עמותת חבר לי ולהיות חלק משמעותי בחיי הכלבים הזקוקים לחום ואהבה.";
 $page_url = 'http://imutz.org/help';
+$page_image = 'http://imutz.org/images/og/help2.jpg';
+$page_image_width = 1200;
+$page_image_height = 630;
 require $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php';
 ?>
 <body>

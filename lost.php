@@ -5,6 +5,9 @@
 $page_title = 'עמותת חבר לי - אבד לי הכלב';
 $page_description = "הכלב שלכם אבד? קודם כל קחו נשימה עמוקה. בשביל זה ארגנו לכם מספר פעולות פשוטות לעזור לכם למצוא את כלבכם האהוב.";
 $page_url = 'http://imutz.org/lost';
+$page_image = 'http://imutz.org/images/og/lost.jpg';
+$page_image_width = 1200;
+$page_image_height = 630;
 require $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php';
 ?>
 <body>

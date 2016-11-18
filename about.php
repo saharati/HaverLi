@@ -5,6 +5,9 @@
 $page_title = 'עמותת חבר לי - אודות';
 $page_description = "עמותת חבר לי היא עמותה לאימוץ כלבים, שהוקמה ב 2006 ופועלת בשיתוף פעולה ייחודי עם השירותים הוטרינרים של גוש דן. \r\nמאז הקמתה מצאה העמותה בתים טובים ללמעלה מ- 2500 כלבים שהיו אמורים לסיים את חייהם בצורה שונה.";
 $page_url = 'http://imutz.org/about';
+$page_image = 'http://imutz.org/images/og/about.jpg';
+$page_image_width = 1200;
+$page_image_height = 630;
 require $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php';
 ?>
 <body>
