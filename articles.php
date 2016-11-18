@@ -37,10 +37,13 @@ while ($row = $result->fetch_assoc())
 			}
 			$text .= '</span>';
 		}
+		$doc = new DOMDocument();
+		$doc->loadHTML(mb_convert_encoding($text, 'HTML-ENTITIES', 'UTF-8'));
+		$text = $doc->saveHTML($doc->getElementsByTagName('p')->item(0));
 	}
 	else
 		$text = $row['imageCaption'];
-echo $text . '
+	echo $text . '
 <p class="lastp"><a href="/article-' . $row['id'] . '">למאמר המלא לחץ כאן</a></p>
 </div>';
 }
