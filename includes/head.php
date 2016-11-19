@@ -7,9 +7,9 @@ if (!isset($page_url))
 	$page_url = 'http://imutz.org/';
 if (!isset($page_image))
 {
-	$page_image = 'http://imutz.org/images/logo.jpg';
-	$page_image_width = 960;
-	$page_image_height = 960;
+	$page_image = 'http://imutz.org/images/og/index.jpg';
+	$page_image_width = 1200;
+	$page_image_height = 630;
 }
 ?>
 <head>
