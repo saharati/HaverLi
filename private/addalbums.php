@@ -1,6 +1,6 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/private/authenticate.php';
-if (isset($_POST['name'], $_POST['description'], $_POST['isDog'], $_POST['isMale'], $_POST['size'], $_POST['breedId'], $_POST['bornDate']))
+if (isset($_POST['name'], $_POST['description'], $_POST['isDog'], $_POST['isMale'], $_POST['size'], $_POST['breedId'], $_POST['bornDate'], $_POST['years'], $_POST['months']))
 {
 	$validation = array();
 	$_POST = sanitize($_POST);
@@ -20,7 +20,12 @@ if (isset($_POST['name'], $_POST['description'], $_POST['isDog'], $_POST['isMale
 	if (!is_numeric($_POST['breedId']))
 		$validation['breedwrong'] = 'הגזע שנבחר לא תקין.';
 	if (empty($_POST['bornDate']))
-		$validation['borndateempty'] = 'יש להזין תאריך לידה.';
+	{
+		if (empty($_POST['years']) && empty($_POST['months']))
+			$validation['borndateempty'] = 'יש להזין תאריך לידה או גיל.';
+		elseif ($_POST['years'] < 0 || $_POST['years'] > 30 || $_POST['months'] < 0 || $_POST['months'] > 11)
+			$validation['borndatewrong'] = 'הגיל שהוזן לא תקין.';
+	}
 	else
 	{
 		$bornDate = explode('-', $_POST['bornDate']);
@@ -29,8 +34,9 @@ if (isset($_POST['name'], $_POST['description'], $_POST['isDog'], $_POST['isMale
 	}
 	if (empty($validation))
 	{
+		$bornDate = empty($_POST['bornDate']) ? date("Y-m-d", strtotime('-' . $_POST['years'] . 'years -' . $_POST['months'] . ' months')) : $_POST['bornDate'];
 		$stmt = $mysqli->prepare('INSERT INTO album (name, description, isDog, isMale, size, breedId, bornDate) VALUES (?, ?, ?, ?, ?, ?, ?)');
-		$stmt->bind_param('ssiiiis', $_POST['name'], $_POST['description'], $_POST['isDog'], $_POST['isMale'], $_POST['size'], $_POST['breedId'], $_POST['bornDate']);
+		$stmt->bind_param('ssiiiis', $_POST['name'], $_POST['description'], $_POST['isDog'], $_POST['isMale'], $_POST['size'], $_POST['breedId'], $bornDate);
 		$stmt->execute();
 		$_SESSION['albumId'] = $mysqli->insert_id;
 		$stmt->close();
@@ -75,7 +81,10 @@ if (isset($_POST['name'], $_POST['description'], $_POST['isDog'], $_POST['isMale
 <option value="0">גזע (מעורב)</option>
 </select>
 תאריך לידה
-<input type="date" name="bornDate" title="יש להזין תאריך לידה" max="<?php echo date('Y-m-d'); ?>" required <?php if (!empty($validation)) echo 'value="' . $_POST['bornDate'] . '"'; ?>>
+<input type="date" name="bornDate" title="יש להזין תאריך לידה" max="<?php echo date('Y-m-d'); ?>" <?php if (!empty($validation)) echo 'value="' . $_POST['bornDate'] . '"'; ?>>
+או גיל בשנים / חודשים
+<input type="number" name="years" placeholder="שנים" title="יש להזין גיל בשנים" min="0" max="30" <?php if (!empty($validation)) echo 'value="' . $_POST['years'] . '"'; ?>>
+<input type="number" name="months" placeholder="חודשים" title="יש להזין גיל בחודשים" min="0" max="11" <?php if (!empty($validation)) echo 'value="' . $_POST['months'] . '"'; ?>>
 <input type="submit" value="הוסף אלבום">
 </fieldset>
 </form>
