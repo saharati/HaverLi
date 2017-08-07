@@ -1,0 +1,3 @@
+CREATE TABLE `lost` (
+  `description` text CHARACTER SET utf8 NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
