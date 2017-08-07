@@ -1,9 +1,18 @@
 <?php
+// Start configuration.
+$db_host = 'host';
+$db_username = 'username';
+$db_password = 'password';
+$db_database = 'database';
+$mail_host = 'host';
+$mail_username = 'username';
+$mail_password = 'password';
+// End configuration.
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 'on');
 mb_internal_encoding('UTF-8');
-$mysqli = new MySQLi('p:127.0.0.1', 'root', 'Pp2p7br4', 'imutz-v2');
+$mysqli = new MySQLi($db_host, $db_username, $db_password, $db_database);
 $mysqli->set_charset('utf8');
 function sanitize($data)
 {
@@ -108,10 +117,10 @@ function initMailer()
 	$mail->SMTPAuth = true;
 	$mail->SMTPSecure = 'tls';
 	$mail->Port = 587;
-	$mail->Host = 'mail.petpal.co.il';
+	$mail->Host = $mail_host;
 	$mail->CharSet = 'UTF-8';
-	$mail->Username = 'support@imutz.org';
-	$mail->Password = 'Pp2p7br4';
+	$mail->Username = $mail_username;
+	$mail->Password = $mail_password;
 	$mail->SetFrom('support@imutz.org', 'עמותת חבר לי');
 	return $mail;
 }
