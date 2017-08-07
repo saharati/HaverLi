@@ -70,7 +70,7 @@ $_SESSION['albumId'] = $_GET['id'];
 <h2>עדכון תמונות לאלבום</h2>
 <form action="/private/updatephotos.php?id=<?php echo $_GET['id']; ?>" method="post">
 <table class="sortable">
-<caption><input type="submit" value="מחק"></caption>
+<caption><button type="button" onclick="return del();">מחק</button></caption>
 <thead><tr><th>תמונה</th><th>סטאטוס</th><th>סובב</th><th>מחיקה</th></tr></thead>
 <tbody>
 <?php
@@ -91,7 +91,6 @@ $result->free();
 </form>
 <p><a title="הוסף תמונות לאלבום זה" href="/private/addphotos.php">הוסף תמונות לאלבום זה</a></p>
 <p><a title="עדכן פרטיםל אלבום זה" href="/private/updatealbum.php?id=<?php echo $_GET['id']; ?>">עדכן פרטים לאלבום זה</a></p>
-<br>
 <p><a title="חזרה לעדכון אלבומים" href="/private/updatealbums.php">חזרה לעדכון אלבומים</a></p>
 <p><a title="חזרה לעמוד הניהול" href="/private">חזרה לעמוד הניהול</a></p>
 </div>
@@ -99,7 +98,7 @@ $result->free();
 </main>
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php'; ?>
 <script>
-function del(num)
+function del()
 {
 	swal
 	(
@@ -113,9 +112,15 @@ function del(num)
 			cancelButtonText: 'לא',
 			closeOnConfirm: false
 		},
-		function()
+		function (isConfirm)
 		{
-			self.location.href = '/private/updatephotos.php?id=<?php echo $_GET['id']; ?>&del=' + num;
+			if (isConfirm)
+			{
+				document.forms[0].submit();
+				return true;
+			}
+
+			return false;
 		}
 	);
 }
@@ -127,8 +132,8 @@ function changestatus(id, value)
 	http.send('id=' + id + '&value=' + value);
 }
 <?php
-if (isset($_GET['del']))
-	echo 'swal("מחיקה", "התמונה נמחקה בהצלחה.", "success");';
+if (isset($_POST['cb']))
+	echo 'swal("מחיקה", "התמונות נמחקו בהצלחה.", "success");';
 ?>
 </script>
 </div>

@@ -94,7 +94,6 @@ $result->free();
 </fieldset>
 </form>
 <p><a title="עדכון תמונות לאלבום זה" href="/private/updatephotos.php?id=<?php echo $_GET['id']; ?>">עדכון תמונות לאלבום זה</a></p>
-<br>
 <p><a title="חזרה לעדכון אלבומים" href="/private/updatealbums.php">חזרה לעדכון אלבומים</a></p>
 <p><a title="חזרה לעמוד הניהול" href="/private">חזרה לעמוד הניהול</a></p>
 </div>
