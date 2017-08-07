@@ -2,12 +2,17 @@
 <!DOCTYPE html>
 <html lang="he">
 <?php
-$page_title = 'עמותת חבר לי - פינת אימוץ כלבים';
-$page_description = "הכלבים המהממים שלנו מחכים לכם בפינת האימוץ. \r\nבואו להתאהב!";
-$page_url = 'http://imutz.org/dogs';
-$page_image = 'http://imutz.org/images/og/dogs.jpg';
-$page_image_width = 1200;
-$page_image_height = 630;
+$metaData = $mysqli->query('SELECT title, description, url, image FROM promote WHERE page="dogs"');
+$md = $metaData->fetch_assoc();
+$metaData->free();
+$page_title = htmlspecialchars($md['title'], ENT_QUOTES);
+$page_description = htmlspecialchars(str_replace(array("\r", "\n"), array('', ' '), $md['description']), ENT_QUOTES);
+$page_url = $md['url'];
+if (!empty($md['image']))
+{
+	$page_image = 'http://imutz.org/images/og/' . $md['image'];
+	list($page_image_width, $page_image_height) = getimagesize($page_image);
+}
 require $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php';
 ?>
 <body>

@@ -2,12 +2,17 @@
 <!DOCTYPE html>
 <html lang="he">
 <?php
-$page_title = 'עמותת חבר לי - איך ניתן לעזור?';
-$page_description = "עמותת חבר לי זקוקה למתנדבים, תרומות, שמיכות וכל עזרה שיש לכל אחד להציע. \r\nאנחנו מזמינים אתכם להצטרף למשפחת עמותת חבר לי ולהיות חלק משמעותי בחיי הכלבים הזקוקים לחום ואהבה.";
-$page_url = 'http://imutz.org/help';
-$page_image = 'http://imutz.org/images/og/help2.jpg';
-$page_image_width = 1200;
-$page_image_height = 630;
+$metaData = $mysqli->query('SELECT title, description, url, image FROM promote WHERE page="help"');
+$md = $metaData->fetch_assoc();
+$metaData->free();
+$page_title = htmlspecialchars($md['title'], ENT_QUOTES);
+$page_description = htmlspecialchars(str_replace(array("\r", "\n"), array('', ' '), $md['description']), ENT_QUOTES);
+$page_url = $md['url'];
+if (!empty($md['image']))
+{
+	$page_image = 'http://imutz.org/images/og/' . $md['image'];
+	list($page_image_width, $page_image_height) = getimagesize($page_image);
+}
 require $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php';
 ?>
 <body>

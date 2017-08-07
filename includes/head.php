@@ -1,15 +1,17 @@
 <?php
-if (!isset($page_title))
-	$page_title = 'עמותת חבר לי - לחברים עוזרים תמיד';
-if (!isset($page_description))
-	$page_description = "ברוכים הבאים לעמותת חבר לי. \r\nכאן תמצאו כלבים וחתולים לאימוץ מכל הגדלים והמינים, גורים ובוגרים, מידע למאמץ, מאמרים והמלצות.";
-if (!isset($page_url))
-	$page_url = 'http://imutz.org/';
-if (!isset($page_image))
+$metaData = $mysqli->query('SELECT title, description, url, image FROM promote WHERE page="default"');
+$md = $metaData->fetch_assoc();
+$metaData->free();
+if (empty($page_title))
+	$page_title = htmlspecialchars($md['title'], ENT_QUOTES);
+if (empty($page_description))
+	$page_description = htmlspecialchars(str_replace(array("\r", "\n"), array('', ' '), $md['description']), ENT_QUOTES);
+if (empty($page_url))
+	$page_url = $md['url'];
+if (empty($page_image) && !empty($md['image']))
 {
-	$page_image = 'http://imutz.org/images/og/index.jpg';
-	$page_image_width = 1200;
-	$page_image_height = 630;
+	$page_image = 'http://imutz.org/images/og/' . $md['image'];
+	list($page_image_width, $page_image_height) = getimagesize($page_image);
 }
 ?>
 <head>

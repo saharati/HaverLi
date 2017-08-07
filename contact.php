@@ -2,9 +2,17 @@
 <!DOCTYPE html>
 <html lang="he">
 <?php
-$page_title = 'עמותת חבר לי - צור קשר';
-$page_description = "עמותת חבר לי מזמינה אתכם ליצור איתנו קשר לגבי אימוץ ומסירה, תרומות, התייעצות, שעות פעילות, ימי אימוץ ועוד...";
-$page_url = 'http://imutz.org/contact';
+$metaData = $mysqli->query('SELECT title, description, url, image FROM promote WHERE page="contact"');
+$md = $metaData->fetch_assoc();
+$metaData->free();
+$page_title = htmlspecialchars($md['title'], ENT_QUOTES);
+$page_description = htmlspecialchars(str_replace(array("\r", "\n"), array('', ' '), $md['description']), ENT_QUOTES);
+$page_url = $md['url'];
+if (!empty($md['image']))
+{
+	$page_image = 'http://imutz.org/images/og/' . $md['image'];
+	list($page_image_width, $page_image_height) = getimagesize($page_image);
+}
 require $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php';
 ?>
 <body>

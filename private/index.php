@@ -129,6 +129,12 @@
 </ul>
 </li>
 <li>
+<h2>כללי</h2>
+<ul>
+<li><a title="קידום האתר" href="/private/promote.php">קידום האתר</a></li>
+</ul>
+</li>
+<li>
 <h2>אישי</h2>
 <ul>
 <li><a title="שינוי סיסמה" href="/private/changepassword.php">שינוי סיסמה</a></li>
