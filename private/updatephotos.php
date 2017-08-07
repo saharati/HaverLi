@@ -30,7 +30,7 @@ if (isset($_POST['cb']))
 		}
 	}
 }
-if (isset($_GET['rotate']) && is_numeric($_GET['rotate']) && $_GET['rotate'] > 0)
+elseif (isset($_GET['rotate']) && is_numeric($_GET['rotate']) && $_GET['rotate'] > 0)
 {
 	$result = $mysqli->query('SELECT image, width, height FROM album_photo WHERE id=' . $_GET['rotate']);
 	$row = $result->fetch_assoc();
@@ -38,21 +38,25 @@ if (isset($_GET['rotate']) && is_numeric($_GET['rotate']) && $_GET['rotate'] > 0
 	if ($row)
 	{
 		$extension = strtolower(pathinfo($_SERVER['DOCUMENT_ROOT'] . '/images/albums/' . $_GET['id'] . '/' . $row['image'], PATHINFO_EXTENSION));
+		$image_name = mt_rand(1, time()) . time() . '.' . $extension;
 		if ($extension == 'jpg' || $extension == 'jpeg')
 			$image = imagecreatefromjpeg($_SERVER['DOCUMENT_ROOT'] . '/images/albums/' . $_GET['id'] . '/' . $row['image']);
 		elseif ($extension == 'png')
 			$image = imagecreatefrompng($_SERVER['DOCUMENT_ROOT'] . '/images/albums/' . $_GET['id'] . '/' . $row['image']);
 		else
 			$image = imagecreatefromgif($_SERVER['DOCUMENT_ROOT'] . '/images/albums/' . $_GET['id'] . '/' . $row['image']);
-		$image = imagerotate($image, 90, 0);
+		imagesavealpha($image , true);
+		$image = imagerotate($image, 90, imagecolorallocatealpha($image, 0, 0, 0, 127));
 		unlink($_SERVER['DOCUMENT_ROOT'] . '/images/albums/' . $_GET['id'] . '/' . $row['image']);
 		if ($extension == 'jpg' || $extension == 'jpeg')
-			imagejpeg($image, $_SERVER['DOCUMENT_ROOT'] . '/images/albums/' . $_GET['id'] . '/' . $row['image'], 100);
+			imagejpeg($image, $_SERVER['DOCUMENT_ROOT'] . '/images/albums/' . $_GET['id'] . '/' . $image_name, 100);
 		elseif ($extension == 'png')
-			imagepng($image, $_SERVER['DOCUMENT_ROOT'] . '/images/albums/' . $_GET['id'] . '/' . $row['image'], 9);
+			imagepng($image, $_SERVER['DOCUMENT_ROOT'] . '/images/albums/' . $_GET['id'] . '/' . $image_name, 9);
 		else
-			imagegif($image, $_SERVER['DOCUMENT_ROOT'] . '/images/albums/' . $_GET['id'] . '/' . $row['image']);
+			imagegif($image, $_SERVER['DOCUMENT_ROOT'] . '/images/albums/' . $_GET['id'] . '/' . $image_name);
 		imagedestroy($image);
+		list($width, $height) = getimagesize($_SERVER['DOCUMENT_ROOT'] . '/images/albums/' . $_GET['id'] . '/' . $image_name);
+		$mysqli->query('UPDATE album_photo SET image="' . $image_name . '", width=' . $width . ', height=' . $height . ' WHERE id=' . $_GET['rotate']);
 	}
 }
 $_SESSION['albumId'] = $_GET['id'];
