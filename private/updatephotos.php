@@ -13,15 +13,21 @@ if (!$row)
 	header('Location: /private');
 	exit;
 }
-if (isset($_GET['del']) && is_numeric($_GET['del']) && $_GET['del'] > 0)
+if (isset($_POST['cb']))
 {
-	$result = $mysqli->query('SELECT image FROM album_photo WHERE id=' . $_GET['del']);
-	$row = $result->fetch_assoc();
-	$result->free();
-	if ($row)
+	foreach ($_POST['cb'] as $cb)
 	{
-		unlink($_SERVER['DOCUMENT_ROOT'] . '/images/albums/' . $_GET['id'] . '/' . $row['image']);
-		$mysqli->query('DELETE FROM album_photo WHERE id=' . $_GET['del']);
+		if (is_numeric($cb) && $cb > 0)
+		{
+			$result = $mysqli->query('SELECT image FROM album_photo WHERE id=' . $cb);
+			$row = $result->fetch_assoc();
+			$result->free();
+			if ($row)
+			{
+				unlink($_SERVER['DOCUMENT_ROOT'] . '/images/albums/' . $_GET['id'] . '/' . $row['image']);
+				$mysqli->query('DELETE FROM album_photo WHERE id=' . $cb);
+			}
+		}
 	}
 }
 if (isset($_GET['rotate']) && is_numeric($_GET['rotate']) && $_GET['rotate'] > 0)
@@ -62,7 +68,9 @@ $_SESSION['albumId'] = $_GET['id'];
 <div id="content" class="fullwidth">
 <div id="contentInner">
 <h2>עדכון תמונות לאלבום</h2>
+<form action="/private/updatephotos.php?id=<?php echo $_GET['id']; ?>" method="post">
 <table class="sortable">
+<caption><input type="submit" value="מחק"></caption>
 <thead><tr><th>תמונה</th><th>סטאטוס</th><th>סובב</th><th>מחיקה</th></tr></thead>
 <tbody>
 <?php
@@ -73,13 +81,14 @@ while ($row = $result->fetch_assoc())
 <td data-label="תמונה"><a class="imageModal" href="/images/albums/' . $_GET['id'] . '/' . $row['image'] . '" data-width="' . $row['width'] . '" data-height="' . $row['height'] . '"><img src="/images/albums/' . $_GET['id'] . '/' . $row['image'] . '"></a></td>
 <td data-label="סטאטוס"><select onchange="changestatus(' . $row['id'] . ', this.value);"><option value="0" ' . ($row['cover'] == 0 ? 'selected' : '') . '>רגיל</option><option value="1" ' . ($row['cover'] == 1 ? 'selected' : '') . '>תמונה משנית</option><option value="2" ' . ($row['cover'] == 2 ? 'selected' : '') . '>תמונה ראשית</option></select></td>
 <td data-label="סובב"><a title="סובב ימינה" href="/private/updatephotos.php?id=' . $_GET['id'] . '&rotate=' . $row['id'] . '"> ↺ </a></td>
-<td data-label="מחיקה"><a title="מחיקה" href="javascript:void(0);" onclick="del(' . $row['id'] . ');">מחיקה</a></td>
+<td data-label="מחיקה"><input title="מחיקה" type="checkbox" name="cb[]" value="' . $row['id'] . '"</td>
 </tr>';
 }
 $result->free();
 ?>
 </tbody>
 </table>
+</form>
 <p><a title="הוסף תמונות לאלבום זה" href="/private/addphotos.php">הוסף תמונות לאלבום זה</a></p>
 <p><a title="עדכן פרטיםל אלבום זה" href="/private/updatealbum.php?id=<?php echo $_GET['id']; ?>">עדכן פרטים לאלבום זה</a></p>
 <br>

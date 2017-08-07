@@ -186,7 +186,7 @@ main h4 {font-size:17px;margin:10px 0 0;text-decoration:underline}
 /* FORMS */
 fieldset {border:0;background-color:#FFF;padding:10px;text-align:right}
 fieldset h3 {font-size:30px;text-align:right;margin:0}
-fieldset input, fieldset textarea, fieldset select {font-family:trashim;width:100%;background-color:#EEE;color:#999;border:1px solid #999;display:block;padding:5px;margin:5px 0}
+fieldset input, fieldset textarea, fieldset select, .sortable caption input {font-family:trashim;width:100%;background-color:#EEE;color:#999;border:1px solid #999;display:block;padding:5px;margin:5px 0}
 fieldset textarea {resize:vertical;overflow:auto;height:auto;min-height:115px}
 fieldset input[type="submit"] {width:auto;float:left;cursor:pointer;min-width:100px}
 .mce-container {margin:5px 0 !important}
@@ -228,6 +228,8 @@ fieldset input[type="submit"] {width:auto;float:left;cursor:pointer;min-width:10
 }
 /* TABLES */
 .sortable {width:100%;border-collapse:collapse;margin-bottom:10px;color:#999;text-align:center}
+.sortable caption {caption-side:bottom;text-align:left}
+.sortable caption input {width:33%;display:inline-block}
 .sortable tr {background-color:#FFF}
 .sortable tr:nth-child(even) {background-color:#EEE}
 .sortable th, .sortable td {position:relative;vertical-align:middle;padding:5px;border:1px solid #ccc}
@@ -238,7 +240,8 @@ fieldset input[type="submit"] {width:auto;float:left;cursor:pointer;min-width:10
 .sortable td input {width:55%;height:18px;color:#777}
 @media all and (max-width:760px)
 {
-	.sortable, .sortable thead, .sortable tbody, .sortable th, .sortable td, .sortable tr {display:block}
+	.sortable thead, .sortable tbody, .sortable th, .sortable td, .sortable tr {display:block}
+	.sortable caption input {width:90%}
 	.sortable thead tr {position:absolute;top:-9999px;left:-9999px}
 	.sortable tr {border:1px solid #ccc}
 	.sortable td {border:none;border-bottom:1px solid #eee;padding-right:50%}
