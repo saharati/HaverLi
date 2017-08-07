@@ -45,6 +45,7 @@ $result->free();
 </table>
 <p><a title="הוסף סרטונים לאלבום זה" href="/private/addvideos.php?id=<?php echo $_GET['id']; ?>">הוסף סרטונים לאלבום זה</a></p>
 <p><a title="חזרה לעדכון אלבומים" href="/private/updatealbums.php">חזרה לעדכון אלבומים</a></p>
+<p><a title="חזרה לעמוד הניהול" href="/private">חזרה לעמוד הניהול</a></p>
 </div>
 </div>
 </main>

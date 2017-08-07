@@ -86,6 +86,7 @@ echo '<a href="/images/families/' . $row2['image'] . '" class="imageModal" title
 </fieldset>
 </form>
 <p><a title="חזרה לעדכון משפחות מאושרות" href="/private/updatefamilies.php">חזרה לעדכון משפחות מאושרות</a></p>
+<p><a title="חזרה לעמוד הניהול" href="/private">חזרה לעמוד הניהול</a></p>
 </div>
 </div>
 </main>

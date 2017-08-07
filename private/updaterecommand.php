@@ -91,6 +91,7 @@ echo '<a href="/images/recommands/' . $row2['image'] . '" class="imageModal" tit
 </fieldset>
 </form>
 <p><a title="חזרה לעדכון מומלצים" href="/private/updaterecommands.php">חזרה לעדכון מומלצים</a></p>
+<p><a title="חזרה לעמוד הניהול" href="/private">חזרה לעמוד הניהול</a></p>
 </div>
 </div>
 </main>

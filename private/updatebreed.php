@@ -53,6 +53,7 @@ if (isset($_POST['isDog'], $_POST['name']))
 </fieldset>
 </form>
 <p><a title="חזרה לעדכון גזעים" href="/private/updatebreeds.php">חזרה לעדכון גזעים</a></p>
+<p><a title="חזרה לעמוד הניהול" href="/private">חזרה לעמוד הניהול</a></p>
 </div>
 </div>
 </main>
