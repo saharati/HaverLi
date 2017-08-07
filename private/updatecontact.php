@@ -30,7 +30,7 @@ while ($row = $result->fetch_assoc())
 <td data-label="מיקום">' . $row['viewOrder'] . ' <a class="edit" href="javascript:void(0);" onclick="edit(this.parentNode);" title="עריכה">✎</a></td>
 <td data-label="שם">' . $row['name'] . '</td>
 <td data-label="ערך">' . $row['value'] . '</td>
-<td data-label="מחיקה"><a title="מחיקה" href="javascript:void(0);" onclick="del(' . $row['viewOrder'] . ');">מחיקה</a></a></td>
+<td data-label="מחיקה"><a title="מחיקה" href="javascript:void(0);" onclick="del(' . $row['viewOrder'] . ');">מחיקה</a></td>
 </tr>';
 }
 $result->free();

@@ -37,7 +37,7 @@ while ($row = $result->fetch_assoc())
 		list($width, $height) = getimagesize($_SERVER['DOCUMENT_ROOT'] . '/images/data/' . $row['image']);
 	echo '<tr>
 <td data-label="תמונה"><a class="imageModal" href="/images/data/' . $row['image'] . '" data-width="' . $width . '" data-height="' . $height . '"><img src="/images/data/' . $row['image'] . '"></a></td>
-<td data-label="מחיקה"><a title="מחיקה" href="javascript:void(0);" onclick="del(\'' . $row['imageName'] . '\');">מחיקה</a></a></td>
+<td data-label="מחיקה"><a title="מחיקה" href="javascript:void(0);" onclick="del(\'' . $row['imageName'] . '\');">מחיקה</a></td>
 </tr>';
 }
 $result->free();

@@ -33,7 +33,7 @@ while ($row = $result->fetch_assoc())
 <td data-label="שם">' . $row['name'] . '</td>
 <td data-label="סוג">' . ($row['isDog'] == 1 ? 'כלב' : 'חתול') . '</td>
 <td data-label="עריכה"><a title="עריכה" href="/private/updatebreed.php?id=' . $row['id'] . '">עריכה</a></td>
-<td data-label="מחיקה"><a title="מחיקה" href="javascript:void(0);" onclick="del(' . $row['id'] . ');">מחיקה</a></a></td>
+<td data-label="מחיקה"><a title="מחיקה" href="javascript:void(0);" onclick="del(' . $row['id'] . ');">מחיקה</a></td>
 </tr>';
 }
 $result->free();

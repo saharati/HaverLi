@@ -73,7 +73,7 @@ while ($row = $result->fetch_assoc())
 <td data-label="תמונה"><a class="imageModal" href="/images/albums/' . $_GET['id'] . '/' . $row['image'] . '" data-width="' . $row['width'] . '" data-height="' . $row['height'] . '"><img src="/images/albums/' . $_GET['id'] . '/' . $row['image'] . '"></a></td>
 <td data-label="סטאטוס"><select onchange="changestatus(' . $row['id'] . ', this.value);"><option value="0" ' . ($row['cover'] == 0 ? 'selected' : '') . '>רגיל</option><option value="1" ' . ($row['cover'] == 1 ? 'selected' : '') . '>תמונה משנית</option><option value="2" ' . ($row['cover'] == 2 ? 'selected' : '') . '>תמונה ראשית</option></select></td>
 <td data-label="סובב"><a title="סובב ימינה" href="/private/updatephotos.php?id=' . $_GET['id'] . '&rotate=' . $row['id'] . '"> ↺ </a></td>
-<td data-label="מחיקה"><a title="מחיקה" href="javascript:void(0);" onclick="del(' . $row['id'] . ');">מחיקה</a></a></td>
+<td data-label="מחיקה"><a title="מחיקה" href="javascript:void(0);" onclick="del(' . $row['id'] . ');">מחיקה</a></td>
 </tr>';
 }
 $result->free();
@@ -81,7 +81,7 @@ $result->free();
 </tbody>
 </table>
 <p><a title="הוסף תמונות לאלבום זה" href="/private/addphotos.php">הוסף תמונות לאלבום זה</a></p>
-<p><a title="עדכן פרטים לאלבום זה" href="/private/updatealbum.php?id=<?php echo $_GET['id']; ?>">עדכן פרטים לאלבום זה</a></p>
+<p><a title="עדכן פרטיםל אלבום זה" href="/private/updatealbum.php?id=<?php echo $_GET['id']; ?>">עדכן פרטים לאלבום זה</a></p>
 <br>
 <p><a title="חזרה לעדכון אלבומים" href="/private/updatealbums.php">חזרה לעדכון אלבומים</a></p>
 <p><a title="חזרה לעמוד הניהול" href="/private">חזרה לעמוד הניהול</a></p>

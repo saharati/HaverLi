@@ -36,7 +36,7 @@ while ($row = $result->fetch_assoc())
 {
 	echo '<tr>
 <td data-label="קישור"><a href="' . $row['video'] . '" target="_blank">' . $row['video'] . '</a></td>
-<td data-label="מחיקה"><a title="מחיקה" href="javascript:void(0);" onclick="del(' . $row['id'] . ');">מחיקה</a></a></td>
+<td data-label="מחיקה"><a title="מחיקה" href="javascript:void(0);" onclick="del(' . $row['id'] . ');">מחיקה</a></td>
 </tr>';
 }
 $result->free();

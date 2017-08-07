@@ -44,7 +44,7 @@ while ($row = $result->fetch_assoc())
 <td data-label="שם">' . $row['imageName'] . '</td>
 <td data-label="תמונה"><a class="imageModal" href="/images/volunteers/' . $row['image'] . '" data-width="' . $width . '" data-height="' . $height . '"><img src="/images/volunteers/' . $row['image'] . '"></a></td>
 <td data-label="עריכה"><a title="עריכה" href="/private/updatevolunteer.php?id=' . $row['imageOrder'] . '">עריכה</a></td>
-<td data-label="מחיקה"><a title="מחיקה" href="javascript:void(0);" onclick="del(' . $row['imageOrder'] . ');">מחיקה</a></a></td>
+<td data-label="מחיקה"><a title="מחיקה" href="javascript:void(0);" onclick="del(' . $row['imageOrder'] . ');">מחיקה</a></td>
 </tr>';
 }
 $result->free();

@@ -49,7 +49,7 @@ while ($row = $result->fetch_assoc())
 <td data-label="תמונה ראשית"><a class="imageModal" href="/images/help/' . $row['image'] . '" data-width="' . $width . '" data-height="' . $height . '"><img src="/images/help/' . $row['image'] . '"></a></td>
 <td data-label="תמונה משנית"><a class="imageModal" href="/images/help/' . $row['image2'] . '" data-width="' . $width . '" data-height="' . $height . '"><img src="/images/help/' . $row['image2'] . '"></a></td>
 <td data-label="עריכה"><a title="עריכה" href="/private/updatehelpimage.php?id=' . $row['imageOrder'] . '">עריכה</a></td>
-<td data-label="מחיקה"><a title="מחיקה" href="javascript:void(0);" onclick="del(' . $row['imageOrder'] . ');">מחיקה</a></a></td>
+<td data-label="מחיקה"><a title="מחיקה" href="javascript:void(0);" onclick="del(' . $row['imageOrder'] . ');">מחיקה</a></td>
 </tr>';
 }
 $result->free();

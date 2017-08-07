@@ -26,7 +26,7 @@ $result = $mysqli->query('SELECT id, username FROM user ORDER BY username');
 while ($row = $result->fetch_assoc())
 	echo '<tr>
 <td data-label="שם משתמש">' . $row['username'] . '</td>
-<td data-label="מחיקה"><a title="מחיקה" href="javascript:void(0);" onclick="del(' . $row['id'] . ');">מחיקה</a></a></td>
+<td data-label="מחיקה"><a title="מחיקה" href="javascript:void(0);" onclick="del(' . $row['id'] . ');">מחיקה</a></td>
 </tr>';
 $result->free();
 ?>
