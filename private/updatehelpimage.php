@@ -70,7 +70,7 @@ if (isset($_POST['order'], $_FILES['image'], $_FILES['image2']))
 			$new_name2 = $_SERVER['DOCUMENT_ROOT'] . '/images/help/' . $image_name2;
 			move_uploaded_file($_FILES['image2']['tmp_name'], $new_name2);
 		}
-		$stmt = $mysqli->prepare('UPDATE help_image SET imageOrder=?, image=?, image2=?, WHERE imageOrder=?');
+		$stmt = $mysqli->prepare('UPDATE help_image SET imageOrder=?, image=?, image2=? WHERE imageOrder=?');
 		$stmt->bind_param('issi', $_POST['order'], $image_name, $image_name2, $_GET['id']);
 		$stmt->execute();
 		$stmt->close();
