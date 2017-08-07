@@ -1,15 +1,15 @@
 <?php
 if (!isset($page_title))
-	$page_title = 'עמותת חבר ליי - לחברים עוזרים תמיד';
+	$page_title = 'עמותת חבר לי - לחברים עוזרים תמיד';
 if (!isset($page_description))
-	$page_description = 'ברוכים הבאים לעמותת חבר לי - כאן תמצאו כלבים וחתולים לאימוץ ומסירה מכל הגדלים והמינים, גורים ובוגרים לאימוץ, אירועים וימי אימוץ ועוד.';
+	$page_description = "ברוכים הבאים לעמותת חבר לי. \r\nכאן תמצאו כלבים וחתולים לאימוץ מכל הגדלים והמינים, גורים ובוגרים, מידע למאמץ, מאמרים והמלצות.";
 if (!isset($page_url))
-	$page_url = 'http://v2.imutz.org/';
+	$page_url = 'http://imutz.org/';
 if (!isset($page_image))
 {
-	$page_image = 'http://v2.imutz.org/images/title.png';
-	$page_image_width = 1177;
-	$page_image_height = 911;
+	$page_image = 'http://imutz.org/images/og/index.jpg';
+	$page_image_width = 1200;
+	$page_image_height = 630;
 }
 ?>
 <head>
@@ -30,9 +30,14 @@ if (!isset($page_image))
 <meta property="og:url" content="<?php echo $page_url; ?>">
 <link rel="canonical" href="<?php echo $page_url; ?>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="/css/default.css">
-<script src="/js/sweetalert.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script src="/js/tinymce/placeholder.js"></script>
+<script src="/js/fitvids.js"></script>
+<script src="/js/bxslider.js"></script>
 <script src="/js/sorttable.js"></script>
+<script src="/js/sweetalert.js"></script>
+<script src="/js/fine-uploader.js"></script>
 <script src="/js/sahar.js"></script>
 </head>

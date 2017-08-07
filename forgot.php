@@ -31,7 +31,7 @@ if (isset($_POST['email']))
 		$mysqli->query('UPDATE user SET activateCode="' . $activatecode . '" WHERE id=' . $row['id']);
 		$mailtext = 'שלום רב,
 לאחרונה שלחתם טופס לשחזור סיסמתכם באתר פט פאל, אם אינכם ביצעתם בקשה זו אנא התעלמו ממנה.
-ע"מ לשחזר את סיסמתכם אנא בקרו בעמוד הבא: http://v2.imutz.org/login?code=' . $activatecode . '
+ע"מ לשחזר את סיסמתכם אנא בקרו בעמוד הבא: http://imutz.org/login?code=' . $activatecode . '
 לאחר מכן תקבלו הודעת דוא"ל נוספת עם סיסמתכם החדשה.
 
 בברכה,
@@ -48,20 +48,14 @@ if (isset($_POST['email']))
 <div id="wrapper">
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php'; ?>
 <main>
-<div id="content-wrap">
-<div class="center-block">
+<?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/mobile.php'; ?>
+<div id="content">
+<div id="contentInner">
 <form action="/forgot" method="post">
 <fieldset>
-<legend><i class="fa fa-info-circle" aria-hidden="true"></i> שחזור סיסמה</legend>
-<p>
-אם איבדתם את סיסמתכם אנא מלאו את הטופס הבא.<br>
-הודעת אימייל תשלח אל הכתובת שציינתם עם הוראות לשחזור הסיסמה.
-</p>
-<div>
-<label for="email">כתובת דוא"ל</label>
-<input type="email" id="email" name="email" required>
-<button class="button"><i class="fa fa-info-circle" aria-hidden="true"></i> שחזר סיסמה</button>
-</div>
+<h3>שחזור סיסמה</h3>
+<input type="email" name="email" required placeholder="אימייל" title="אנא מלא ערך כלשהו">
+<input type="submit" value="שלח">
 </fieldset>
 </form>
 </div>
@@ -74,7 +68,7 @@ if (isset($validation))
 {
 	echo '<script>';
 	if (empty($validation))
-		echo 'swal("שחזור סיסמה", "אנא בדקו את האימייל שלהם להוראות שחזור.", "success");';
+		echo 'swal("שחזור סיסמה", "אנא בדקו את האימייל שלכם להוראות שחזור.", "success");';
 	else
 	{
 		echo 'swal("השחזור נכשל", "';

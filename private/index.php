@@ -6,23 +6,137 @@
 <div id="wrapper">
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php'; ?>
 <main>
-<div id="content-wrap">
-<div class="center-block">
-<a class="button" title="הוספת אלבומים" href="/private/addAlbums.php"><i class="fa fa-picture-o" aria-hidden="true"></i> הוספת אלבומים</a>
-<a class="button" title="עריכת אלבומים" href="/private/updateAlbums.php"><i class="fa fa-file-image-o" aria-hidden="true"></i> עריכת אלבומים</a>
-<a class="button" title="הוספת אירועים" href="/private/addEvents.php"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i> הוספת אירועים</a>
-<a class="button" title="עריכת אירועים" href="/private/updateEvents.php"><i class="fa fa-calendar-minus-o" aria-hidden="true"></i> עריכת אירועים</a>
-<a class="button" title="הוספת מוצרים" href="/private/addProducts.php"><i class="fa fa-cart-plus" aria-hidden="true"></i> הוספת מוצרים</a>
-<a class="button" title="עריכת מוצרים" href="/private/updateProducts.php"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> עריכת מוצרים</a>
-<a class="button" title="הוספת מאמרים" href="/private/addArticles.php"><i class="fa fa-file" aria-hidden="true"></i> הוספת מאמרים</a>
-<a class="button" title="עריכת מאמרים" href="/private/updateArticles.php"><i class="fa fa-file-text" aria-hidden="true"></i> עריכת מאמרים</a>
-<a class="button" title="הוספת סרטונים" href="/private/addVideos.php"><i class="fa fa-video-camera" aria-hidden="true"></i> הוספת סרטונים</a>
-<a class="button" title="עריכת סרטונים" href="/private/updateVideos.php"><i class="fa fa-file-video-o" aria-hidden="true"></i> עריכת סרטונים</a>
-<a class="button" title="הוספת משתמשים" href="/private/addUsers.php"><i class="fa fa-user-plus" aria-hidden="true"></i> הוספת משתמשים</a>
-<a class="button" title="עריכת משתמשים" href="/private/updateUsers.php"><i class="fa fa-users" aria-hidden="true"></i> עריכת משתמשים</a>
-<a class="button" title="חיפושים" href="/private/search.php"><i class="fa fa-search" aria-hidden="true"></i> חיפושים</a>
-<a class="button" title="שינוי סיסמה" href="/private/change.php"><i class="fa fa-key" aria-hidden="true"></i> שינוי סיסמה</a>
-<a class="button" title="יציאה" href="/login?logout=<?php echo $_SESSION['signature']; ?>"><i class="fa fa-times-circle-o" aria-hidden="true"></i> יציאה</a>
+<?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/mobile.php'; ?>
+<div id="content" class="private fullwidth">
+<div id="contentInner">
+<div class="right">
+<ul>
+<li>
+<h2>דף הבית</h2>
+<ul>
+<li><a title="הוספת תמונות" href="/private/addimages.php">הוספת תמונות</a></li>
+<li><a title="עדכון תמונות" href="/private/updateimages.php">עדכון תמונות</a></li>
+</ul>
+</li>
+<li>
+<h2>אודות</h2>
+<ul>
+<li><a title="הוספת מתנדבים" href="/private/addvolunteers.php">הוספת מתנדבים</a></li>
+<li><a title="עדכון מתנדבים" href="/private/updatevolunteers.php">עדכון מתנדבים</a></li>
+<li><a title="עדכון תוכן" href="/private/updateabout.php">עדכון תוכן</a></li>
+</ul>
+</li>
+<li>
+<h2>פינת אימוץ</h2>
+<ul>
+<li><a title="הוספת אלבומים" href="/private/addalbums.php">הוספת אלבומים</a></li>
+<li><a title="עדכון אלבומים" href="/private/updatealbums.php">עדכון אלבומים</a></li>
+<li><a title="עדכון תוכן" href="/private/updateadopt.php">עדכון תוכן</a></li>
+</ul>
+</li>
+<li>
+<h2>תהליך אימוץ</h2>
+<ul>
+<li><a title="עדכון תוכן" href="/private/updateprocess.php">עדכון תוכן</a></li>
+</ul>
+</li>
+<li>
+<h2>משפחות מאושרות</h2>
+<ul>
+<li><a title="הוספת משפחות" href="/private/addfamilies.php">הוספת משפחות</a></li>
+<li><a title="עדכון משפחות" href="/private/updatefamilies.php">עדכון משפחות</a></li>
+</ul>
+</li>
+<li>
+<h2>איך ניתן לעזור?</h2>
+<ul>
+<li><a title="הוספת תמונות" href="/private/addhelpimages.php">הוספת תמונות</a></li>
+<li><a title="עדכון תמונות" href="/private/updatehelpimages.php">עדכון תמונות</a></li>
+<li><a title="הוספת תוכן" href="/private/addhelp.php">הוספת תוכן</a></li>
+<li><a title="עדכון תוכן" href="/private/updatehelppage.php">עדכון תוכן</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="left">
+<ul>
+<li>
+<h2>לוח מודעות</h2>
+<ul>
+<li><a title="הוספת תמונות" href="/private/addboard.php">הוספת תמונות</a></li>
+<li><a title="עדכון תמונות" href="/private/updateboards.php">עדכון תמונות</a></li>
+</ul>
+</li>
+<li>
+<h2>מידע למאמץ</h2>
+<ul>
+<li><a title="הוספת תוכן" href="/private/addinfo.php">הוספת תוכן</a></li>
+<li><a title="עדכון תוכן" href="/private/updateinfos.php">עדכון תוכן</a></li>
+</ul>
+</li>
+<li>
+<h2>מאמרים</h2>
+<ul>
+<li><a title="הוספת מאמרים" href="/private/addarticles.php">הוספת מאמרים</a></li>
+<li><a title="עדכון מאמרים" href="/private/updatearticles.php">עדכון מאמרים</a></li>
+</ul>
+</li>
+<li>
+<h2>הצילו! אבד לי הכלב</h2>
+<ul>
+<li><a title="עדכון טקסט עליון" href="/private/updatelost.php">עדכון טקסט עליון</a></li>
+<li><a title="הוספת תוכן" href="/private/addfind.php">הוספת תוכן</a></li>
+<li><a title="עדכון תוכן" href="/private/updatefinds.php">עדכון תוכן</a></li>
+</ul>
+</li>
+<li>
+<h2>המומלצים שלנו</h2>
+<ul>
+<li><a title="הוספת מומלצים" href="/private/addrecommands.php">הוספת מומלצים</a></li>
+<li><a title="עדכון מומלצים" href="/private/updaterecommands.php">עדכון מומלצים</a></li>
+</ul>
+</li>
+<li>
+<h2>צור קשר</h2>
+<ul>
+<li><a title="הוספת דרכי תקשורת" href="/private/addcontact.php">הוספת דרכי תקשורת</a></li>
+<li><a title="עדכון דרכי תקשורת" href="/private/updatecontact.php">עדכון דרכי תקשורת</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="left">
+<ul>
+<li>
+<h2>גזעים</h2>
+<ul>
+<li><a title="הוספת גזעים" href="/private/addbreeds.php">הוספת גזעים</a></li>
+<li><a title="עדכון גזעים" href="/private/updatebreeds.php">עדכון גזעים</a></li>
+</ul>
+</li>
+<li>
+<h2>מאגר תמונות לטקסט</h2>
+<ul>
+<li><a title="הוספת תמונות" href="/private/adddatabase.php">הוספת תמונות</a></li>
+<li><a title="עדכון תמונות" href="/private/updatedatabase.php">עדכון תמונות</a></li>
+</ul>
+</li>
+<li>
+<h2>משתמשים</h2>
+<ul>
+<li><a title="הוספת משתמשים" href="/private/addusers.php">הוספת משתמשים</a></li>
+<li><a title="עדכון משתמשים" href="/private/updateusers.php">עדכון משתמשים</a></li>
+</ul>
+</li>
+<li>
+<h2>אישי</h2>
+<ul>
+<li><a title="שינוי סיסמה" href="/private/changepassword.php">שינוי סיסמה</a></li>
+<li><a title="יציאה" href="/login?logout=<?php echo $_SESSION['signature']; ?>">יציאה</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </main>

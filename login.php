@@ -2,6 +2,7 @@
 require $_SERVER['DOCUMENT_ROOT'] . '/includes/config.php';
 if (isset($_GET['logout'], $_SESSION['logged_in'], $_SESSION['signature']) && $_SESSION['logged_in'] && sanitize($_GET['logout']) === $_SESSION['signature'])
 {
+	setcookie('user', '', time() - 3600);
 	session_destroy();
 	session_unset();
 	$_SESSION['logged_in'] = false;
@@ -25,7 +26,7 @@ elseif (isset($_GET['code']) && ctype_alnum($_GET['code']))
 			$mailtext = 'ברכות, סיסמתכם שוחזרה בהצלחה!
 סיסמתכם החדשה הינה: ' . $activatecode . '
 אנא זכרו סיסמה זו או שנו אותה בפעם הבאה בה תכנסו למשתמש.
-לעמוד הכניסה למשתמשים כנסו: http://v2.imutz.org/login
+לעמוד הכניסה למשתמשים כנסו: http://imutz.org/login
 
 בברכה,
 עמותת חבר לי.';
@@ -84,6 +85,7 @@ if (isset($_POST['username'], $_POST['password']))
 				$_SESSION['logged_in'] = true;
 				$_SESSION['LAST_ACTIVITY'] = time();
 				$_SESSION['userId'] = $row['id'];
+				setcookie('user', $_SESSION['userId'], time() + (86400 * 30));
 				header('Location: /private');
 				exit;
 			}
@@ -98,22 +100,16 @@ if (isset($_POST['username'], $_POST['password']))
 <div id="wrapper">
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php'; ?>
 <main>
-<div id="content-wrap">
-<div class="center-block">
+<?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/mobile.php'; ?>
+<div id="content">
+<div id="contentInner">
 <form action="/login" method="post">
 <fieldset>
-<legend><i class="fa fa-sign-in" aria-hidden="true"></i> כניסת משתמשים</legend>
-<p>
-הכניסה לאזור האישי הינה למורשים בלבד.<br>
-במידה ושכחתם סיסמה <a href="/forgot">לחצו כאן</a>.
-</p>
-<div>
-<label for="username">שם משתמש</label>
-<input type="text" id="username" name="username" required>
-<label for="password">סיסמה</label>
-<input type="password" id="password" name="password" required>
-<button class="button"><i class="fa fa-sign-in" aria-hidden="true"></i> התחברות</button>
-</div>
+<h3>כניסה למערכת</h3>
+<p>לשחזור סיסמה <a title="שחזור סיסמה" href="/forgot">לחץ כאן</a></p>
+<input type="text" name="username" required placeholder="שם משתמש" title="אנא מלא ערך כלשהו">
+<input type="password" name="password" required placeholder="סיסמה" title="אנא מלא ערך כלשהו">
+<input type="submit" value="התחברות">
 </fieldset>
 </form>
 </div>
