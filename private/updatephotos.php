@@ -81,6 +81,8 @@ $result->free();
 </tbody>
 </table>
 <p><a title="הוסף תמונות לאלבום זה" href="/private/addphotos.php">הוסף תמונות לאלבום זה</a></p>
+<p><a title="עדכן פרטים לאלבום זה" href="/private/updatealbum.php?id=<?php echo $_GET['id']; ?>">עדכן פרטים לאלבום זה</a></p>
+<br>
 <p><a title="חזרה לעדכון אלבומים" href="/private/updatealbums.php">חזרה לעדכון אלבומים</a></p>
 <p><a title="חזרה לעמוד הניהול" href="/private">חזרה לעמוד הניהול</a></p>
 </div>
