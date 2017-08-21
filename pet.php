@@ -55,8 +55,14 @@ echo '</ul>
 גיל: ';
 $from = new DateTime($row['bornDate']);
 $to = new DateTime('today');
-if ($from->diff($to)->y > 0)
-	echo $from->diff($to)->y . ' שנים';
+$diff = $from->diff($to);
+if ($diff->y > 0)
+{
+	if ($diff->m > 3 && $diff->m < 9)
+		echo $from->diff($to)->y . ' שנים וחצי';
+	else
+		echo $from->diff($to)->y . ' שנים';
+}
 else
 	echo $from->diff($to)->m . ' חודשים';
 echo '<br>

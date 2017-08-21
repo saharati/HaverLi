@@ -23,8 +23,17 @@ if (isset($_POST['name'], $_POST['description'], $_POST['isDog'], $_POST['isMale
 	{
 		if (empty($_POST['years']) && empty($_POST['months']))
 			$validation['borndateempty'] = 'יש להזין תאריך לידה או גיל.';
-		elseif ($_POST['years'] < 0 || $_POST['years'] > 30 || $_POST['months'] < 0 || $_POST['months'] > 11)
-			$validation['borndatewrong'] = 'הגיל שהוזן לא תקין.';
+		else
+		{
+			if (empty($_POST['years']))
+				$_POST['years'] = 0;
+			if (empty($_POST['months']))
+				$_POST['months'] = 0;
+			if ($_POST['years'] == 0 && $_POST['months'] == 0)
+				$validation['borndatewrong'] = 'לא הוזן גיל / תאריך לידה.';
+			elseif ($_POST['years'] < 0 || $_POST['years'] > 30 || $_POST['months'] < 0 || $_POST['months'] > 11)
+				$validation['borndatewrong'] = 'הגיל שהוזן לא תקין.';
+		}
 	}
 	else
 	{
