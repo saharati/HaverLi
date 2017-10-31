@@ -1,13 +1,5 @@
 <?php
-// Start configuration.
-$db_host = 'host';
-$db_username = 'username';
-$db_password = 'password';
-$db_database = 'database';
-$mail_host = 'host';
-$mail_username = 'username';
-$mail_password = 'password';
-// End configuration.
+require $_SERVER['DOCUMENT_ROOT'] . '/includes/details.php';
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 'on');
@@ -111,6 +103,7 @@ function calcStyle($image, $isBackground, $boxSize = 260)
 }
 function initMailer()
 {
+    global $mail_host, $mail_username, $mail_password;
 	require $_SERVER['DOCUMENT_ROOT'] . '/includes/mailer/PHPMailerAutoload.php';
 	$mail = new PHPMailer(true);
 	$mail->IsSMTP();
@@ -121,6 +114,7 @@ function initMailer()
 	$mail->CharSet = 'UTF-8';
 	$mail->Username = $mail_username;
 	$mail->Password = $mail_password;
+	$mail->SMTPOptions = array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true));
 	$mail->SetFrom('support@imutz.org', 'עמותת חבר לי');
 	return $mail;
 }
