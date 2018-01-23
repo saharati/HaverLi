@@ -14,7 +14,7 @@ if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in'])
 		$_SESSION['logged_in'] = true;
 		$_SESSION['LAST_ACTIVITY'] = time();
 		$_SESSION['userId'] = $_COOKIE['user'];
-		setcookie('user', $_SESSION['userId'], time() + (86400 * 30));
+		setcookie('user', $_SESSION['userId'], time() + 86400 * 7, '/');
 	}
 	else
 	{
@@ -36,7 +36,7 @@ if (time() - $_SESSION['LAST_ACTIVITY'] > 900)
 		$_SESSION['logged_in'] = true;
 		$_SESSION['LAST_ACTIVITY'] = time();
 		$_SESSION['userId'] = $_COOKIE['user'];
-		setcookie('user', $_SESSION['userId'], time() + (86400 * 30));
+		setcookie('user', $_SESSION['userId'], time() + 86400 * 7, '/');
 	}
 	else
 	{

@@ -2,7 +2,8 @@
 require $_SERVER['DOCUMENT_ROOT'] . '/includes/config.php';
 if (isset($_GET['logout'], $_SESSION['logged_in'], $_SESSION['signature']) && $_SESSION['logged_in'] && sanitize($_GET['logout']) === $_SESSION['signature'])
 {
-	setcookie('user', '', time() - 3600);
+	setcookie('user', '', time() - 3600, '/');
+	unset($_COOKIE['user']);
 	session_destroy();
 	session_unset();
 	$_SESSION['logged_in'] = false;
@@ -85,7 +86,7 @@ if (isset($_POST['username'], $_POST['password']))
 				$_SESSION['logged_in'] = true;
 				$_SESSION['LAST_ACTIVITY'] = time();
 				$_SESSION['userId'] = $row['id'];
-				setcookie('user', $_SESSION['userId'], time() + (86400 * 30));
+				setcookie('user', $_SESSION['userId'], time() + 86400 * 7, '/');
 				header('Location: /private');
 				exit;
 			}
