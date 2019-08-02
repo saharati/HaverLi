@@ -27,28 +27,29 @@ $result = $mysqli->query('SELECT * FROM donate');
 $row = $result->fetch_assoc();
 $result->free();
 if ($row)
+    echo '<div class="innerDiv">' . $row['description'] . '</div>';
+echo '<div class="spaceDiv">';
+$result = $mysqli->query('SELECT caption FROM donate_info ORDER BY position');
+if ($result->num_rows)
 {
-    echo '<div class="innerDiv">' . $row['description'] . '</div>
-<div class="spaceDiv"></div>
-<div class="innerDiv">';
+	echo '<div class="sections innerDiv">';
+	$width = floor(100 / $result->num_rows);
+	while ($row2 = $result->fetch_assoc())
+		echo '<section style="max-width:' . $width . '%;width:' . $width . '%">' . $row2['caption'] . '</section>';
+	echo '</div>';
+}
+$result->free();
+echo '</div>';
+if ($row)
+{
+    echo '<div class="innerDiv">';
     if (empty($row['imageLink']))
         echo '<img src="/images/pages/' . $row['image'] . '" alt="">';
     else
         echo '<a href="' . $row['imageLink'] . '"><img src="/images/pages/' . $row['image'] . '" alt=""></a>';
-    echo '</div>';
+    echo '</div>
+<div class="spaceDiv"></div>';
 }
-echo '<div class="spaceDiv">';
-$result2 = $mysqli->query('SELECT image, image2 FROM help_image ORDER BY imageOrder');
-if ($result2->num_rows)
-{
-	echo '<div class="innerDiv">';
-	$width = floor(100 / $result2->num_rows);
-	while ($row2 = $result2->fetch_assoc())
-		echo '<img style="width:' . $width . '%" src="/images/help/' . $row2['image'] . '" alt="" data-src="/images/help/' . $row2['image2'] . '" onmouseover="toggleSrc(this);" onmouseout="toggleSrc(this);">';
-	echo '</div>';
-}
-$result2->free();
-echo '</div>';
 ?>
 <div class="innerDiv">
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/contact.php'; ?>

@@ -105,6 +105,8 @@ main h4 {font-size:17px;margin:10px 0 0;text-decoration:underline}
 .rectDiv img {float:left;width:auto;height:150px;margin-right:10px}
 .lastp {margin-top:10px !important}
 .center {text-align:center}
+.sections {display:table;border-spacing:7px}
+.sections section {display:table-cell;background-color:#eaf1f7}
 /* NOT FOUND PAGE */
 .notfound .right, .notfound .left {float:none}
 .notfound .right {width:30%}

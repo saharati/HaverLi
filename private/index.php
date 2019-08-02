@@ -50,8 +50,8 @@
 <li>
 <h2>תרומות</h2>
 <ul>
-<li><a title="הוספת תמונות" href="/private/addhelpimages.php">הוספת תמונות</a></li>
-<li><a title="עדכון תמונות" href="/private/updatehelpimages.php">עדכון תמונות</a></li>
+<li><a title="הוספת תמונות" href="/private/adddonateinfo.php">הוספת מידע לתרומות</a></li>
+<li><a title="עדכון תמונות" href="/private/updatedonateinfos.php">עדכון מידע לתרומות</a></li>
 <li><a title="עדכון תוכן" href="/private/updatedonate.php">עדכון תוכן</a></li>
 </ul>
 </li>
