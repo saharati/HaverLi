@@ -28,7 +28,7 @@ $row = $result->fetch_assoc();
 $result->free();
 if ($row)
 	echo $row['catdescription'];
-$result = $mysqli->query('SELECT id, name FROM album WHERE isDog=0 AND isAdopted=0 ORDER BY important DESC, postDate DESC');
+$result = $mysqli->query('SELECT id, name FROM album WHERE isDog=0 ORDER BY important DESC, postDate DESC');
 while ($row = $result->fetch_assoc())
 {
 	$result2 = $mysqli->query('SELECT albumId, image, width, height FROM album_photo WHERE albumId=' . $row['id'] . ' ORDER BY cover DESC LIMIT 2');

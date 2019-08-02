@@ -5,7 +5,6 @@ CREATE TABLE `album` (
   `description` text CHARACTER SET utf8 NOT NULL,
   `isDog` tinyint(1) unsigned NOT NULL,
   `isMale` tinyint(1) unsigned NOT NULL,
-  `isAdopted` tinyint(1) unsigned NOT NULL,
   `breedId` tinyint(2) unsigned NOT NULL,
   `size` tinyint(1) unsigned NOT NULL,
   `bornDate` date NOT NULL,
