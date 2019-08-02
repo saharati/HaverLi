@@ -81,7 +81,7 @@ echo '</li>
 <ul>
 <li class="send"><a title="שלח לחבר" href="/send-' . $cookie . '">שלח לחבר</a></li>
 <li class="share"><a title="שתף בפייסבוק" href="javascript:void(0);" onclick="window.open(\'http://www.facebook.com/share.php?u=http://imutz.org/pet-' . $cookie . '\', \'sharer\', \'toolbar=0, status=0, width=675, height=475\');">שתף</a></li>
-<li class="virtualadopt"><a title="אימוץ וירטואלי" href="/help">אימוץ וירטואלי</a></li>
+<li class="virtualadopt"><a title="אימוץ וירטואלי" href="/volunteer">אימוץ וירטואלי</a></li>
 <li class="garbage"><a title="מחק" href="/wishlist?remove=' . $cookie . '">מחק</a></li>
 </ul>
 </div>

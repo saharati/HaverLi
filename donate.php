@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="he">
 <?php
-$metaData = $mysqli->query('SELECT title, description, url, image FROM promote WHERE page="help"');
+$metaData = $mysqli->query('SELECT title, description, url, image FROM promote WHERE page="donate"');
 $md = $metaData->fetch_assoc();
 $metaData->free();
 $page_title = htmlspecialchars($md['title'], ENT_QUOTES);
@@ -23,10 +23,20 @@ require $_SERVER['DOCUMENT_ROOT'] . '/includes/head.php';
 <div id="content" class="about fullwidth">
 <div id="contentInner">
 <?php
-$result = $mysqli->query('SELECT position, title, caption, image FROM help ORDER BY position');
+$result = $mysqli->query('SELECT * FROM donate');
 $row = $result->fetch_assoc();
+$result->free();
 if ($row)
-	echo '<div id="section' . $row['position'] . '" class="innerDiv"><h2>' . $row['title'] . '</h2>' . $row['caption'] . '</div>';
+{
+    echo '<div class="innerDiv">' . $row['description'] . '</div>
+<div class="spaceDiv"></div>
+<div class="innerDiv">';
+    if (empty($row['imageLink']))
+        echo '<img src="/images/pages/' . $row['image'] . '" alt="">';
+    else
+        echo '<a href="' . $row['imageLink'] . '"><img src="/images/pages/' . $row['image'] . '" alt=""></a>';
+    echo '</div>';
+}
 echo '<div class="spaceDiv">';
 $result2 = $mysqli->query('SELECT image, image2 FROM help_image ORDER BY imageOrder');
 if ($result2->num_rows)
@@ -39,11 +49,6 @@ if ($result2->num_rows)
 }
 $result2->free();
 echo '</div>';
-if ($row)
-	echo '<div class="innerDiv"><img src="/images/pages/' . $row['image'] . '" alt=""></div><div class="spaceDiv"></div>';
-while ($row = $result->fetch_assoc())
-	echo '<div id="section' . $row['position'] . '" class="innerDiv"><h2>' . $row['title'] . '</h2>' . $row['caption'] . '</div><div class="spaceDiv"></div><div class="innerDiv"><img src="/images/pages/' . $row['image'] . '" alt=""></div><div class="spaceDiv"></div>';
-$result->free();
 ?>
 <div class="innerDiv">
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/contact.php'; ?>

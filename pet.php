@@ -105,7 +105,7 @@ echo '<br>
 <li class="send"><a title="שלח לחבר" href="/send-<?php echo $_GET['page']; ?>">שלח לחבר</a></li>
 <li class="share"><a title="שתף בפייסבוק" href="javascript:void(0);" onclick="window.open('http://www.facebook.com/share.php?u=<?php echo $page_url; ?>' , 'sharer', 'toolbar=0, status=0, width=675, height=475');">שתף</a></li>
 <li class="addwish"><a title="הוסף לרשימת המשאלות" href="javascript:void(0);" onclick="addToWishlist(<?php echo $_GET['page']; ?>);">הוסף לרשימת המשאלות</a></li>
-<li class="virtualadopt"><a title="אימוץ וירטואלי" href="/help">אימוץ וירטואלי</a></li>
+<li class="virtualadopt"><a title="אימוץ וירטואלי" href="/volunteer">אימוץ וירטואלי</a></li>
 </ul>
 </div>
 </div>

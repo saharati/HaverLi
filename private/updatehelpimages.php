@@ -27,7 +27,7 @@ if (isset($_GET['del']))
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/includes/mobile.php'; ?>
 <div id="content" class="fullwidth">
 <div id="contentInner">
-<h2>עדכון תמונות באיך ניתן לעזור</h2>
+<h2>עדכון תמונות בתרומות</h2>
 <table class="sortable">
 <thead><tr><th>מיקום</th><th>תמונה ראשית</th><th>תמונה משנית</th><th>עריכה</th><th>מחיקה</th></tr></thead>
 <tbody>

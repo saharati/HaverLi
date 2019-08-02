@@ -4,7 +4,7 @@
 <a title="כניסה למערכת" href="/private">כניסה למערכת</a>
 <ul>
 <li><a title="רשימת משאלות" href="/wishlist">רשימת משאלות <img title="רשימת משאלות" alt="רשימת משאלות" src="/images/heart.svg"></a></li>
-<li><a title="לתרומות לחצו כאן" href="/help">לתרומות <img title="לתרומות לחצו כאן" alt="לתרומות לחצו כאן" src="/images/paw.svg"></a></li>
+<li><a title="לתרומות לחצו כאן" href="/donate">לתרומות <img title="לתרומות לחצו כאן" alt="לתרומות לחצו כאן" src="/images/paw.svg"></a></li>
 </ul>
 </div>
 </nav>
@@ -34,7 +34,18 @@
 </div>
 </nav>
 </li>
-<li><a <?php if ($_SERVER['PHP_SELF'] == '/help.php') echo 'class="active"'; ?> title="איך ניתן לעזור?" href="/help">איך ניתן לעזור?</a></li>
+<li>
+<a <?php if ($_SERVER['PHP_SELF'] == '/donate.php' || $_SERVER['PHP_SELF'] == '/volunteer.php' || $_SERVER['PHP_SELF'] == '/foster.php') echo 'class="active"'; ?> title="איך ניתן לעזור?" href="javascript:void(0);">איך ניתן לעזור?</a>
+<nav>
+<div>
+<ul>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/donate.php') echo 'class="active"'; ?> title="תרומות" href="/donate"><img title="תרומות" alt="תרומות" src="/images/donate.svg"><span>תרומות</span></a></li>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/volunteer.php') echo 'class="active"'; ?> title="התנדבות" href="/volunteer"><img title="התנדבות" alt="התנדבות" src="/images/volunteer.svg"><span>התנדבות</span></a></li>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/foster.php') echo 'class="active"'; ?> title="בתי אומנה" href="/foster"><img title="בתי אומנה" alt="בתי אומנה" src="/images/foster.svg"><span>בתי אומנה</span></a></li>
+</ul>
+</div>
+</nav>
+</li>
 <li><a <?php if ($_SERVER['PHP_SELF'] == '/board.php') echo 'class="active"'; ?> title="לוח מודעות" href="/board">לוח מודעות</a></li>
 <li>
 <a <?php if ($_SERVER['PHP_SELF'] == '/recommend.php' || $_SERVER['PHP_SELF'] == '/lost.php' || $_SERVER['PHP_SELF'] == '/articles.php' || $_SERVER['PHP_SELF'] == '/info.php' || $_SERVER['PHP_SELF'] == '/article.php') echo 'class="active"'; ?> title="מידע שימושי" href="javascript:void(0);">מידע שימושי</a>

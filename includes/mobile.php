@@ -11,7 +11,14 @@
 <li><a <?php if ($_SERVER['PHP_SELF'] == '/adopted.php') echo 'class="active"'; ?> title="משפחות מאושרות" href="/adopted"><img title="משפחות מאושרות" alt="משפחות מאושרות" src="/images/home.svg"><span>משפחות מאושרות</span></a></li>
 </ul>
 </li>
-<li class="firstLevel"><a <?php if ($_SERVER['PHP_SELF'] == '/help.php') echo 'class="active"'; ?> title="איך ניתן לעזור?" href="/help">איך ניתן לעזור?</a></li>
+<li class="firstLevel">
+<a <?php if ($_SERVER['PHP_SELF'] == '/donate.php' || $_SERVER['PHP_SELF'] == '/volunteer.php' || $_SERVER['PHP_SELF'] == '/foster.php') echo 'class="active"'; ?> title="איך ניתן לעזור?" href="javascript:void(0);" onclick="toggleView(this.parentNode);">איך ניתן לעזור?</a>
+<ul>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/donate.php') echo 'class="active"'; ?> title="תרומות" href="/donate"><img title="תרומות" alt="תרומות" src="/images/donate.svg"><span>תרומות</span></a></li>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/volunteer.php') echo 'class="active"'; ?> title="התנדבות" href="/volunteer"><img title="התנדבות" alt="התנדבות" src="/images/volunteer.svg"><span>התנדבות</span></a></li>
+<li><a <?php if ($_SERVER['PHP_SELF'] == '/foster.php') echo 'class="active"'; ?> title="בתי אומנה" href="/foster"><img title="בתי אומנה" alt="בתי אומנה" src="/images/foster.svg"><span>בתי אומנה</span></a></li>
+</ul>
+</li>
 <li class="firstLevel"><a <?php if ($_SERVER['PHP_SELF'] == '/board.php') echo 'class="active"'; ?> title="לוח מודעות" href="/board">לוח מודעות</a></li>
 <li class="firstLevel">
 <a <?php if ($_SERVER['PHP_SELF'] == '/recommend.php' || $_SERVER['PHP_SELF'] == '/lost.php' || $_SERVER['PHP_SELF'] == '/articles.php' || $_SERVER['PHP_SELF'] == '/info.php' || $_SERVER['PHP_SELF'] == '/article.php') echo 'class="active"'; ?> title="מידע שימושי" href="javascript:void(0);" onclick="toggleView(this.parentNode);">מידע שימושי</a>

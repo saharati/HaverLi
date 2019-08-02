@@ -72,7 +72,7 @@ if (isset($_FILES['image'], $_FILES['image2']))
 <div id="contentInner">
 <form action="/private/addhelpimages.php" method="post" enctype="multipart/form-data">
 <fieldset>
-<h3>הוספת תמונות לאיך ניתן לעזור</h3>
+<h3>הוספת תמונות לתרומות</h3>
 תמונה ראשית
 <input type="file" name="image" accept="image/*" required title="בחר תמונה ראשית">
 תמונה משנית

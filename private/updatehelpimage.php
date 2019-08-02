@@ -93,7 +93,7 @@ if (isset($_POST['order'], $_FILES['image'], $_FILES['image2']))
 <div id="contentInner">
 <form action="/private/updatehelpimage.php?id=<?php echo $_GET['id']; ?>" method="post" enctype="multipart/form-data">
 <fieldset>
-<h3>עדכון תמונה באיך ניתן לעזור</h3>
+<h3>עדכון תמונה בתרומות</h3>
 <input type="number" name="order" min="1" max="99" placeholder="מיקום (בין 1 ל-99)" value="<?php echo (empty($validation) ? $row2['imageOrder'] : $_POST['order']); ?>">
 <?php
 if (strpos($row2['image'], '.svg') !== false)

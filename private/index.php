@@ -48,18 +48,29 @@
 </ul>
 </li>
 <li>
-<h2>איך ניתן לעזור?</h2>
+<h2>תרומות</h2>
 <ul>
 <li><a title="הוספת תמונות" href="/private/addhelpimages.php">הוספת תמונות</a></li>
 <li><a title="עדכון תמונות" href="/private/updatehelpimages.php">עדכון תמונות</a></li>
-<li><a title="הוספת תוכן" href="/private/addhelp.php">הוספת תוכן</a></li>
-<li><a title="עדכון תוכן" href="/private/updatehelppage.php">עדכון תוכן</a></li>
+<li><a title="עדכון תוכן" href="/private/updatedonate.php">עדכון תוכן</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="left">
 <ul>
+<li>
+<h2>בתי אומנה</h2>
+<ul>
+<li><a title="עדכון תוכן" href="/private/updatefoster.php">עדכון תוכן</a></li>
+</ul>
+</li>
+<li>
+<h2>התנדבות</h2>
+<ul>
+<li><a title="עדכון תוכן" href="/private/updatevolunteerpage.php">עדכון תוכן</a></li>
+</ul>
+</li>
 <li>
 <h2>לוח מודעות</h2>
 <ul>
@@ -96,6 +107,10 @@
 <li><a title="עדכון מומלצים" href="/private/updaterecommands.php">עדכון מומלצים</a></li>
 </ul>
 </li>
+</ul>
+</div>
+<div class="left">
+<ul>
 <li>
 <h2>צור קשר</h2>
 <ul>
@@ -103,10 +118,6 @@
 <li><a title="עדכון דרכי תקשורת" href="/private/updatecontact.php">עדכון דרכי תקשורת</a></li>
 </ul>
 </li>
-</ul>
-</div>
-<div class="left">
-<ul>
 <li>
 <h2>גזעים</h2>
 <ul>
