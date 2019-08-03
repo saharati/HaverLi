@@ -33,9 +33,8 @@ $result = $mysqli->query('SELECT caption FROM donate_info ORDER BY position');
 if ($result->num_rows)
 {
 	echo '<div class="sections innerDiv">';
-	$width = floor(100 / $result->num_rows);
 	while ($row2 = $result->fetch_assoc())
-		echo '<section style="max-width:' . $width . '%;width:' . $width . '%">' . $row2['caption'] . '</section>';
+		echo '<section>' . $row2['caption'] . '</section>';
 	echo '</div>';
 }
 $result->free();
