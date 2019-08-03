@@ -107,6 +107,10 @@ main h4 {font-size:17px;margin:10px 0 0;text-decoration:underline}
 .center {text-align:center}
 .sections {display:table;border-spacing:7px}
 .sections section {display:table-cell;background-color:#eaf1f7}
+@media all and (max-width:800px)
+{
+	.sections section {display:block}
+}
 /* NOT FOUND PAGE */
 .notfound .right, .notfound .left {float:none}
 .notfound .right {width:30%}
