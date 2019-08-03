@@ -29,8 +29,9 @@ header, footer {height:1px}
  }
 /* TITLE & BOTTOM MENU */
 h1 {margin:0;display:table-cell}
-h1 img {max-width:300px;width:100%;height:auto;vertical-align:bottom}
-#mobiletitle {display:none}
+h1 img {height:auto;vertical-align:bottom}
+#desktoptitle {width:300px}
+#mobiletitle {display:none;max-width:300px;width:100%}
 #headBorder {position:relative;border-bottom:1px solid #000}
 #headBorder div {max-width:1000px;margin:0 auto;padding:0 7px;font-size:18px}
 #headBorder div > nav {display:table-cell;vertical-align:bottom}
