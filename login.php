@@ -24,6 +24,7 @@ elseif (isset($_GET['code']) && ctype_alnum($_GET['code']))
 				$activatecode .= $base{mt_rand(0, 51)};
 			$salt = bin2hex(mcrypt_create_iv(32, MCRYPT_RAND));
 			$mysqli->query('UPDATE user SET activateCode="", password="' . $salt . hash('sha256', $salt . $activatecode) . '" WHERE id=' . $row['id']);
+			$mysqli->query('DELETE FROM ipcheck WHERE ip="' . $mysqli->real_escape_string(sanitize($_SERVER['REMOTE_ADDR'])) . '"');
 			$mailtext = 'ברכות, סיסמתכם שוחזרה בהצלחה!
 סיסמתכם החדשה הינה: ' . $activatecode . '
 אנא זכרו סיסמה זו או שנו אותה בפעם הבאה בה תכנסו למשתמש.
