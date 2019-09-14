@@ -203,17 +203,17 @@ class UploadHandler {
                 	list($width, $height) = getimagesize($target);
                 	if ($width >= $height)
                 	{
-                		if ($width > 800)
+                		if ($width > 600)
                 		{
-                			$newHeight = round($height / $width * 800);
-                			$newWidth = 800;
+                			$newHeight = round($height / $width * 600);
+                			$newWidth = 600;
                 			$image = imagecreatetruecolor($newWidth, $newHeight);
                 		}
                 	}
-                	elseif ($height > 800)
+                	elseif ($height > 600)
                 	{
-                		$newWidth = round($width / $height * 800);
-                		$newHeight = 800;
+                		$newWidth = round($width / $height * 600);
+                		$newHeight = 600;
                 		$image = imagecreatetruecolor($newWidth, $newHeight);
                 	}
                 	if (isset($image))
@@ -226,9 +226,9 @@ class UploadHandler {
 	                		$src = imagecreatefromgif($target);
                 		imagecopyresampled($image, $src, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
                 		if ($pathinfo['extension'] == 'jpg' || $pathinfo['extension'] == 'jpeg')
-                			imagejpeg($image, $target, 100);
+                			imagejpeg($image, $target);
                 		elseif ($pathinfo['extension'] == 'png')
-                			imagepng($image, $target, 9);
+                			imagepng($image, $target);
                 		else
                 			imagegif($image, $target);
                 		imagedestroy($src);
